@@ -77,7 +77,7 @@ namespace Mita_Hotel.Views
 
         private void tsbExportToExcel_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-
+            gridListGeneral.ExportToXLS("DataGeneral.xls");
         }
 
         private void tsbListAll_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
