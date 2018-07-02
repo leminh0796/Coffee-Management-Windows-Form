@@ -1,0 +1,44 @@
+﻿<L3:L3Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mita_Hotel.Views"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.frmAddNewItem"
+        mc:Ignorable="d"
+        Title="Thêm mới hàng hóa" Height="297.732" Width="551.457" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Mita_Hotel;component/Templates/ControlTemplates.xaml" />
+                <ResourceDictionary Source="/D99D0451;component/Styles/Lemon3Style.xaml" />
+                <ResourceDictionary Source="/D99D0451;component/Templates/Lemon3Templates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="0,0,3.4,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="169*"/>
+            <ColumnDefinition Width="373*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Tên hàng hóa" HorizontalAlignment="Left" Margin="19.2,20,0,0" VerticalAlignment="Top" Height="22" Width="71" Grid.Column="1"/>
+
+        <L3:L3TextEdit x:Name="txtInventoryName" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,20,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
+        <Label Content="Đơn vị tính" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19.2,47,0,0" RenderTransformOrigin="0.497,1.174" Height="22" Width="58" Grid.Column="1"/>
+
+        <L3:L3LookUpEdit x:Name="lkeUnitID" PopupContentTemplate="{DynamicResource UnitID}" ValueMember="ListID" DisplayMember="ListName" AutoPopulateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Grid.Column="1" Margin="119.2,47,0,0" Height="22" Loaded="lkeUnitID_Loaded"/>
+        <Label Content="Giá" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19.2,74,0,0" Width="36" Height="22" Grid.Column="1"/>
+        <L3:L3SpinEdit x:Name="sePrice" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,74,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
+        <L3:L3TextEdit x:Name="txtNotes" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,101,0,0" VerticalAlignment="Top" Width="229" Height="58"/>
+        <Label Content="Ghi chú" HorizontalAlignment="Left" Margin="19.2,101,0,0" VerticalAlignment="Top" Width="100" Height="22" Grid.Column="1"/>
+        <Label Content="VAT" HorizontalAlignment="Left" Margin="19.2,164,0,0" VerticalAlignment="Top" Width="100" Height="22" Grid.Column="1"/>
+        <L3:L3SpinEdit x:Name="seVAT" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,164,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
+        <Label Content="Barcode" HorizontalAlignment="Left" Margin="19.2,191,0,0" VerticalAlignment="Top" Height="23" Width="43" Grid.Column="1"/>
+        <L3:L3TextEdit x:Name="txtBarcode" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,191,0,0" VerticalAlignment="Top" Width="229" Height="23"/>
+        <dxe:ImageEdit HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Width="160" Height="155" Source="/Mita_Hotel;component/Images/addnewimage.png" Grid.ColumnSpan="2"/>
+
+        <dx:SimpleButton Name="btnSave" Content="Lưu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="234.2,228,0,0" VerticalAlignment="Top" Width="91" Click="btnSave_Click"/>
+
+    </Grid>
+</L3:L3Window>

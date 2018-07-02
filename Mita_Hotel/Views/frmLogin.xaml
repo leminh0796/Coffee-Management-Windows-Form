@@ -1,0 +1,292 @@
+﻿<L3:L3Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mita_Hotel.Login"
+        xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Name="windowApp" x:Class="Mita_Hotel.Views.frmLogin"
+        mc:Ignorable="d" Height="274.702" Width="449.488" Title="Đăng nhập" ResizeMode="NoResize" Opacity="0.95" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FF3C3C3C"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#7F5C5C5C"/>
+            <Setter Property="SelectionBrush" Value="#FF0072C6"/>
+            <Setter Property="CaretBrush" Value="#FF3C3C3C"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="3,2"/>
+            <Setter Property="AllowDrop" Value="True"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid x:Name="Root" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" dx:BlendHelper2.ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TextBox.xaml;22;22">
+                            <dx:DXBorder BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" EnableDPICorrection="True" dx:BlendHelper2.ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TextBox.xaml;23;26"/>
+                            <dx:DXBorder x:Name="FocusedState" BorderThickness="{TemplateBinding BorderThickness}" EnableDPICorrection="True" Opacity="0" dx:BlendHelper2.ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TextBox.xaml;24;26">
+                                <dx:DXBorder.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="BorderBrush" Value="#FF0072C6"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                    </Style>
+                                </dx:DXBorder.Style>
+                            </dx:DXBorder>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" dx:BlendHelper2.ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TextBox.xaml;25;26"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsReadOnly" Value="True">
+                                <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.75"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Opacity" TargetName="FocusedState" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="Root" Value="0.5"/>
+                            </Trigger>
+                            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                                <Setter Property="Margin" TargetName="PART_ContentHost" Value="0"/>
+                                <Setter Property="MinHeight" TargetName="Root" Value="44"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                    <Setter Property="Padding" Value="11,14,10,14"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
+            <Custom:ButtonChrome x:Name="PART_Owner" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" EnableContentPresenterLogic="False" Owner="{x:Null}" RenderContent="{x:Null}" RenderTemplateSelector="{Custom:RenderTemplateSelector}" dx:BlendHelper2.ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml;247;10" Style="{DynamicResource ButtonChromeStyle1}">
+                <Custom:ButtonChrome.RenderTemplate>
+                    <Custom:RenderTemplate>
+                        <Custom:RenderTemplate.Triggers>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="dx:SimpleButton.Glyph" Property="Glyph" SourceName="{x:Null}" TargetProperty="Source" TargetName="Image" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="dx:SimpleButton.GlyphAlignment" Property="GlyphAlignment" SourceName="{x:Null}" TargetProperty="Dock" TargetName="Image" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="dx:SimpleButton.GlyphToContentOffset" Property="GlyphToContentOffset" SourceName="{x:Null}" TargetProperty="Width" TargetName="Border" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="dx:SimpleButton.GlyphToContentOffset" Property="GlyphToContentOffset" SourceName="{x:Null}" TargetProperty="Height" TargetName="Border" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="ContentControl.Content" Property="Content" SourceName="{x:Null}" TargetProperty="{x:Null}" TargetName="ContentPresenter" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="ContentControl.ContentTemplate" Property="ContentTemplate" SourceName="{x:Null}" TargetProperty="{x:Null}" TargetName="ContentPresenter" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="ContentControl.ContentTemplateSelector" Property="ContentTemplateSelector" SourceName="{x:Null}" TargetProperty="{x:Null}" TargetName="ContentPresenter" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="Control.VerticalContentAlignment" Property="VerticalContentAlignment" SourceName="{x:Null}" TargetProperty="VerticalAlignment" TargetName="ContentPresenter" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="Control.HorizontalContentAlignment" Property="HorizontalContentAlignment" SourceName="{x:Null}" TargetProperty="HorizontalAlignment" TargetName="ContentPresenter" ValueSource="TemplatedParent"/>
+                            <Custom:RenderBinding Converter="{x:Null}" ConverterParamenter="{x:Null}" DependencyProperty="Control.Padding" Property="Padding" SourceName="{x:Null}" TargetProperty="Margin" TargetName="RenderPanel" ValueSource="TemplatedParent"/>
+                            <Custom:RenderTrigger DependencyProperty="dx:SimpleButton.GlyphAlignment" Property="GlyphAlignment" SourceName="{x:Null}" TargetName="{x:Null}" Value="Left" ValueSource="TemplatedParent">
+                                <Custom:RenderSetter Property="Dock" TargetName="Image" Value="Left"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="Border" Value="Left"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="ContentPresenter" Value="Right"/>
+                            </Custom:RenderTrigger>
+                            <Custom:RenderTrigger DependencyProperty="dx:SimpleButton.GlyphAlignment" Property="GlyphAlignment" SourceName="{x:Null}" TargetName="{x:Null}" Value="Right" ValueSource="TemplatedParent">
+                                <Custom:RenderSetter Property="Dock" TargetName="Image" Value="Right"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="Border" Value="Right"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="ContentPresenter" Value="Left"/>
+                            </Custom:RenderTrigger>
+                            <Custom:RenderTrigger DependencyProperty="dx:SimpleButton.GlyphAlignment" Property="GlyphAlignment" SourceName="{x:Null}" TargetName="{x:Null}" Value="Top" ValueSource="TemplatedParent">
+                                <Custom:RenderSetter Property="Dock" TargetName="Image" Value="Top"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="Border" Value="Top"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="ContentPresenter" Value="Bottom"/>
+                            </Custom:RenderTrigger>
+                            <Custom:RenderTrigger DependencyProperty="dx:SimpleButton.GlyphAlignment" Property="GlyphAlignment" SourceName="{x:Null}" TargetName="{x:Null}" Value="Bottom" ValueSource="TemplatedParent">
+                                <Custom:RenderSetter Property="Dock" TargetName="Image" Value="Bottom"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="Border" Value="Bottom"/>
+                                <Custom:RenderSetter Property="Dock" TargetName="ContentPresenter" Value="Top"/>
+                            </Custom:RenderTrigger>
+                            <Custom:MultiRenderTrigger>
+                                <Custom:MultiRenderTrigger.Conditions>
+                                    <Custom:RenderConditionGroup Operator="Or">
+                                        <Custom:RenderCondition DependencyProperty="dx:SimpleButton.Glyph" FallbackIsValid="False" Property="Glyph" SourceName="{x:Null}" TargetName="{x:Null}" Value="{x:Null}" ValueSource="TemplatedParent"/>
+                                        <Custom:RenderCondition DependencyProperty="ContentControl.Content" FallbackIsValid="False" Property="Content" SourceName="{x:Null}" TargetName="{x:Null}" Value="{x:Null}" ValueSource="TemplatedParent"/>
+                                    </Custom:RenderConditionGroup>
+                                </Custom:MultiRenderTrigger.Conditions>
+                                <Custom:RenderSetter Property="Visibility" TargetName="Border" Value="Collapsed"/>
+                            </Custom:MultiRenderTrigger>
+                        </Custom:RenderTemplate.Triggers>
+                        <Custom:RenderPanel ClipToBounds="False" ContentSpecificClipToBounds="False" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" LayoutProvider="{Custom:GridPanelLayoutProvider}" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="51fac02e-6101-40d4-a9d4-58ee9b2616ac" Opacity="1" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml;189;10" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN">
+                            <Custom:RenderButtonBorder ClipToBounds="False" ContentSpecificClipToBounds="False" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="GlyphAndContentBorder" Opacity="1" Placement="{x:Null}" RenderTemplateSelector="{x:Null}" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="{x:Null}" UsePropagatedIsMouseOver="False" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN">
+                                <Custom:RenderButtonBorder.RenderTemplate>
+                                    <Custom:RenderTemplate>
+                                        <Custom:RenderTemplate.Triggers>
+                                            <Custom:RenderTrigger DependencyProperty="dx:ThemeManager.IsTouchEnabled" Property="IsTouchEnabled" SourceName="{x:Null}" TargetName="{x:Null}" Value="True" ValueSource="TemplatedParent">
+                                                <Custom:RenderSetter Property="MinHeight" TargetName="Outer" Value="44"/>
+                                            </Custom:RenderTrigger>
+                                            <Custom:RenderStateGroup Name="FocusStates">
+                                                <Custom:RenderStateTrigger Name="Unfocused">
+                                                    <Custom:RenderSetter Property="Visibility" TargetName="Focused">
+                                                        <Custom:RenderSetter.Value>
+                                                            <Visibility>Collapsed</Visibility>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                </Custom:RenderStateTrigger>
+                                                <Custom:RenderStateTrigger Name="Focused">
+                                                    <Custom:RenderSetter Property="Visibility" TargetName="Focused">
+                                                        <Custom:RenderSetter.Value>
+                                                            <Visibility>Visible</Visibility>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                </Custom:RenderStateTrigger>
+                                            </Custom:RenderStateGroup>
+                                            <Custom:RenderStateGroup Name="VisualStates">
+                                                <Custom:RenderStateTrigger Name="Normal"/>
+                                                <Custom:RenderStateTrigger Name="MouseOver">
+                                                    <Custom:RenderSetter Property="BorderBrush" TargetName="Outer">
+                                                        <Custom:RenderSetter.Value>
+                                                            <SolidColorBrush Color="#FF7EB4EA"/>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                    <Custom:RenderSetter Property="Background" TargetName="Outer">
+                                                        <Custom:RenderSetter.Value>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFECF4FC" Offset="0"/>
+                                                                <GradientStop Color="#FFDCECFC" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                </Custom:RenderStateTrigger>
+                                                <Custom:RenderStateTrigger Name="Pressed">
+                                                    <Custom:RenderSetter Property="BorderBrush" TargetName="Outer">
+                                                        <Custom:RenderSetter.Value>
+                                                            <SolidColorBrush Color="#FF569DE5"/>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                    <Custom:RenderSetter Property="Background" TargetName="Outer">
+                                                        <Custom:RenderSetter.Value>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFDAECFC" Offset="0"/>
+                                                                <GradientStop Color="#FFC4E0FC" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                </Custom:RenderStateTrigger>
+                                                <Custom:RenderStateTrigger Name="Checked">
+                                                    <Custom:RenderSetter Property="BorderBrush" TargetName="Outer">
+                                                        <Custom:RenderSetter.Value>
+                                                            <SolidColorBrush Color="#FF569DE5"/>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                    <Custom:RenderSetter Property="Background" TargetName="Outer">
+                                                        <Custom:RenderSetter.Value>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFDAECFC" Offset="0"/>
+                                                                <GradientStop Color="#FFC4E0FC" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Custom:RenderSetter.Value>
+                                                    </Custom:RenderSetter>
+                                                </Custom:RenderStateTrigger>
+                                            </Custom:RenderStateGroup>
+                                            <Custom:RenderStateGroup Name="PlacementStates">
+                                                <Custom:RenderStateTrigger Name="Default"/>
+                                                <Custom:RenderStateTrigger Name="Left">
+                                                    <Custom:RenderSetter Property="BorderThickness" TargetName="Outer" Value="1,1,0,1"/>
+                                                    <Custom:RenderSetter Property="BorderThickness" TargetName="Focused" Value="1,1,0,1"/>
+                                                </Custom:RenderStateTrigger>
+                                                <Custom:RenderStateTrigger Name="Right">
+                                                    <Custom:RenderSetter Property="BorderThickness" TargetName="Focused" Value="0,1,1,1"/>
+                                                </Custom:RenderStateTrigger>
+                                                <Custom:RenderStateTrigger Name="Top">
+                                                    <Custom:RenderSetter Property="BorderThickness" TargetName="Outer" Value="1,1,1,0"/>
+                                                    <Custom:RenderSetter Property="BorderThickness" TargetName="Focused" Value="1,1,1,0"/>
+                                                </Custom:RenderStateTrigger>
+                                                <Custom:RenderStateTrigger Name="Bottom">
+                                                    <Custom:RenderSetter Property="BorderThickness" TargetName="Focused" Value="1,0,1,1"/>
+                                                </Custom:RenderStateTrigger>
+                                            </Custom:RenderStateGroup>
+                                        </Custom:RenderTemplate.Triggers>
+                                        <Custom:RenderPanel ClipToBounds="False" ContentSpecificClipToBounds="False" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" LayoutProvider="{Custom:GridPanelLayoutProvider}" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="fe67669f-4478-4388-9afc-cb4d947f139b" Opacity="1" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2016White\Buttons.xaml;17;10" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN">
+                                            <Custom:RenderBorder BorderBrush="#7F5D5D5D" BorderThickness="1" ClipToBounds="False" ContentSpecificClipToBounds="False" Child="{x:Null}" CornerRadius="0" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="Outer" Opacity="1" Padding="0" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2016White\Buttons.xaml;18;14" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN">
+                                                <Custom:RenderBorder.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Custom:RenderBorder.Background>
+                                            </Custom:RenderBorder>
+                                            <Custom:RenderBorder BorderBrush="#FF0072C6" BorderThickness="1" Background="{x:Null}" ClipToBounds="False" ContentSpecificClipToBounds="False" Child="{x:Null}" CornerRadius="0" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="Focused" Opacity="1" Padding="0" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2016White\Buttons.xaml;19;14" UseLayoutRounding="{x:Null}" Visibility="Collapsed" VerticalAlignment="Stretch" Width="NaN"/>
+                                        </Custom:RenderPanel>
+                                    </Custom:RenderTemplate>
+                                </Custom:RenderButtonBorder.RenderTemplate>
+                            </Custom:RenderButtonBorder>
+                            <Custom:RenderPanel ClipToBounds="False" ContentSpecificClipToBounds="False" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" LayoutProvider="{Custom:GridPanelLayoutProvider}" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="RenderPanel" Opacity="1" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml;191;14" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN">
+                                <Custom:RenderPanel ClipToBounds="False" ContentSpecificClipToBounds="False" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" LayoutProvider="{Custom:DockPanelLayoutProvider LastChildFill=True}" MaxWidth="Infinity" MaxHeight="Infinity" Margin="1" MinWidth="0" MinHeight="0" Name="45970e14-f9c6-4088-8acd-84ee00542a59" Opacity="1" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml;192;18" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN">
+                                    <Custom:RenderImage ClipToBounds="False" ContentSpecificClipToBounds="False" Dock="Left" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Center" Height="NaN" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="Image" Opacity="1" ShouldCalcDpiAwareThickness="True" Source="{x:Null}" Stretch="Uniform" StretchDirection="DownOnly" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml;193;22" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Center" Width="NaN"/>
+                                    <Custom:RenderBorder BorderBrush="{x:Null}" BorderThickness="0" Background="{x:Null}" ClipToBounds="False" ContentSpecificClipToBounds="False" Child="{x:Null}" CornerRadius="0" Dock="Left" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="Border" Opacity="1" Padding="0" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml;194;22" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN"/>
+                                    <Custom:RenderContentPresenter AllowVisualTree="True" ClipToBounds="False" ContentSpecificClipToBounds="False" Child="{x:Null}" Dock="{x:Null}" Foreground="{x:Null}" FlowDirection="{x:Null}" HorizontalAlignment="Stretch" Height="NaN" MaxWidth="Infinity" MaxHeight="Infinity" Margin="0" MinWidth="0" MinHeight="0" Name="ContentPresenter" Opacity="1" PreferRenderTemplate="True" ShouldCalcDpiAwareThickness="True" ShowBounds="False" ThemeInfo="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml;195;22" UseLayoutRounding="{x:Null}" Visibility="Visible" VerticalAlignment="Stretch" Width="NaN"/>
+                                </Custom:RenderPanel>
+                            </Custom:RenderPanel>
+                        </Custom:RenderPanel>
+                    </Custom:RenderTemplate>
+                </Custom:ButtonChrome.RenderTemplate>
+            </Custom:ButtonChrome>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="PART_Owner" Value="0.5"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Mita_Hotel;component/texture.JPG" Stretch="UniformToFill" TileMode="FlipXY">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                    <SkewTransform CenterY="0.5" CenterX="0.5" AngleY="1"/>
+                    <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                    <TranslateTransform X="200" Y="200"/>
+                </TransformGroup>
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Margin="0,0,0.2,-0.2">
+            <DockPanel.Background>
+                <ImageBrush/>
+            </DockPanel.Background>
+            <Menu Height="38" Margin="0,0,0.2,0" Width="444" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF3A3A3A" Foreground="#FFFFF9F9">
+                <MenuItem Header="_Menu" Height="38" Background="#FF3A3A3A" Foreground="#FFFFF9F9">
+                    <MenuItem x:Name="miForgot" Header="_Quên mật khẩu" Background="{x:Null}" Foreground="Black" BorderBrush="#00000000"/>
+                    <MenuItem x:Name="miExit" Header="_Exit" Background="{x:Null}" Foreground="Black" Click="miExit_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="miHelp" Header="_Trợ giúp" Height="38" Click="miHelp_Click"/>
+            </Menu>
+
+
+
+        </DockPanel>
+        <L3:L3Label x:Name="lbUsername" Content="Tên đăng nhập" Margin="41,80,288.2,118.8" FontSize="14">
+            <L3:L3Label.Resources>
+                <Color x:Key="ColorLabel">#FF3C3C3C</Color>
+            </L3:L3Label.Resources>
+            <L3:L3Label.Foreground>
+                <SolidColorBrush Color="{DynamicResource ColorLabel}"/>
+            </L3:L3Label.Foreground>
+        </L3:L3Label>
+        <L3:L3Label x:Name="lbPassword" Content="Mật khẩu" Margin="73,125,288.2,77.8" FontSize="14"/>
+        <TextBox x:Name="txtUsername" Margin="151,80,92.2,135.8" FontSize="14" GotFocus="txtUsername_GotFocus" RenderTransformOrigin="0.5,0.503" BorderThickness="1,2" Style="{DynamicResource TextBoxStyle1}" BorderBrush="#7F5C5C5C" >
+            <TextBox.Resources>
+                <Color x:Key="ColorSelection">#FF0072C6</Color>
+                <Color x:Key="ColorBorder">#7F5C5C5C</Color>
+            </TextBox.Resources>
+            <TextBox.SelectionBrush>
+                <SolidColorBrush Color="{DynamicResource ColorSelection}"/>
+            </TextBox.SelectionBrush>
+        </TextBox>
+        <PasswordBox x:Name="txtPassword" Margin="151,126,92.2,90.8" FontSize="11" GotFocus="txtPassword_GotFocus" BorderThickness="1,2" />
+        <dx:SimpleButton x:Name="btnLogin" Content="Đăng nhập" Height="44" VerticalAlignment="Top" Margin="63,182,253.2,0" Foreground="#FF3CAE00" IsDefault="True" IsEnabled="True" FontWeight="Bold" Click="btnLogin_Click" Template="{DynamicResource ButtonBaseControlTemplate1}"/>
+        <dx:SimpleButton x:Name="btnLogin2" Content="Đăng nhập" Height="44" VerticalAlignment="Top" Margin="85,182,231.2,0" Foreground="#FF3CAE00" IsDefault="True" IsEnabled="True" FontWeight="Bold" Visibility="Hidden"/>
+        <L3:L3Label x:Name="lbWrong" Content="Không tìm thấy tên đăng nhập!" Margin="95,45,92.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
+        <L3:L3Label x:Name="lbWrong1" Content="Sai mật khẩu!" Margin="151,45,36.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
+        <L3:L3Label x:Name="lbWrong2" Content="Không thể kết nối tới CSDL!" Margin="95,45,92.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
+        <dxe:CheckEdit Name="ceRememberLogin" Content="Ghi nhớ tên đăng nhập" Height="26" VerticalAlignment="Top" Margin="212,182,89.2,0" Foreground="#FF58F406"/>
+        <dxe:CheckEdit Name="ceAutoLogin" Content="Tự động đăng nhập cho lần sau" Height="26" VerticalAlignment="Top" Margin="212,209,36.2,0" Foreground="#FF58F406"/>
+    </Grid>
+
+</L3:L3Window>
