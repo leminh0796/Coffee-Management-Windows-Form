@@ -30,10 +30,9 @@ namespace Mita_Hotel.Views
         {
             InitializeComponent();
         }
-
+        UserLogin user = new UserLogin();
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            UserLogin user = new UserLogin();
             user.Username = txtUsername.Text;
             user.Fullname = txtFullname.Text;
             user.RoleID = lkeRole.EditValue.ToString();
@@ -41,13 +40,14 @@ namespace Mita_Hotel.Views
             if (sePhone.Text != "")
                 user.Phone = Int32.Parse(sePhone.Text);
             else user.Phone = 0;
+
             if (user.Username == "" || user.Username.Length > 20)
             {
                 lbUsername.Foreground = new SolidColorBrush(Colors.Red);
                 txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
                 lbWrong1.Visibility = Visibility.Visible;
             }
-            else if (txtRepassword.Password != txtPassword.Password || txtPassword.Password == "" || txtRepassword.Password == "")
+            else if ( ( txtRepassword.Password != txtPassword.Password || txtPassword.Password == "" || txtRepassword.Password == "") && !pageListUser.IsEdit)
             {
                 lbPassword.Foreground = new SolidColorBrush(Colors.Red);
                 txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
@@ -58,19 +58,51 @@ namespace Mita_Hotel.Views
             {
                 bool checkUser = RegAcc.IfUsernameAlreadyExist(user.Username);
                 MD5 md5Hash = MD5.Create();
-                if (checkUser == true)
+                if (!pageListUser.IsEdit)
                 {
-                    lbUsername.Foreground = new SolidColorBrush(Colors.Red);
-                    txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
-                    lbWrong.Visibility = Visibility.Visible;
+                    if (checkUser)
+                    {
+                        lbUsername.Foreground = new SolidColorBrush(Colors.Red);
+                        txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+                        lbWrong.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        string MD5Password = GetMd5Hash(md5Hash, txtPassword.Password);
+                        user.MD5Password = MD5Password;
+                        bool reg = RegAcc.IfReg(user.Username, user.MD5Password, user.Fullname, user.RoleID, user.Email, user.Phone);
+                        MessageBox.Show("Đăng ký thành công!");
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    string MD5Password = GetMd5Hash(md5Hash, txtPassword.Password);
-                    user.MD5Password = MD5Password;
-                    bool reg = RegAcc.IfReg(user.Username, user.MD5Password, user.Fullname, user.RoleID, user.Email, user.Phone);
-                    MessageBox.Show("Đăng ký thành công!");
-                    this.Close();
+                    if (txtPassword.Password == txtRepassword.Password && txtPassword.Password != "")
+                    {
+                        string MD5Password = GetMd5Hash(md5Hash, txtPassword.Password);
+                        user.MD5Password = MD5Password;
+                    }
+                    if (txtRepassword.Password != txtPassword.Password)
+                    {
+                        lbPassword.Foreground = new SolidColorBrush(Colors.Red);
+                        txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                        lbRepassword.Foreground = new SolidColorBrush(Colors.Red);
+                        txtRepassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                    }
+                    else
+                    {
+                        bool DoEdit = EditUser();
+                        if (DoEdit)
+                        {
+                            MessageBox.Show("Sửa thành công!");
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa thất bại!");
+                        }
+                    }
+                    
                 }
             }
             
@@ -114,6 +146,24 @@ namespace Mita_Hotel.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             sePhone.InputNumber288("n0", false, false);
+            if (pageListUser.IsEdit)
+            {
+                DataTable dt = L3SQLServer.ReturnDataTable("select FullName, Username, Email, Phone, RoleID, MD5Password from D00T0040 WHERE Username = '" + pageListUser.Username + "'");
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                txtFullname.Text = dt.Rows[0]["FullName"].ToString();
+                txtUsername.IsReadOnly = true;
+                txtUsername.Text = dt.Rows[0]["Username"].ToString();
+                sePhone.Value = System.Convert.ToDecimal(dt.Rows[0]["Phone"]);
+                lkeRole.EditValue = dt.Rows[0]["RoleID"];
+                user.MD5Password = dt.Rows[0]["MD5Password"].ToString();
+            }
+        }
+        public bool EditUser()
+        {
+            return L3SQLServer.ExecuteNoneQuery("sp_EditUser",
+               CommandType.StoredProcedure,
+               new string[] { "Username", "FullName", "MD5Password", "RoleID", "Email", "Phone" }
+               , new object[] { user.Username , user.Fullname, user.MD5Password, user.RoleID, user.Email, user.Phone });
         }
     }
 }

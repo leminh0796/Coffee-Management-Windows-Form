@@ -158,7 +158,7 @@ namespace Mita_Hotel.Views
             if (Properties.Settings.Default.checkerAuto == true)
             {
                 LoginSuccess = true;
-                UserLogged = Properties.Settings.Default.reUsername;
+                L3.UserID = Properties.Settings.Default.reUsername;
                 this.Close();
             }
         }

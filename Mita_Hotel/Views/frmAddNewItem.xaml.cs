@@ -81,17 +81,12 @@ namespace Mita_Hotel.Views
             }
         
         }
-
-        private void lkeUnitID_Loaded(object sender, RoutedEventArgs e)
-        {
-            DataTable dt = L3SQLServer.ReturnDataTable("select * FROM D91T1240");
-            lkeUnitID.ItemsSource = dt;
-            lkeUnitID.ValueMember = "ListID";
-            lkeUnitID.DisplayMember = "ListName";
-        }
+        
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            DataTable dt1 = L3SQLServer.ReturnDataTable("select * FROM D91T1240 WHERE ListTypeID = 'UnitID'");
+            lkeUnitID.ItemsSource = dt1;
             sePrice.InputNumber288("n0", false, false);
             seVAT.InputNumber288("n0", false, false);
             if (pageListItem.IsAddItem == false)

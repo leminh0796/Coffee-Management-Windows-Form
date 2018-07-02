@@ -46,13 +46,6 @@
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
 
-                        <dxb:BarButtonItem Name="mbtnReg" Content="Đăng ký" Glyph="{dx:DXImage Image=Close_32x32.png}" LargeGlyph="{dx:DXImage Image=BOUser_32x32.png}" ItemClick="mbtnReg_ItemClick">
-                            <dxb:BarButtonItem.ContentTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="80" VerticalAlignment="Stretch" TextAlignment="Center"/>
-                                </DataTemplate>
-                            </dxb:BarButtonItem.ContentTemplate>
-                        </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
                     <dxr:RibbonPageGroup Caption="Danh mục chung">
                         <dxb:BarButtonItem x:Name="miUnitID" Content="Đơn vị tính" ItemClick="miUnitID_ItemClick" Glyph="{dx:DXImage Image=Accounting_16x16.png}" LargeGlyph="{dx:DXImage Image=Accounting_32x32.png}" RibbonStyle="Default">

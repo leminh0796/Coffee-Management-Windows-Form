@@ -27,10 +27,10 @@
         <L3:L3TextEdit x:Name="txtInventoryName" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,20,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
         <Label Content="Đơn vị tính" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19.2,47,0,0" RenderTransformOrigin="0.497,1.174" Height="22" Width="58" Grid.Column="1"/>
 
-        <L3:L3LookUpEdit x:Name="lkeUnitID" PopupContentTemplate="{DynamicResource UnitID}" ValueMember="ListID" DisplayMember="ListName" AutoPopulateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Grid.Column="1" Margin="119.2,47,0,0" Height="22" Loaded="lkeUnitID_Loaded"/>
+        <L3:L3LookUpEdit x:Name="lkeUnitID" PopupContentTemplate="{DynamicResource UnitID}" ValueMember="ListID" DisplayMember="ListName" AutoPopulateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Grid.Column="1" Margin="119.2,47,0,0" Height="22"/>
         <Label Content="Giá" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19.2,74,0,0" Width="36" Height="22" Grid.Column="1"/>
         <L3:L3SpinEdit x:Name="sePrice" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,74,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
-        <L3:L3TextEdit x:Name="txtNotes" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,101,0,0" VerticalAlignment="Top" Width="229" Height="58"/>
+        <L3:L3TextEdit x:Name="txtNotes" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,101,0,0" VerticalAlignment="Top" Width="229" Height="58" AcceptsReturn="True"/>
         <Label Content="Ghi chú" HorizontalAlignment="Left" Margin="19.2,101,0,0" VerticalAlignment="Top" Width="100" Height="22" Grid.Column="1"/>
         <Label Content="VAT" HorizontalAlignment="Left" Margin="19.2,164,0,0" VerticalAlignment="Top" Width="100" Height="22" Grid.Column="1"/>
         <L3:L3SpinEdit x:Name="seVAT" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,164,0,0" VerticalAlignment="Top" Width="229" Height="22"/>

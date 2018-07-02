@@ -57,13 +57,21 @@ namespace Mita_Hotel.Views
             frm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             frm.ShowDialog();
             LoadItemGrid();
+            gridListItem.FocusRowHandle(gridListItem.ReturnVisibleRowCount - 1);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             frmAddNewItem frm = new frmAddNewItem();
             frm.Title = "Chỉnh sửa thông tin hàng hóa";
-            InventoryID = gridListItem.GetFocusedRowCellValue("InventoryID").ToString();
+            try
+            {
+                InventoryID = gridListItem.GetFocusedRowCellValue("InventoryID").ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Chọn 1 dòng để sửa không phải dòng này!");
+            }
             IsAddItem = false;
             frm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             frm.ShowDialog();
@@ -78,6 +86,7 @@ namespace Mita_Hotel.Views
                 SqlCommand cmd = new SqlCommand("DELETE D91T1040 where InventoryID = '" + InventoryID + "'");
                 L3SQLServer.ExecuteSQL(cmd.CommandText);
                 LoadItemGrid();
+                gridListItem.FocusRowHandle(gridListItem.ReturnVisibleRowCount - 1);
             }
             catch (NullReferenceException)
             {

@@ -15,9 +15,9 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <dxg:GridControl x:Name="gridListUser" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1"  >
+        <L3:L3GridControl x:Name="gridListUser" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1" PropertyChanged="gridListUser_PropertyChanged"  >
             <dxg:GridControl.View>
-                <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False"  Margin="0,0,0,-2" AllowEditing="False" NewItemRowPosition="None" />
+                <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False"  Margin="0,0,0,-2" AllowEditing="False" ShowAutoFilterRow="True"/>
             </dxg:GridControl.View>
             <dxg:GridColumn x:Name="COL_ID" FieldName="ID" Header=" STT " Width="50"/>
             <dxg:GridColumn x:Name="COL_Fullname" FieldName="Fullname" Header=" Họ tên " Width="180"/>
@@ -31,8 +31,9 @@
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
             <dxg:GridColumn x:Name="COL_FirstDate" FieldName="FirstDate" Header=" Ngày tạo tài khoản " Width="120"/>
-        </dxg:GridControl>
+        </L3:L3GridControl>
         <dxb:MainMenuControl Name="MainMenuControl1" Grid.ColumnSpan="2">
+            <dxb:BarButtonItem Name="tsbAdd" Content="Thêm" ItemClick="tsbAdd_ItemClick"/>
             <dxb:BarButtonItem Name="tsbEdit" Content="Sửa" ItemClick ="tsbEdit_ItemClick"/>
             <dxb:BarButtonItem Name="tsbDelete" Content="Xóa" ItemClick="tsbDelete_ItemClick"/>
             <dxb:BarItemSeparator />

@@ -31,10 +31,10 @@ namespace Mita_Hotel
             L3.STRLanguage = "84";
             L3.ApplicationPath = Environment.CurrentDirectory;
             L3.ApplicationSetup = L3.ApplicationPath;
-            L3.Server = @"10.0.0.162\SQL2012";
+            L3.Server = @"10.0.0.221";
             L3.ConnectionUser = "sa";
             L3.Password = "123";
-            L3.CompanyID = "dbo.MitaEmployees";
+            L3.CompanyID = "MitaEmployees";
             L3.UserID = "LEMONADMIN";
             L3.ConnectionString = "Data Source=" + L3.Server + ";Initial Catalog=" + L3.CompanyID + ";User ID=" + L3.ConnectionUser + ";Password=" + L3.Password + ";Connect Timeout = 0";
         }

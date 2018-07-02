@@ -130,8 +130,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ListGeneral.cs" />
     <Compile Include="Views\D91F1240.xaml.cs">
       <DependentUpon>D91F1240.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\D92F1240.xaml.cs">
+      <DependentUpon>D92F1240.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\frmRegister.xaml.cs">
       <DependentUpon>frmRegister.xaml</DependentUpon>
@@ -151,6 +155,10 @@
       <DependentUpon>pageListUser.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\D91F1240.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D92F1240.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
