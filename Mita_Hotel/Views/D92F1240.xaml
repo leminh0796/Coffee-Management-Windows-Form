@@ -9,14 +9,19 @@
         mc:Ignorable="d"
         Title="D92F1240" Height="288.132" Width="369.087" Loaded="L3Window_Loaded">
     <Grid>
-        <Label x:Name="lbListID" Content="Mã" HorizontalAlignment="Left" Margin="28,51,0,0" VerticalAlignment="Top" Width="98"/>
-        <Label Name="lbHeader" Content="Loại danh mục:" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF0976FF"/>
-        <Label x:Name="lbListName" Content="Tên" HorizontalAlignment="Left" Margin="28,78,0,0" VerticalAlignment="Top" Width="98"/>
+        <L3:L3Label x:Name="lbListID" HorizontalAlignment="Left" Margin="28,51,0,0" VerticalAlignment="Top" Width="98">
+            <StackPanel Orientation="Horizontal" Width="98">
+                <Image Source="/Mita_Hotel;component/Images/if_bullet_red_35785.png" Margin="0,0,5,0" Height="17" Width="18" />
+                <TextBlock Name="txtblockListID" Width="80">Mã</TextBlock>
+            </StackPanel>
+        </L3:L3Label>
+        <L3:L3Label Name="lbHeader" Content="Loại danh mục:" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF0976FF"/>
+        <L3:L3Label x:Name="lbListName" Content="Tên" HorizontalAlignment="Left" Margin="51,78,0,0" VerticalAlignment="Top" Width="75"/>
 
         <L3:L3TextEdit x:Name="txtListID" HorizontalAlignment="Left" Margin="131,51,0,0" VerticalAlignment="Top" Width="200"/>
         <L3:L3TextEdit x:Name="txtListName" HorizontalAlignment="Left" Margin="131,78,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.634,0.58"/>
-        <Label Content="Miêu tả" HorizontalAlignment="Left" Margin="28,105,0,0" VerticalAlignment="Top" Width="53"/>
-        <L3:L3TextEdit Name="txtDescription"  HorizontalAlignment="Left" Margin="131,105,0,0" VerticalAlignment="Top" Width="200" Height="76"/>
+        <L3:L3Label Content="Miêu tả" HorizontalAlignment="Left" Margin="51,105,0,0" VerticalAlignment="Top" Width="53"/>
+        <L3:L3TextEdit Name="txtDescription"  HorizontalAlignment="Left" Margin="131,105,0,0" VerticalAlignment="Top" Width="200" Height="76" AcceptsReturn="True" TextWrapping="Wrap"/>
 
         <L3:L3Button Name="btnSave" Content="Lưu" HorizontalAlignment="Left" Height="36" Margin="256,199,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
 

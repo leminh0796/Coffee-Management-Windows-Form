@@ -47,7 +47,7 @@ namespace Mita_Hotel.Views
                 txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
                 lbWrong1.Visibility = Visibility.Visible;
             }
-            else if ( ( txtRepassword.Password != txtPassword.Password || txtPassword.Password == "" || txtRepassword.Password == "") && !pageListUser.IsEdit)
+            else if ( ( txtRepassword.Password != txtPassword.Password || txtPassword.Password == "" || txtRepassword.Password == "") && !PageListUser.IsEdit)
             {
                 lbPassword.Foreground = new SolidColorBrush(Colors.Red);
                 txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
@@ -58,7 +58,7 @@ namespace Mita_Hotel.Views
             {
                 bool checkUser = RegAcc.IfUsernameAlreadyExist(user.Username);
                 MD5 md5Hash = MD5.Create();
-                if (!pageListUser.IsEdit)
+                if (!PageListUser.IsEdit)
                 {
                     if (checkUser)
                     {
@@ -146,9 +146,9 @@ namespace Mita_Hotel.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             sePhone.InputNumber288("n0", false, false);
-            if (pageListUser.IsEdit)
+            if (PageListUser.IsEdit)
             {
-                DataTable dt = L3SQLServer.ReturnDataTable("select FullName, Username, Email, Phone, RoleID, MD5Password from D00T0040 WHERE Username = '" + pageListUser.Username + "'");
+                DataTable dt = L3SQLServer.ReturnDataTable("select FullName, Username, Email, Phone, RoleID, MD5Password from D00T0040 WHERE Username = '" + PageListUser.Username + "'");
                 txtEmail.Text = dt.Rows[0]["Email"].ToString();
                 txtFullname.Text = dt.Rows[0]["FullName"].ToString();
                 txtUsername.IsReadOnly = true;

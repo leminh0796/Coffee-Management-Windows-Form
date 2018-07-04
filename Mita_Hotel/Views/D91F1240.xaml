@@ -10,16 +10,16 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <L3:L3GridControl x:Name="gridListGeneral" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1" PropertyChanged="gridListGeneral_PropertyChanged"  >
-
+        <L3:L3GridControl x:Name="GridListGeneral" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1" PropertyChanged="gridListGeneral_PropertyChanged">
             <dxg:GridColumn x:Name="COL_ListID" FieldName="ListID" Header=" Mã " Width="80"/>
             <dxg:GridColumn x:Name="COL_ListName" FieldName="ListName" Header=" Tên " Width="130"/>
             <dxg:GridColumn x:Name="COL_Description" FieldName="Description" Header=" Miêu tả " Width="180"/>
             <dxg:GridControl.View>
                 <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False"  Margin="0,0,0,-2" AllowEditing="False" ShowAutoFilterRow="True"/>
             </dxg:GridControl.View>
+            
         </L3:L3GridControl>
-        <dxb:MainMenuControl Name="MainMenuControl1">
+        <dxb:MainMenuControl Name="MainMenuControl2">
             <dxb:BarButtonItem Name="tsbAdd" Content="Thêm" ItemClick="tsbAdd_ItemClick"/>
             <dxb:BarButtonItem Name="tsbEdit" Content="Sửa" ItemClick ="tsbEdit_ItemClick"/>
             <dxb:BarButtonItem Name="tsbDelete" Content="Xóa" ItemClick="tsbDelete_ItemClick"/>

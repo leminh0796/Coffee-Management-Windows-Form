@@ -83,11 +83,11 @@ namespace Mita_Hotel
                 switch (sPageName)
                 {
                     case "pageListUser":
-                        pageListUser pageListUser = new pageListUser();
+                        PageListUser pageListUser = new PageListUser();
                         CreateDocumentPanel(pageListUser);
                         break;
                     case "pageListItem":
-                        pageListItem pageListItem = new pageListItem();
+                        PageListItem pageListItem = new PageListItem();
                         CreateDocumentPanel(pageListItem);
                         break;
                 }

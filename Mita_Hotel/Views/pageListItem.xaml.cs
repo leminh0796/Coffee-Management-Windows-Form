@@ -20,9 +20,9 @@ namespace Mita_Hotel.Views
     /// <summary>
     /// Interaction logic for pageListItem.xaml
     /// </summary>
-    public partial class pageListItem : L3Page
+    public partial class PageListItem : L3Page
     {
-        public pageListItem()
+        public PageListItem()
         {
             InitializeComponent();
         }
@@ -36,9 +36,9 @@ namespace Mita_Hotel.Views
         {
             LoadItemGrid();
 
-            gridListItem.InputNumber288("n0", false, false, COL_Price);
-            gridListItem.InputNumber288("n0", false, false, COL_VAT);
-            gridListItem.SetDefaultFilterChangeGrid();
+            GridListItem.InputNumber288("n0", false, false, COL_Price);
+            GridListItem.InputNumber288("n0", false, false, COL_VAT);
+            GridListItem.SetDefaultFilterChangeGrid();
 
             L3Control.SetShortcutPopupMenu(MainMenuControl1);
         }
@@ -46,7 +46,7 @@ namespace Mita_Hotel.Views
         {
             SqlCommand cmd = new SqlCommand("select InventoryID, InventoryName, ListName, Price, Notes, VAT, BarCode from D91T1040 left join D91T1240 on D91T1040.UnitID = D91T1240.ListID");
             DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
-            gridListItem.ItemsSource = dt;
+            GridListItem.ItemsSource = dt;
         }
 
 
@@ -57,7 +57,7 @@ namespace Mita_Hotel.Views
             frm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             frm.ShowDialog();
             LoadItemGrid();
-            gridListItem.FocusRowHandle(gridListItem.ReturnVisibleRowCount - 1);
+            GridListItem.FocusRowHandle(GridListItem.ReturnVisibleRowCount - 1);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -66,7 +66,7 @@ namespace Mita_Hotel.Views
             frm.Title = "Chỉnh sửa thông tin hàng hóa";
             try
             {
-                InventoryID = gridListItem.GetFocusedRowCellValue("InventoryID").ToString();
+                InventoryID = GridListItem.GetFocusedRowCellValue("InventoryID").ToString();
             }
             catch (Exception)
             {
@@ -82,11 +82,11 @@ namespace Mita_Hotel.Views
         {
             try
             {
-                InventoryID = gridListItem.GetFocusedRowCellValue("InventoryID").ToString();
+                InventoryID = GridListItem.GetFocusedRowCellValue("InventoryID").ToString();
                 SqlCommand cmd = new SqlCommand("DELETE D91T1040 where InventoryID = '" + InventoryID + "'");
                 L3SQLServer.ExecuteSQL(cmd.CommandText);
                 LoadItemGrid();
-                gridListItem.FocusRowHandle(gridListItem.ReturnVisibleRowCount - 1);
+                GridListItem.FocusRowHandle(GridListItem.ReturnVisibleRowCount - 1);
             }
             catch (NullReferenceException)
             {
@@ -95,26 +95,26 @@ namespace Mita_Hotel.Views
         }
         private void CheckMenuOthers()
         {
-            tsbEdit.IsEnabled = gridListItem.VisibleRowCount > 0;
-            tsbDelete.IsEnabled = gridListItem.VisibleRowCount > 0;
-            tsbExportToExcel.IsEnabled = gridListItem.VisibleRowCount > 0;
+            tsbEdit.IsEnabled = GridListItem.VisibleRowCount > 0;
+            tsbDelete.IsEnabled = GridListItem.VisibleRowCount > 0;
+            tsbExportToExcel.IsEnabled = GridListItem.VisibleRowCount > 0;
         }
         private void tsbExportToExcel_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            gridListItem.ExportToXLS("Data.xls");
+            GridListItem.ExportToXLS("Data.xls");
         }
 
         private void tsbListAll_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            gridListItem.ListAll();
+            GridListItem.ListAll();
         }
 
         private void tsbSysInfo_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            L3Window.ShowSysInforForm(gridListItem);
+            L3Window.ShowSysInforForm(GridListItem);
         }
 
-        private void gridListItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void GridListItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "VisibleRowCount")
             {

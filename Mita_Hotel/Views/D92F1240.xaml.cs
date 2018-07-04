@@ -59,17 +59,17 @@ namespace Mita_Hotel.Views
                         bool DoAdd = AddNew();
                         if (DoAdd)
                         {
-                            MessageBox.Show("Thêm thành công!");
+                            MessageBox.Show("Thêm thành công!", "Yeah!");
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Thêm thất bại!");
+                            MessageBox.Show("Thêm thất bại!", "Lỗi");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Không được để trống!");
+                        MessageBox.Show("Không được để trống!", "Lỗi");
                     }
                     break;
 
@@ -77,12 +77,12 @@ namespace Mita_Hotel.Views
                     bool DoEdit = EditNew();
                     if (DoEdit)
                     {
-                        MessageBox.Show("Sửa thành công!");
+                        MessageBox.Show("Sửa thành công!", "Yeah!");
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Sửa thất bại!");
+                        MessageBox.Show("Sửa thất bại!", "Lỗi");
                     }
                     break;
             }

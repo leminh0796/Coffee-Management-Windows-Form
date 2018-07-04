@@ -41,15 +41,15 @@ namespace Mita_Hotel.Views
         private void L3Page_Loaded(object sender, RoutedEventArgs e)
         {
             LoadGrid();
-            gridListGeneral.SetDefaultFilterChangeGrid();
-            L3Control.SetShortcutPopupMenu(MainMenuControl1);
+            GridListGeneral.SetDefaultFilterChangeGrid();
+            L3Control.SetShortcutPopupMenu(MainMenuControl2);
         }
 
         private void LoadGrid()
         {
             SqlCommand cmd = new SqlCommand("select * from D91T1240 WHERE ListTypeID = '"+ ListTypeID +"'");
             DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
-            gridListGeneral.ItemsSource = dt;
+            GridListGeneral.ItemsSource = dt;
         }
         
         private void tsbAdd_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -61,14 +61,14 @@ namespace Mita_Hotel.Views
                 case "UnitID":
                     Add.Title = "Thêm đơn vị tính";
                     Add.lbHeader.Content = "Loại danh mục : ĐVT";
-                    Add.lbListID.Content = "Mã đơn vị";
+                    Add.txtblockListID.Text = "Mã đơn vị";
                     Add.lbListName.Content = "Tên đơn vị";
                     D92F1240.ListTypeID = "UnitID";
                     break;
                 case "TT":
                     Add.Title = "Thêm tỉnh thành";
                     Add.lbHeader.Content = "Loại danh mục : Tỉnh thành";
-                    Add.lbListID.Content = "Mã tỉnh";
+                    Add.txtblockListID.Text = "Mã tỉnh";
                     Add.lbListName.Content = "Tên tỉnh";
                     D92F1240.ListTypeID = "TT";
                     break;
@@ -76,7 +76,7 @@ namespace Mita_Hotel.Views
             Add.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Add.ShowDialog();
             LoadGrid();
-            gridListGeneral.FocusRowHandle(gridListGeneral.ReturnVisibleRowCount - 1);
+            GridListGeneral.FocusRowHandle(GridListGeneral.ReturnVisibleRowCount - 1);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -85,7 +85,7 @@ namespace Mita_Hotel.Views
             IsAdd = false;
             try
             {
-                ListID = gridListGeneral.GetFocusedRowCellValue("ListID").ToString();
+                ListID = GridListGeneral.GetFocusedRowCellValue("ListID").ToString();
             }
             catch (Exception)
             {
@@ -96,14 +96,14 @@ namespace Mita_Hotel.Views
                 case "UnitID":
                     Edit.Title = "Sửa đơn vị tính";
                     Edit.lbHeader.Content = "Loại danh mục : ĐVT";
-                    Edit.lbListID.Content = "Mã đơn vị";
+                    Edit.txtblockListID.Text = "Mã đơn vị";
                     Edit.lbListName.Content = "Tên đơn vị";
                     D92F1240.ListTypeID = "UnitID";
                     break;
                 case "TT":
                     Edit.Title = "Sửa tỉnh thành";
                     Edit.lbHeader.Content = "Loại danh mục : Tỉnh thành";
-                    Edit.lbListID.Content = "Mã tỉnh";
+                    Edit.txtblockListID.Text = "Mã tỉnh";
                     Edit.lbListName.Content = "Tên tỉnh";
                     D92F1240.ListTypeID = "TT";
                     break;
@@ -117,11 +117,11 @@ namespace Mita_Hotel.Views
         {
             try
             {
-                ListID = gridListGeneral.GetFocusedRowCellValue("ListID").ToString();
+                ListID = GridListGeneral.GetFocusedRowCellValue("ListID").ToString();
                 SqlCommand cmd = new SqlCommand("DELETE D91T1240 where ListTypeID = '" + ListTypeID + "' and ListID = '"+ ListID +"'");
                 L3SQLServer.ExecuteSQL(cmd.CommandText);
                 LoadGrid();
-                gridListGeneral.FocusRowHandle(gridListGeneral.ReturnVisibleRowCount - 1);
+                GridListGeneral.FocusRowHandle(GridListGeneral.ReturnVisibleRowCount - 1);
             }
             catch (NullReferenceException)
             {
@@ -131,17 +131,17 @@ namespace Mita_Hotel.Views
 
         private void tsbExportToExcel_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            gridListGeneral.ExportToXLS("DataGeneral.xls");
+            GridListGeneral.ExportToXLS("DataGeneral.xls");
         }
 
         private void tsbListAll_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            gridListGeneral.ListAll();
+            GridListGeneral.ListAll();
         }
 
         private void tsbSysInfo_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            L3Window.ShowSysInforForm(gridListGeneral);
+            L3Window.ShowSysInforForm(GridListGeneral);
         }
 
         private void gridListGeneral_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -153,9 +153,9 @@ namespace Mita_Hotel.Views
         }
         private void CheckMenuOthers()
         {
-            tsbEdit.IsEnabled = gridListGeneral.VisibleRowCount > 0;
-            tsbDelete.IsEnabled = gridListGeneral.VisibleRowCount > 0;
-            tsbExportToExcel.IsEnabled = gridListGeneral.VisibleRowCount > 0;
+            tsbEdit.IsEnabled = GridListGeneral.VisibleRowCount > 0;
+            tsbDelete.IsEnabled = GridListGeneral.VisibleRowCount > 0;
+            tsbExportToExcel.IsEnabled = GridListGeneral.VisibleRowCount > 0;
         }
     }
 }

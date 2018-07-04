@@ -21,9 +21,9 @@ namespace Mita_Hotel.Views
     /// <summary>
     /// Interaction logic for pageListUser.xaml
     /// </summary>
-    public partial class pageListUser : L3Page
+    public partial class PageListUser : L3Page
     {
-        public pageListUser()
+        public PageListUser()
         {
             InitializeComponent();
         }
@@ -31,14 +31,14 @@ namespace Mita_Hotel.Views
         private void L3Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadGrid();
-            gridListUser.SetDefaultFilterChangeGrid();
+            GridListUser.SetDefaultFilterChangeGrid();
             L3Control.SetShortcutPopupMenu(MainMenuControl1);
         }
         public void LoadGrid()
         {
             SqlCommand cmd = new SqlCommand("select ID, Fullname, Username, Role, Email, Phone, LastLogin, FirstDate from D00T0040 left join tblRole on D00T0040.RoleID = tblRole.RoleID");
             DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
-            gridListUser.ItemsSource = dt;
+            GridListUser.ItemsSource = dt;
         }
         public override void SetContentForL3Page()
         {
@@ -52,7 +52,7 @@ namespace Mita_Hotel.Views
             IsEdit = true;
             try
             {
-                Username = gridListUser.GetFocusedRowCellValue("Username").ToString();
+                Username = GridListUser.GetFocusedRowCellValue("Username").ToString();
             }
             catch (Exception)
             {
@@ -70,7 +70,7 @@ namespace Mita_Hotel.Views
         {
             try
             {
-                string Username = gridListUser.GetFocusedRowCellValue("Username").ToString();
+                string Username = GridListUser.GetFocusedRowCellValue("Username").ToString();
                 SqlCommand cmd = new SqlCommand("DELETE D00T0040 where Username = '" + Username + "'");
                 L3SQLServer.ExecuteSQL(cmd.CommandText);
             }
@@ -79,7 +79,7 @@ namespace Mita_Hotel.Views
                 MessageBox.Show("Chọn đúng dùm cái!");
             }
             LoadGrid();
-            gridListUser.FocusRowHandle(gridListUser.ReturnVisibleRowCount - 1);
+            GridListUser.FocusRowHandle(GridListUser.ReturnVisibleRowCount - 1);
         }
 
         private void tsbPrint_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -93,10 +93,10 @@ namespace Mita_Hotel.Views
             frmRegister.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             frmRegister.ShowDialog();
             LoadGrid();
-            gridListUser.FocusRowHandle(gridListUser.ReturnVisibleRowCount - 1);
+            GridListUser.FocusRowHandle(GridListUser.ReturnVisibleRowCount - 1);
         }
 
-        private void gridListUser_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void GridListUser_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "VisibleRowCount")
             {
@@ -105,9 +105,9 @@ namespace Mita_Hotel.Views
         }
         private void CheckMenuOthers()
         {
-            tsbEdit.IsEnabled = gridListUser.VisibleRowCount > 0;
-            tsbDelete.IsEnabled = gridListUser.VisibleRowCount > 0;
-            tsbExportToExcel.IsEnabled = gridListUser.VisibleRowCount > 0;
+            tsbEdit.IsEnabled = GridListUser.VisibleRowCount > 0;
+            tsbDelete.IsEnabled = GridListUser.VisibleRowCount > 0;
+            tsbExportToExcel.IsEnabled = GridListUser.VisibleRowCount > 0;
         }
     }
 }

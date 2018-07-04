@@ -9,7 +9,7 @@
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        x:Class="Mita_Hotel.Views.pageListItem"
+        x:Class="Mita_Hotel.Views.PageListItem"
         mc:Ignorable="d"
         Title="Danh mục hàng hóa" Loaded="L3Window_Loaded">
     <Grid>
@@ -17,7 +17,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <L3:L3GridControl x:Name="gridListItem" HorizontalAlignment="Left" PropertyChanged="gridListItem_PropertyChanged" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1"  >
+        <L3:L3GridControl x:Name="GridListItem" HorizontalAlignment="Left" PropertyChanged="GridListItem_PropertyChanged" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1"  >
 
             <dxg:GridColumn x:Name="COL_ItemID" FieldName="InventoryID" Header=" Mã hàng " Width="80" ReadOnly="True"/>
             <dxg:GridColumn x:Name="COL_ItemName" FieldName="InventoryName" Header=" Hàng hóa " Width="180"/>

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Mita_Hotel.Views"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
            xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.pageListUser"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.PageListUser"
         mc:Ignorable="d"
         Title="Danh sách nhân viên" Loaded="L3Window_Loaded">
     <Grid>
@@ -15,7 +15,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <L3:L3GridControl x:Name="gridListUser" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1" PropertyChanged="gridListUser_PropertyChanged"  >
+        <L3:L3GridControl x:Name="GridListUser" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1" PropertyChanged="GridListUser_PropertyChanged"  >
             <dxg:GridControl.View>
                 <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False"  Margin="0,0,0,-2" AllowEditing="False" ShowAutoFilterRow="True"/>
             </dxg:GridControl.View>

@@ -148,11 +148,11 @@
     <Compile Include="Views\frmAddNewItem.xaml.cs">
       <DependentUpon>frmAddNewItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\pageListItem.xaml.cs">
-      <DependentUpon>pageListItem.xaml</DependentUpon>
+    <Compile Include="Views\PageListItem.xaml.cs">
+      <DependentUpon>PageListItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\pageListUser.xaml.cs">
-      <DependentUpon>pageListUser.xaml</DependentUpon>
+    <Compile Include="Views\PageListUser.xaml.cs">
+      <DependentUpon>PageListUser.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\D91F1240.xaml">
       <SubType>Designer</SubType>
@@ -193,11 +193,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\pageListItem.xaml">
+    <Page Include="Views\PageListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\pageListUser.xaml">
+    <Page Include="Views\PageListUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -238,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\addnewimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\if_bullet_red_35785.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

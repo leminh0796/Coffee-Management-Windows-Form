@@ -41,13 +41,13 @@ namespace Mita_Hotel.Views
             catch (NullReferenceException)
             {
                 item.UnitID = "";
-                MessageBox.Show("Không được để trống đơn vị tính!");
+                MessageBox.Show("Không được để trống đơn vị tính!", "Lỗi");
             }
             item.Price = sePrice.Value;
             item.Notes = txtNotes.Text;
             item.VAT = seVAT.Value;
             item.BarCode = txtBarcode.Text;
-            switch (pageListItem.IsAddItem)
+            switch (PageListItem.IsAddItem)
             {
                 case true:
                     if (txtInventoryName.Text != "")
@@ -55,13 +55,13 @@ namespace Mita_Hotel.Views
                         bool add = AddNewItem2();
                         if (add)
                         {
-                            MessageBox.Show("Thêm mới thành công!");
+                            MessageBox.Show("Thêm mới thành công!", "Yeah!");
 
                             this.Close();
                         }
-                        else MessageBox.Show("Thêm mới thất bại!");
+                        else MessageBox.Show("Thêm mới thất bại!", "Lỗi");
                     }
-                    else MessageBox.Show("Không được để trống tên hàng hóa!");
+                    else MessageBox.Show("Không được để trống tên hàng hóa!", "Lỗi");
                     break;
 
                 case false:
@@ -70,13 +70,13 @@ namespace Mita_Hotel.Views
                         bool edit = EditItem();
                         if (edit)
                         {
-                            MessageBox.Show("Sửa thành công!");
+                            MessageBox.Show("Sửa thành công!", "Yeah!");
 
                             this.Close();
                         }
-                        else MessageBox.Show("Sửa thất bại!");
+                        else MessageBox.Show("Sửa thất bại!", "Lỗi");
                     }
-                    else MessageBox.Show("Không được để trống tên hàng hóa!");
+                    else MessageBox.Show("Không được để trống tên hàng hóa!", "Lỗi");
                     break;
             }
         
@@ -89,9 +89,9 @@ namespace Mita_Hotel.Views
             lkeUnitID.ItemsSource = dt1;
             sePrice.InputNumber288("n0", false, false);
             seVAT.InputNumber288("n0", false, false);
-            if (pageListItem.IsAddItem == false)
+            if (PageListItem.IsAddItem == false)
             {
-                DataTable dt = L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode from D91T1040 WHERE InventoryID = '" + pageListItem.InventoryID + "'");
+                DataTable dt = L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode from D91T1040 WHERE InventoryID = '" + PageListItem.InventoryID + "'");
                 txtInventoryName.Text = dt.Rows[0]["InventoryName"].ToString();
                 lkeUnitID.EditValue = dt.Rows[0]["UnitID"];
                 sePrice.Value = System.Convert.ToDecimal(dt.Rows[0]["Price"]);
@@ -113,7 +113,7 @@ namespace Mita_Hotel.Views
             return L3SQLServer.ExecuteNoneQuery("sp_EditItem",
                CommandType.StoredProcedure,
                new string[] { "InventoryID", "InventoryName", "UnitID", "Price", "Notes", "VAT", "BarCode", "LastModifyUserID" }
-               , new object[] { pageListItem.InventoryID, item.InventoryName, item.UnitID, item.Price, item.Notes, item.VAT, item.BarCode, L3.UserID });
+               , new object[] { PageListItem.InventoryID, item.InventoryName, item.UnitID, item.Price, item.Notes, item.VAT, item.BarCode, L3.UserID });
         }
     }
 }
