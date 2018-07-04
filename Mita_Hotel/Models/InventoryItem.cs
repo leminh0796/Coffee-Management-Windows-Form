@@ -13,5 +13,6 @@ namespace Mita_Hotel.Models
         public string Notes { get; set; }
         public string BarCode { get; set; }
         public Decimal VAT { get; set; }
+        public string ImageLocation { get; set; }
     }
 }

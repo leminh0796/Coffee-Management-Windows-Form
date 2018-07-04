@@ -242,5 +242,8 @@
   <ItemGroup>
     <Resource Include="Images\if_bullet_red_35785.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cocalon330.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
