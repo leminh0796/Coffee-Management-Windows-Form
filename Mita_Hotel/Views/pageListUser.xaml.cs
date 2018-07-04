@@ -50,9 +50,11 @@ namespace Mita_Hotel.Views
         {
             frmRegister frmRegister = new frmRegister();
             IsEdit = true;
+            int i = 0;
             try
             {
                 Username = GridListUser.GetFocusedRowCellValue("Username").ToString();
+                i = GridListUser.View.FocusedRowData.RowHandle.Value;
             }
             catch (Exception)
             {
@@ -63,6 +65,7 @@ namespace Mita_Hotel.Views
             frmRegister.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             frmRegister.ShowDialog();
             LoadGrid();
+            GridListUser.FocusRowHandle(i);
             IsEdit = false;
         }
 

@@ -64,9 +64,11 @@ namespace Mita_Hotel.Views
         {
             frmAddNewItem frm = new frmAddNewItem();
             frm.Title = "Chỉnh sửa thông tin hàng hóa";
+            int i = 0;
             try
             {
                 InventoryID = GridListItem.GetFocusedRowCellValue("InventoryID").ToString();
+                i = GridListItem.View.FocusedRowData.RowHandle.Value;
             }
             catch (Exception)
             {
@@ -76,6 +78,7 @@ namespace Mita_Hotel.Views
             frm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             frm.ShowDialog();
             LoadItemGrid();
+            GridListItem.FocusRowHandle(i);
         }
 
         private void tsbDelete_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)

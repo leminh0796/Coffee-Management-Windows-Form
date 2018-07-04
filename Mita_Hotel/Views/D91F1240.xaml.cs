@@ -28,6 +28,7 @@ namespace Mita_Hotel.Views
         public string ListTypeID { set; get; }
         public static string ListID;
         public static bool IsAdd = false;
+
         public D91F1240()
         {
             InitializeComponent();
@@ -83,9 +84,11 @@ namespace Mita_Hotel.Views
         {
             D92F1240 Edit = new D92F1240();
             IsAdd = false;
+            int i = 0;
             try
             {
                 ListID = GridListGeneral.GetFocusedRowCellValue("ListID").ToString();
+                i = GridListGeneral.View.FocusedRowData.RowHandle.Value;
             }
             catch (Exception)
             {
@@ -111,6 +114,7 @@ namespace Mita_Hotel.Views
             Edit.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Edit.ShowDialog();
             LoadGrid();
+            GridListGeneral.FocusRowHandle(i);
         }
 
         private void tsbDelete_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
