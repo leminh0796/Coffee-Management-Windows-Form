@@ -31,7 +31,7 @@ namespace Mita_Hotel
             L3.STRLanguage = "84";
             L3.ApplicationPath = Environment.CurrentDirectory;
             L3.ApplicationSetup = L3.ApplicationPath;
-            L3.Server = @"10.0.0.221";
+            L3.Server = @"LEMIPC\MINH";
             L3.ConnectionUser = "sa";
             L3.Password = "123";
             L3.CompanyID = "MitaEmployees";
