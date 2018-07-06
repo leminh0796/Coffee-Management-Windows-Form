@@ -54,7 +54,7 @@ namespace Mita_Hotel.Views
         {
             frmAddNewItem frm = new frmAddNewItem();
             IsAddItem = true;
-            frm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            frm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frm.ShowDialog();
             LoadItemGrid();
             GridListItem.FocusRowHandle(GridListItem.ReturnVisibleRowCount - 1);
@@ -75,7 +75,7 @@ namespace Mita_Hotel.Views
                 MessageBox.Show("Chọn 1 dòng để sửa không phải dòng này!");
             }
             IsAddItem = false;
-            frm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            frm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frm.ShowDialog();
             LoadItemGrid();
             GridListItem.FocusRowHandle(i);

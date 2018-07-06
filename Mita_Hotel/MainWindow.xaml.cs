@@ -90,6 +90,10 @@ namespace Mita_Hotel
                         PageListItem pageListItem = new PageListItem();
                         CreateDocumentPanel(pageListItem);
                         break;
+                    case "D05F2010":
+                        D05F2010 Table = new D05F2010();
+                        CreateDocumentPanel(Table);
+                        break;
                 }
             }
             else
@@ -135,7 +139,7 @@ namespace Mita_Hotel
         {
             CallWindow("pageListItem");
         }
-
+    
         private void CallD91F1240(string ListTypeID, string CaptionForm )
         {
            // BaseLayoutItem docPanelFind = documentGroup.Items.FirstOrDefault(f => f.Caption.ToString().Contains(sPageName));
@@ -156,6 +160,11 @@ namespace Mita_Hotel
         private void BarButtonItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             CallD91F1240("TT", "Danh mục Tỉnh thành");
+        }
+
+        private void miTable_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            CallWindow("D05F2010");
         }
     }
 }

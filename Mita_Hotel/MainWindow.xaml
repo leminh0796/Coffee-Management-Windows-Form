@@ -26,7 +26,17 @@
 			RibbonTitleBarVisibility="Collapsed" 
 			MinimizationButtonVisibility="Auto">
             <dxr:RibbonDefaultPageCategory Caption="Menu Mita Coffee" >
-                <dxr:RibbonPage  Caption="Module" />
+                <dxr:RibbonPage  Caption="Module" >
+                    <dxr:RibbonPageGroup Caption="Phục vụ">
+                        <dxb:BarButtonItem Name="miTable" Content="Danh mục bàn" LargeGlyph="Images/table.png" ItemClick="miTable_ItemClick">
+                            <dxb:BarButtonItem.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="113" TextAlignment="Center"/>
+                                </DataTemplate>
+                            </dxb:BarButtonItem.ContentTemplate>
+                        </dxb:BarButtonItem>
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
                 <dxr:RibbonPage Caption="Danh mục">
                     <dxr:RibbonPageGroup Caption="Hàng hóa">
                         <dxb:BarButtonItem Name="miListItems" Content="Danh mục hàng hóa" Glyph="{dx:DXImage Image=BOProductGroup_16x16.png}" LargeGlyph="{dx:DXImage Image=BOProductGroup_32x32.png}" ItemClick="miListItems_ItemClick">

@@ -62,7 +62,7 @@ namespace Mita_Hotel.Views
             }
             frmRegister.Title = "Sửa thông tin người dùng";
             frmRegister.btnReg.Content = "Lưu";
-            frmRegister.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            frmRegister.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmRegister.ShowDialog();
             LoadGrid();
             GridListUser.FocusRowHandle(i);
@@ -93,7 +93,7 @@ namespace Mita_Hotel.Views
         private void tsbAdd_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             frmRegister frmRegister = new frmRegister();
-            frmRegister.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            frmRegister.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmRegister.ShowDialog();
             LoadGrid();
             GridListUser.FocusRowHandle(GridListUser.ReturnVisibleRowCount - 1);

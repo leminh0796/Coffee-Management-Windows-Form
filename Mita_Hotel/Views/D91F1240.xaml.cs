@@ -74,7 +74,7 @@ namespace Mita_Hotel.Views
                     D92F1240.ListTypeID = "TT";
                     break;
             }
-            Add.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            Add.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Add.ShowDialog();
             LoadGrid();
             GridListGeneral.FocusRowHandle(GridListGeneral.ReturnVisibleRowCount - 1);
@@ -111,7 +111,7 @@ namespace Mita_Hotel.Views
                     D92F1240.ListTypeID = "TT";
                     break;
             }
-            Edit.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            Edit.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Edit.ShowDialog();
             LoadGrid();
             GridListGeneral.FocusRowHandle(i);

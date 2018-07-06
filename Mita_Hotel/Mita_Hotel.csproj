@@ -131,6 +131,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\ListGeneral.cs" />
+    <Compile Include="Views\D05F2010.xaml.cs">
+      <DependentUpon>D05F2010.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\D05F2140.xaml.cs">
+      <DependentUpon>D05F2140.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\D91F1240.xaml.cs">
       <DependentUpon>D91F1240.xaml</DependentUpon>
     </Compile>
@@ -154,6 +160,14 @@
     <Compile Include="Views\PageListUser.xaml.cs">
       <DependentUpon>PageListUser.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\D05F2010.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D05F2140.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\D91F1240.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\cocalon330.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\table.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

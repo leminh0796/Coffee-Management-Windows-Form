@@ -70,5 +70,16 @@ namespace Mita_Hotel.Properties {
                 this["checkerAuto"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-U8A8UHB\\SQL2012;Initial Catalog=MitaEmployees;Persist Securit" +
+            "y Info=True;User ID=sa")]
+        public string MitaEmployeesConnectionString {
+            get {
+                return ((string)(this["MitaEmployeesConnectionString"]));
+            }
+        }
     }
 }
