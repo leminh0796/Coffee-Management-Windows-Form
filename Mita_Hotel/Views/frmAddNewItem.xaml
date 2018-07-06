@@ -36,8 +36,7 @@
         <L3:L3SpinEdit x:Name="seVAT" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,164,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
         <Label Content="Barcode" HorizontalAlignment="Left" Margin="19.2,191,0,0" VerticalAlignment="Top" Height="23" Width="43" Grid.Column="1"/>
         <L3:L3TextEdit x:Name="txtBarcode" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,191,0,0" VerticalAlignment="Top" Width="229" Height="23"/>
-        <dxe:ImageEdit Name="ieImage" HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Width="160" Height="155" Source="/Mita_Hotel;component/Images/addnewimage.png" Grid.ColumnSpan="2" IsReadOnly="True" ShowMenu="False"/>
-
+        <Image Name="ieImage" HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Width="160" Height="155" Source="/Mita_Hotel;component/Images/addnewimage.png" Grid.ColumnSpan="2"/>
         <dx:SimpleButton Name="btnSave" Content="Lưu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="257.2,228,0,0" VerticalAlignment="Top" Width="91" Click="btnSave_Click"/>
         <dx:SimpleButton Name="btnImage" Content="Đổi ảnh hàng hóa" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="119.2,228,0,0" VerticalAlignment="Top" Width="121" Click="btnImage_Click"/>
 

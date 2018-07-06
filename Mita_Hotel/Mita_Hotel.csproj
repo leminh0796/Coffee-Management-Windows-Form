@@ -242,6 +242,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\cocalon330.jpg" />
     <Resource Include="MitaManager.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -257,10 +258,13 @@
     <Resource Include="Images\if_bullet_red_35785.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\cocalon330.jpg" />
+    <Resource Include="Images\table.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\table.png" />
+    <Resource Include="Images\1_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\download.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

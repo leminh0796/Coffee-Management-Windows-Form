@@ -36,13 +36,19 @@ namespace Mita_Hotel.Views
 
         private void L3PageLoaded(object sender, RoutedEventArgs e)
         {
-            LoadTableGrid();
+
             GridTable.InputNumber288("n0", false, false, COL_TotalMoney);
             GridTable.SetDefaultFilterChangeGrid();
+            if (dt.Rows.Count == 0)
+            {
+                LoadTableGrid();
+            }
+           
         }
 
         private SqlDataAdapter da = new SqlDataAdapter();
         private DataTable dt = new DataTable();
+
         public void LoadTableGrid()
         {
             //SqlCommand cmd = new SqlCommand("select TableID, TableName, Position, TotalMoney, StatusName, People, IsPaid from D05T2010 left join D05T2011 on D05T2010.Status = D05T2011.Status");
@@ -54,7 +60,9 @@ namespace Mita_Hotel.Views
             da = new SqlDataAdapter("select * from D05T2010", conn);
             SqlCommandBuilder builder = new SqlCommandBuilder(da);
             da.Fill(dt);
-            GridTable.ItemsSource = dt;
+            BindingSource bSource = new BindingSource();
+            bSource.DataSource = dt;
+            GridTable.ItemsSource = bSource;
             dt.RowChanged += (o, arg) =>
             {
                 da.Update(dt);
@@ -66,6 +74,8 @@ namespace Mita_Hotel.Views
         {
             D05F2140 frmTable = new D05F2140();
             frmTable.lbTableName.Content = "Tên bàn: " + GridTable.GetFocusedRowCellValue("TableName").ToString();
+            frmTable.sePeople.Text = GridTable.GetFocusedRowCellValue("People").ToString();
+            frmTable.lkeStatus.EditValue = GridTable.GetFocusedRowCellValue("Status");
             frmTable.lkeStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
             frmTable.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmTable.ShowDialog();
