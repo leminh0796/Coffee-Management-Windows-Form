@@ -94,6 +94,10 @@ namespace Mita_Hotel
                         D05F2010 Table = new D05F2010();
                         CreateDocumentPanel(Table);
                         break;
+                    case "D91F2140":
+                        D91F2140 pagePBL = new D91F2140();
+                        CreateDocumentPanel(pagePBL);
+                        break;
                 }
             }
             else
@@ -165,6 +169,11 @@ namespace Mita_Hotel
         private void miTable_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             CallWindow("D05F2010");
+        }
+
+        private void miPBL_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            CallWindow("D91F2140");
         }
     }
 }

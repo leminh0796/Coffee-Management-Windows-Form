@@ -55,7 +55,15 @@
                                 </DataTemplate>
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
-
+                    </dxr:RibbonPageGroup>
+                    <dxr:RibbonPageGroup Name="rpgPBL" Caption="Buôn bán linh tinh">
+                        <dxb:BarButtonItem Name="miPBL" Content="Phiếu bán lẻ" Glyph="{dx:DXImage Image=BOReport_16x16.png}" LargeGlyph="{dx:DXImage Image=BOReport_32x32.png}" ItemClick="miPBL_ItemClick">
+                            <dxb:BarButtonItem.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="127" TextAlignment="Center"/>
+                                </DataTemplate>
+                            </dxb:BarButtonItem.ContentTemplate>
+                        </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
                     <dxr:RibbonPageGroup Caption="Danh mục chung">
                         <dxb:BarButtonItem x:Name="miUnitID" Content="Đơn vị tính" ItemClick="miUnitID_ItemClick" Glyph="{dx:DXImage Image=Accounting_16x16.png}" LargeGlyph="{dx:DXImage Image=Accounting_32x32.png}" RibbonStyle="Default">

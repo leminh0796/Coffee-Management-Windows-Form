@@ -23,5 +23,20 @@ namespace Mita_Hotel.Views
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void L3Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

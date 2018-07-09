@@ -140,6 +140,12 @@
     <Compile Include="Views\D91F1240.xaml.cs">
       <DependentUpon>D91F1240.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\D91F2140.xaml.cs">
+      <DependentUpon>D91F2140.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\D91F2141.xaml.cs">
+      <DependentUpon>D91F2141.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\D92F1240.xaml.cs">
       <DependentUpon>D92F1240.xaml</DependentUpon>
     </Compile>
@@ -169,6 +175,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\D91F1240.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D91F2140.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D91F2141.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,6 +279,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\download.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Home-Pic.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
