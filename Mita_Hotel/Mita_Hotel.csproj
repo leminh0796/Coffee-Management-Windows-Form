@@ -131,8 +131,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BL\BLTable.cs" />
+    <Compile Include="BL\BLVoucher.cs" />
     <Compile Include="Models\ListGeneral.cs" />
     <Compile Include="Models\Table.cs" />
+    <Compile Include="Models\Voucher.cs" />
     <Compile Include="Views\D05F2010.xaml.cs">
       <DependentUpon>D05F2010.xaml</DependentUpon>
     </Compile>

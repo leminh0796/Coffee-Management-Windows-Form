@@ -84,7 +84,7 @@ namespace Mita_Hotel.Views
                 voucher.TableID = TableID;
                 if (BLVoucher.AddVoucher(voucher))
                 {
-                    //////////////////////////////////////////TO DO////CẮT CU///////////////
+                    //////////////////////////////////////////TO DO: CẮT CU///////////////
                 }
             }
         }
