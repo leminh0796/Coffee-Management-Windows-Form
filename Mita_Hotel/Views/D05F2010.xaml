@@ -6,26 +6,32 @@
       xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
       xmlns:local="clr-namespace:Mita_Hotel.Views"
       xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
-      xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.D05F2010"
+      xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.D05F2010"
       mc:Ignorable="d"
       Title="Danh mục bàn" Loaded="L3PageLoaded">
     <Grid>
-        <L3:L3GridControl x:Name="GridTable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Margin="0,0,1,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <L3:L3GridControl x:Name="GridTable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Margin="0,0,1,0" Grid.Row="2" >
             <L3:L3GridControl.ContextMenu>
                 <ContextMenu x:Name="cmTable">
-                    <MenuItem x:Name="mnsAdd" Header="Đặt bàn" Click="mnsAdd_Click"/>
+                    <MenuItem x:Name="mnsAdd" Header="Đặt bàn" Click="mnsAdd_Click" IsEnabled="False" Loaded="mnsAdd_Loaded"/>
                     <MenuItem x:Name="mnsEdit" Header="Gọi thêm món"/>
                     <MenuItem x:Name="mnsPay" Header="Thanh toán"/>
                     <MenuItem x:Name="mnsDelete" Header="Print"/>
                 </ContextMenu>
             </L3:L3GridControl.ContextMenu>
+            
             <L3:L3GridControl.View>
-                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="True" ShowAutoFilterRow="False"/>
+                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="False" ShowAutoFilterRow="False" ShowGroupPanel="False"/>
             </L3:L3GridControl.View>
-            <dxg:GridColumn x:Name="COL_TableID" FieldName="TableID" Header="Mã bàn" ReadOnly="True"/>
-            <dxg:GridColumn x:Name="COL_TableName" FieldName="TableName" Header="Tên bàn" ReadOnly="True"/>
-            <dxg:GridColumn x:Name="COL_Position" FieldName="Position" Header="Vị trí" ReadOnly="True"/>
-            <dxg:GridColumn x:Name="COL_TotalMoney" FieldName="TotalMoney" Header="Tổng số tiền hiện tại" ReadOnly="True"/>
+            <dxg:GridColumn x:Name="COL_TableID" FieldName="TableID" Header="Mã bàn"/>
+            <dxg:GridColumn x:Name="COL_TableName" FieldName="TableName" Header="Tên bàn"/>
+            <dxg:GridColumn x:Name="COL_Position" FieldName="Position" Header="Vị trí"/>
+            <dxg:GridColumn x:Name="COL_TotalMoney" FieldName="TotalMoney" Header="Tổng số tiền hiện tại"/>
             <dxg:GridColumn x:Name="COL_Status" FieldName="Status" Header="Trạng thái" >
                 <dxg:GridColumn.EditSettings>
                     <L3:L3LookUpEditSettings x:Name="lkesStatus" DisplayMember="StatusName" ValueMember="Status" PopupMinWidth="280" />
@@ -34,5 +40,12 @@
             <dxg:GridColumn x:Name="COL_People" FieldName="People" Header="Số người"/>
             <dxg:GridColumn x:Name="COL_IsPaid" FieldName="IsPaid" Header="Đã thanh toán" ReadOnly="True"/>
         </L3:L3GridControl>
+        <dxb:MainMenuControl Name="MainMenuControl">
+            <dxb:BarButtonItem Name="tsbAdd" Content="Thêm bàn" ItemClick="tsbAdd_ItemClick"/>
+            <dxb:BarButtonItem Name="tsbEdit" Content="Sửa bàn" ItemClick ="tsbEdit_ItemClick"/>
+            <dxb:BarButtonItem Name="tsbDelete" Content="Xóa bàn" ItemClick="tsbDelete_ItemClick"/>
+            <dxb:BarItemSeparator />
+            <dxb:BarButtonItem Name="tsbListAll" Content="Liệt kê tất cả" ItemClick ="tsbListAll_ItemClick"/>
+        </dxb:MainMenuControl>
     </Grid>
 </L3:L3Page>

@@ -43,7 +43,7 @@ namespace Mita_Hotel.Views
             {
                 LoadTableGrid();
             }
-           
+            L3Control.SetShortcutPopupMenu(MainMenuControl);
         }
 
         private SqlDataAdapter da = new SqlDataAdapter();
@@ -60,25 +60,96 @@ namespace Mita_Hotel.Views
             da = new SqlDataAdapter("select * from D05T2010", conn);
             SqlCommandBuilder builder = new SqlCommandBuilder(da);
             da.Fill(dt);
+            conn.Close();
             BindingSource bSource = new BindingSource();
             bSource.DataSource = dt;
             GridTable.ItemsSource = bSource;
+            lkesStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
             dt.RowChanged += (o, arg) =>
             {
                 da.Update(dt);
             };
+        }
+
+        public void LoadSimple()
+        {
+            DataTable dt = L3SQLServer.ReturnDataTable("select * from D05T2010");
+            GridTable.ItemsSource = dt;
             lkesStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
         }
 
         private void mnsAdd_Click(object sender, RoutedEventArgs e)
         {
             D05F2140 frmTable = new D05F2140();
+            int i = GridTable.View.FocusedRowData.RowHandle.Value;
+            frmTable.IsBooking = true;
+            frmTable.TableID = GridTable.GetFocusedRowCellValue("TableID").ToString();
             frmTable.lbTableName.Content = "Tên bàn: " + GridTable.GetFocusedRowCellValue("TableName").ToString();
-            frmTable.sePeople.Text = GridTable.GetFocusedRowCellValue("People").ToString();
-            frmTable.lkeStatus.EditValue = GridTable.GetFocusedRowCellValue("Status");
+            frmTable.lkeStatus.EditValue = 2;
             frmTable.lkeStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
             frmTable.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmTable.ShowDialog();
+            LoadSimple();
+            GridTable.FocusRowHandle(i);
+        }
+
+        private void tsbAdd_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            D05F2011 frm = new D05F2011();
+            frm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            frm.ShowDialog();
+            LoadSimple();
+            GridTable.FocusRowHandle(GridTable.ReturnVisibleRowCount - 1);
+        }
+
+        private void tsbEdit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            D05F2011 frm = new D05F2011();
+            int i = 0;
+            try
+            {
+                frm.TableID = GridTable.GetFocusedRowCellValue("TableID").ToString();
+                i = GridTable.View.FocusedRowData.RowHandle.Value;
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Chọn 1 dòng để sửa không phải dòng này!");
+            }
+            frm.FormState = Lemon3.EnumFormState.FormEdit;
+            frm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            frm.ShowDialog();
+            LoadSimple();
+            GridTable.FocusRowHandle(i);
+        }
+
+        private void tsbDelete_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            try
+            {
+                string TableID = GridTable.GetFocusedRowCellValue("TableID").ToString();
+                SqlCommand cmd = new SqlCommand("DELETE D05T2010 where TableID = '" + TableID + "'");
+                L3SQLServer.ExecuteSQL(cmd.CommandText);
+                LoadSimple();
+                GridTable.FocusRowHandle(GridTable.ReturnVisibleRowCount - 1);
+            }
+            catch (NullReferenceException)
+            {
+                System.Windows.MessageBox.Show("Lỗi không thể xóa được bảng trống");
+            }
+        }
+
+        private void tsbListAll_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            GridTable.ListAll();
+        }
+
+        private void mnsAdd_Loaded(object sender, RoutedEventArgs e)
+        {
+            string temp = GridTable.GetFocusedRowCellValue("Status").ToString();
+            if (temp == "0")
+            {
+                mnsAdd.IsEnabled = true;
+            }
         }
     }
 }

@@ -130,9 +130,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\BLTable.cs" />
     <Compile Include="Models\ListGeneral.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Views\D05F2010.xaml.cs">
       <DependentUpon>D05F2010.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\D05F2011.xaml.cs">
+      <DependentUpon>D05F2011.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\D05F2140.xaml.cs">
       <DependentUpon>D05F2140.xaml</DependentUpon>
@@ -167,6 +172,10 @@
       <DependentUpon>PageListUser.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\D05F2010.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D05F2011.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,7 +16,7 @@
             </L3:L3GridControl.View>
             <dxg:GridColumn Header="Mã hàng" FieldName="InventoryID"/>
             <dxg:GridColumn Header="Tên hàng" FieldName="InventoryName"/>
-            <dxg:GridColumn Header="ĐVT" FieldName="UnitID"/>
+            <dxg:GridColumn Name="COL_UnitID" Header="ĐVT" FieldName="UnitID"/>
             <dxg:GridColumn Header="Số lượng" FieldName="Quantity"/>
             <dxg:GridColumn Name="COL_Price" Header="Giá" FieldName="Price"/>
             <dxg:GridColumn Name="COL_Amount" Header="Thành tiền" FieldName="Amount"/>
