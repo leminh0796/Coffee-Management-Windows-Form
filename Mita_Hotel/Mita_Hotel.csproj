@@ -144,6 +144,9 @@
     <Compile Include="Views\D05F2140.xaml.cs">
       <DependentUpon>D05F2140.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\D05F2141.xaml.cs">
+      <DependentUpon>D05F2141.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\D91F1240.xaml.cs">
       <DependentUpon>D91F1240.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\D05F2140.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D05F2141.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

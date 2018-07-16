@@ -41,7 +41,7 @@ namespace Mita_Hotel.Views
             GridTable.SetDefaultFilterChangeGrid();
             if (dt.Rows.Count == 0)
             {
-                LoadTableGrid();
+                LoadSimple();
             }
             L3Control.SetShortcutPopupMenu(MainMenuControl);
         }
@@ -49,31 +49,9 @@ namespace Mita_Hotel.Views
         private SqlDataAdapter da = new SqlDataAdapter();
         private DataTable dt = new DataTable();
 
-        public void LoadTableGrid()
-        {
-            //SqlCommand cmd = new SqlCommand("select TableID, TableName, Position, TotalMoney, StatusName, People, IsPaid from D05T2010 left join D05T2011 on D05T2010.Status = D05T2011.Status");
-            //DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
-            //GridTable.ItemsSource = dt;
-            //lkesStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
-            SqlConnection conn = new SqlConnection(L3.ConnectionString);
-            conn.Open();
-            da = new SqlDataAdapter("select * from D05T2010", conn);
-            SqlCommandBuilder builder = new SqlCommandBuilder(da);
-            da.Fill(dt);
-            conn.Close();
-            BindingSource bSource = new BindingSource();
-            bSource.DataSource = dt;
-            GridTable.ItemsSource = bSource;
-            lkesStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
-            dt.RowChanged += (o, arg) =>
-            {
-                da.Update(dt);
-            };
-        }
-
         public void LoadSimple()
         {
-            DataTable dt = L3SQLServer.ReturnDataTable("select * from D05T2010");
+            DataTable dt = L3SQLServer.ReturnDataTable("select TableID, TableName, Position, TotalMoney, Status, People, IsPaid from D05T2010");
             GridTable.ItemsSource = dt;
             lkesStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
         }
@@ -81,12 +59,22 @@ namespace Mita_Hotel.Views
         private void mnsAdd_Click(object sender, RoutedEventArgs e)
         {
             D05F2140 frmTable = new D05F2140();
+            string TableID = GridTable.GetFocusedRowCellValue("TableID").ToString();
+            frmTable.Status = Convert.ToInt32(GridTable.GetFocusedRowCellValue("Status"));
             int i = GridTable.View.FocusedRowData.RowHandle.Value;
-            frmTable.IsBooking = true;
-            frmTable.TableID = GridTable.GetFocusedRowCellValue("TableID").ToString();
+            frmTable.TableID = TableID;
+            frmTable.AmountPayment = 0;
             frmTable.lbTableName.Content = "Tên bàn: " + GridTable.GetFocusedRowCellValue("TableName").ToString();
-            frmTable.lkeStatus.EditValue = 2;
-            frmTable.lkeStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
+            if (frmTable.Status == 0)
+            {
+                frmTable.VoucherID = "";
+            }
+            else
+            {
+                DataTable dt = L3SQLServer.ReturnDataTable("select VoucherID from D91T2140 WHERE TableID = '" + TableID + "' and Status = '" + frmTable.Status + "'");
+                if (dt.Rows.Count > 0) frmTable.VoucherID = dt.Rows[dt.Rows.Count - 1]["VoucherID"].ToString();
+                else frmTable.VoucherID = "";
+            }
             frmTable.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmTable.ShowDialog();
             LoadSimple();
@@ -143,13 +131,53 @@ namespace Mita_Hotel.Views
             GridTable.ListAll();
         }
 
-        private void mnsAdd_Loaded(object sender, RoutedEventArgs e)
+        private void cmTable_Loaded(object sender, RoutedEventArgs e)
         {
-            string temp = GridTable.GetFocusedRowCellValue("Status").ToString();
-            if (temp == "0")
+            mnsNew.IsEnabled = false;
+            mnsPay.IsEnabled = true;
+            if (Convert.ToInt32(GridTable.GetFocusedRowCellValue("Status")) == 0)
             {
-                mnsAdd.IsEnabled = true;
+                mnsPay.IsEnabled = false;
             }
+            if (Convert.ToInt32(GridTable.GetFocusedRowCellValue("Status")) == 2)
+            {
+                mnsNew.IsEnabled = true;
+                mnsPay.IsEnabled = false;
+                mnsAdd.IsEnabled = false;
+            }
+            if (Convert.ToInt32(GridTable.GetFocusedRowCellValue("Status")) == 1 && Convert.ToDecimal(GridTable.GetFocusedRowCellValue("TotalMoney")) == 0)
+            {
+                mnsNew.IsEnabled = true;
+                mnsPay.IsEnabled = false;
+            }
+        }
+
+        private void mnsNew_Click(object sender, RoutedEventArgs e)
+        {
+            L3SQLServer.ExecuteSQL("UPDATE D05T2010 SET TotalMoney = 0, Status = 0, People = 0, IsPaid = 0 WHERE TableID = '"+ GridTable.GetFocusedRowCellValue("TableID").ToString() + "'");
+            LoadSimple();
+            mnsNew.IsEnabled = false;
+            mnsPay.IsEnabled = true;
+            mnsAdd.IsEnabled = true;
+        }
+
+        private void mnsPay_Click(object sender, RoutedEventArgs e)
+        {
+            string VoucherID = "";
+            DataTable dt = L3SQLServer.ReturnDataTable("select VoucherID, Amount from D91T2140 WHERE TableID = '" + GridTable.GetFocusedRowCellValue("TableID").ToString() + "' and Status = '" + GridTable.GetFocusedRowCellValue("Status").ToString() + "'");
+            if (dt.Rows.Count > 0) VoucherID = dt.Rows[dt.Rows.Count - 1]["VoucherID"].ToString();
+            D05F2141 frmPayment = new D05F2141();
+            frmPayment.TotalMoney = Convert.ToDecimal(dt.Rows[0]["Amount"]);
+            frmPayment.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            frmPayment.ShowDialog();
+            decimal AmountPayment = frmPayment.TotalMoney;
+            L3SQLServer.ExecuteSQL("UPDATE D05T2010 " +
+                                   "SET TotalMoney = '" + L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("TotalMoney"), "n0") + "', Status = 2, People = '" + L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("People"), "n0") + "', IsPaid = 1" +
+                                   "WHERE TableID = '" + GridTable.GetFocusedRowCellValue("TableID") + "'");
+            L3SQLServer.ExecuteSQL("UPDATE D91T2140 " +
+                                   "SET Status = 2, AmountPayment = '" + L3SQLClient.SQLMoney(AmountPayment, "n0") + "'" + 
+                                   "WHERE VoucherID = '" + VoucherID + "'");
+            LoadSimple();
         }
     }
 }

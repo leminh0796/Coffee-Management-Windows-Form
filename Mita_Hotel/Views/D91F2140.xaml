@@ -26,7 +26,7 @@
             <dxg:GridColumn x:Name="COL_CountPerson" FieldName="CountPerson" Header="Số người" />
             <dxg:GridColumn x:Name="COL_Amount" FieldName="Amount" Header="Tổng số tiền"/>
             <dxg:GridColumn x:Name="COL_Status" FieldName="Status" Header="Đã thanh toán"/>
-            <dxg:GridColumn x:Name="COL_AmountCustomerPaid" FieldName="AmountCustomerPaid" Header="Khách trả"/>
+            <dxg:GridColumn x:Name="COL_AmountPayment" FieldName="AmountPayment" Header="Khách trả"/>
         </L3:L3GridControl>
     </Grid>
 </L3:L3Page>

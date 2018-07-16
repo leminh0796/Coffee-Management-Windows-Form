@@ -33,7 +33,7 @@ namespace Mita_Hotel.Views
         {
             LoadPBLGrid();
             GridPBL.InputNumber288("n0", false, false, COL_Amount);
-            GridPBL.InputNumber288("n0", false, false, COL_AmountCustomerPaid);
+            GridPBL.InputNumber288("n0", false, false, COL_AmountPayment);
         }
         private void LoadPBLGrid()
         {
