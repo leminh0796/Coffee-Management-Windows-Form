@@ -25,6 +25,7 @@ namespace Mita_Hotel.Views
             InitializeComponent();
         }
         public decimal TotalMoney { get; set; }
+        public bool bClicked { get; private set; }
 
         private bool AllowSave()
         {
@@ -45,6 +46,7 @@ namespace Mita_Hotel.Views
             if (!AllowSave()) return;
             MessageBox.Show("Tiền thối lại: " + L3ConvertType.Number(exchange.ToString()));
             TotalMoney = seAmountPayment.Value;
+            bClicked = true;
             Close();
         }
 
@@ -52,6 +54,7 @@ namespace Mita_Hotel.Views
         {
             seAmountPayment.InputNumber288("n0", false, false);
             seAmountPayment.EditValue = TotalMoney;
+            bClicked = false;
         }
     }
 }

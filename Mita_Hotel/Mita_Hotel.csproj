@@ -147,6 +147,9 @@
     <Compile Include="Views\D05F2141.xaml.cs">
       <DependentUpon>D05F2141.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\D07F2010.xaml.cs">
+      <DependentUpon>D07F2010.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\D91F1240.xaml.cs">
       <DependentUpon>D91F1240.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\D05F2141.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D07F2010.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,6 +307,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Home-Pic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\add_coffee.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pigpay.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\warehouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cakho.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

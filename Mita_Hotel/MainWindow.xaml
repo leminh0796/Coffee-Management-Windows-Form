@@ -36,6 +36,22 @@
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
+                    <dxr:RibbonPageGroup Caption="Kho">
+                        <dxb:BarButtonItem Name="miWarehouse" Content="Nhập kho" LargeGlyph="Images/warehouse.png" ItemClick="miWarehouse_ItemClick" >
+                            <dxb:BarButtonItem.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="113" TextAlignment="Center"/>
+                                </DataTemplate>
+                            </dxb:BarButtonItem.ContentTemplate>
+                        </dxb:BarButtonItem>
+                        <dxb:BarButtonItem Name="miBraisedFish" Content="Cá kho" LargeGlyph="Images/cakho.png">
+                            <dxb:BarButtonItem.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="113" TextAlignment="Center"/>
+                                </DataTemplate>
+                            </dxb:BarButtonItem.ContentTemplate>
+                        </dxb:BarButtonItem>
+                    </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
                 <dxr:RibbonPage Caption="Danh mục">
                     <dxr:RibbonPageGroup Caption="Hàng hóa">

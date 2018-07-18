@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:Mita_Hotel.Views"
       xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
       xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.D05F2010"
+      xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.D05F2010"
       mc:Ignorable="d"
       Title="Danh mục bàn" Loaded="L3PageLoaded">
     <Grid>
@@ -18,16 +18,32 @@
         <L3:L3GridControl x:Name="GridTable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Margin="0,0,1,0" Grid.Row="2" >
             <L3:L3GridControl.ContextMenu>
                 <ContextMenu x:Name="cmTable" Loaded="cmTable_Loaded">
-                    <MenuItem x:Name="mnsAdd" Header="Gọi món" Click="mnsAdd_Click"/>
-                    <MenuItem x:Name="mnsPay" Header="Thanh toán" Click="mnsPay_Click"/>
-                    <MenuItem x:Name="mnsNew" Header="Đặt mới" Click="mnsNew_Click"/>
+                    <MenuItem x:Name="mnsAdd" Header="Gọi món" Click="mnsAdd_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Mita_Hotel;component/Images/add_coffee.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="mnsPay" Header="Thanh toán" Click="mnsPay_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Mita_Hotel;component/Images/pigpay.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="mnsNew" Header="Khách về" Click="mnsNew_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Mita_Hotel;component/Images/exit.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </L3:L3GridControl.ContextMenu>
 
             <L3:L3GridControl.View>
                 <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="False" ShowAutoFilterRow="False" ShowGroupPanel="False">
                     <dxg:TableView.FormatConditions>
-                        <dxg:FormatCondition ValueRule="Greater" Value1="0" FieldName="People" PredefinedFormatName="LightRedFillWithDarkRedText" ApplyToRow="True" />
+                        <dxg:FormatCondition ValueRule="Equal" Value1="1" FieldName="Status" PredefinedFormatName="LightRedFillWithDarkRedText" ApplyToRow="True" />
+                        <dxg:FormatCondition ValueRule="Equal" Value1="2" FieldName="Status" PredefinedFormatName="YellowFillWithDarkYellowText" ApplyToRow="True" />
+                        <dxg:FormatCondition ValueRule="Equal" Value1="0" FieldName="Status" PredefinedFormatName="GreenFillWithDarkGreenText" ApplyToRow="True" />
                     </dxg:TableView.FormatConditions>
                 </dxg:TableView>
             </L3:L3GridControl.View>
@@ -35,7 +51,7 @@
             <dxg:GridColumn x:Name="COL_TableName" FieldName="TableName" Header="Tên bàn"/>
             <dxg:GridColumn x:Name="COL_Position" FieldName="Position" Header="Vị trí"/>
             <dxg:GridColumn x:Name="COL_TotalMoney" FieldName="TotalMoney" Header="Tổng số tiền hiện tại"/>
-            <dxg:GridColumn x:Name="COL_Status" FieldName="Status" Header="Trạng thái" >
+            <dxg:GridColumn x:Name="COL_Status" FieldName="Status" Header="Trạng thái">
                 <dxg:GridColumn.EditSettings>
                     <L3:L3LookUpEditSettings x:Name="lkesStatus" DisplayMember="StatusName" ValueMember="Status" PopupMinWidth="280" />
                 </dxg:GridColumn.EditSettings>

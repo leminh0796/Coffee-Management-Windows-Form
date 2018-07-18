@@ -8,16 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Mita_Hotel.Models;
-using Mita_Hotel.BL;
-using System.Data.SqlClient;
 using Lemon3.Functions;
+using System.Threading;
+using System.Data.SqlClient;
+using System.Windows.Threading;
+using Mita_Hotel.BL;
 
 namespace Mita_Hotel.Views
 {
@@ -30,13 +26,22 @@ namespace Mita_Hotel.Views
         {
             InitializeComponent();
             txtItem.TextChanged += txtItem_TextChanged;
+            //System.Timers.Timer timer = new System.Timers.Timer();
+            //timer.Interval = 10000;
+            //timer.Elapsed += timer_Elapsed;
+            //timer.Start();
         }
         public string TableID { get; set; }
         public string VoucherID { get; set; }
         DataTable dtGrid;
         public bool Saved { get; private set; }
         public int Status { get; set; }
-        public decimal AmountPayment { private get;  set; }
+        public decimal AmountPayment { private get; set; }
+
+        //private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        //{
+        //    LoadTDBGrid();
+        //}
 
         void txtItem_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -76,13 +81,42 @@ namespace Mita_Hotel.Views
 
         private void L3Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            sePeople.Focus();
             if (VoucherID == "") VoucherID = "PBL" + L3.UserID.ToUpper() + DateTime.Now.ToString("yyyyMMddHHmmss");
             SetInputNumber();
             L3Control.SetBackColorObligatory(sePeople);
             LoadMaster();
             LoadTDBGrid();
+            if (GridVoucherInventory.VisibleRowCount == 0)
+            {
+                btnAddQuatity.IsEnabled = false;
+                btnDeleteQuatity.IsEnabled = false;
+            }
+
+            //try
+            //{
+            //    LoadTDBGrid();
+            //    SetTimer();
+            //}
+            //catch (SqlException)
+            //{
+            //    MessageBox.Show("Lỗi!");
+            //}
         }
+
+        //protected void dispatcherTimer_Tick(object sender, EventArgs e)
+        //{
+        //    LoadTDBGrid();
+        //}
+
+        //private void SetTimer()
+        //{
+        //    DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        //    dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+        //    dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+        //    dispatcherTimer.Start();
+        //}
+
         private void SetInputNumber()
         {
             GridVoucherInventory.InputNumber288("n1", false, false, COL_Quantity);
@@ -97,10 +131,34 @@ namespace Mita_Hotel.Views
         {
             dtGrid = L3SQLServer.ReturnDataTable("exec D91P2140 " + L3SQLClient.SQLString(VoucherID));
             L3DataSource.LoadDataSource(GridVoucherInventory, dtGrid, true);
-            if (dtGrid.Rows.Count == 0) btnPay.IsEnabled = false;
-            else btnPay.IsEnabled = true;
-        }
+            if (dtGrid.Rows.Count == 0)
+            {
+                btnPay.IsEnabled = false;
+                btnDeleteQuatity.IsEnabled = false;
+            }
 
+            else
+            {
+                btnPay.IsEnabled = true;
+                btnDeleteQuatity.IsEnabled = true;
+            }
+            //Dispatcher.BeginInvoke(new ThreadStart(() =>
+            //{
+            //    L3DataSource.LoadDataSource(GridVoucherInventory, dtGrid, true);
+            //    if (dtGrid.Rows.Count == 0)
+            //    {
+            //        btnPay.IsEnabled = false;
+            //        btnDeleteQuatity.IsEnabled = false;
+            //    }
+
+            //    else
+            //    {
+            //        btnPay.IsEnabled = true;
+            //        btnDeleteQuatity.IsEnabled = true;
+            //    }
+            //}
+            //));
+        }
         private void LoadMaster()
         {
             lbVoucherID.Content = "Phiếu đặt: " + VoucherID;
@@ -119,53 +177,11 @@ namespace Mita_Hotel.Views
                 Status = 1;
             }
         }
-        //private DataTable LoadInventoryTable (string VoucherID)
-        //{
-        //    SqlConnection conn = new SqlConnection(L3.ConnectionString);
-        //    SqlCommand cmd = new SqlCommand("D91P2140", conn);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Parameters.Add(new SqlParameter("@VoucherID", VoucherID));
-        //    conn.Open();
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    DataTable dt = new DataTable();
-        //    da.Fill(dt);
-        //    conn.Close();
-        //    GridVoucherInventory.ItemsSource = dt;
-        //    return dt;
-        //}
+
         private void CalAmountGrid(int irow)
         {
             GridVoucherInventory.SetCellValue(irow, "Amount", L3ConvertType.Number(GridVoucherInventory.GetCellValue(irow, "Quantity")) * L3ConvertType.Number(GridVoucherInventory.GetCellValue(irow, "Price")));
 
-        }
-
-        //private void LoadInventory(string VoucherID)
-        //{
-        //    SqlConnection conn = new SqlConnection(L3.ConnectionString);
-        //    SqlCommand cmd = new SqlCommand("D91P2140", conn);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Parameters.Add(new SqlParameter("@VoucherID", VoucherID));
-        //    conn.Open();
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    DataTable dt = new DataTable();
-        //    da.Fill(dt);
-        //    conn.Close();
-        //    GridVoucherInventory.ItemsSource = dt;
-
-        //}
-
-        private void lbeSuggestion_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (ReferenceEquals(sender, lbeSuggestion))
-            //{
-            //    if (e.Key == Key.Enter)
-            //    {
-            //        txtItem.Text = "";
-            //        lbeSuggestion.Visibility = Visibility.Collapsed;
-
-
-            //    }
-            //}
         }
 
         private void txtItem_KeyDown(object sender, KeyEventArgs e)
@@ -176,32 +192,8 @@ namespace Mita_Hotel.Views
             }
         }
 
-        private void lbeSuggestion_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            if (lbeSuggestion.ItemsSource != null)
-            {
-                lbeSuggestion.KeyDown += lbeSuggestion_KeyDown;
-            }
-        }
-
         private void lbeSuggestion_EditValueChanged(object sender, DevExpress.Xpf.Editors.EditValueChangedEventArgs e)
         {
-            //string InventoryID = lbeSuggestion.EditValue.ToString();
-            //DataTable dt = L3SQLServer.ReturnDataTable("select * from D91T2141 WHERE VoucherID = '" + VoucherID + "' and InventoryID = '" + InventoryID + "'");
-            //if (dt.Rows.Count == 0)
-            //{
-            //    L3SQLServer.ExecuteSQL("INSERT INTO D91T2141(VoucherID, InventoryID, Quantity) VALUES ('" + VoucherID + "', '" + InventoryID + "', 1);" +
-            //                           "UPDATE T41 SET T41.VAT = T10.VAT, T41.Price = T10.Price, T41.UnitID = T10.UnitID FROM D91T2141 AS T41 INNER JOIN D91T1040 AS T10 ON T41.InventoryID = T10.InventoryID WHERE T41.VoucherID = '" + VoucherID + "'");
-            //}
-            //else
-            //{
-            //    L3SQLServer.ExecuteSQL("UPDATE D91T2141 SET Quantity += 1 WHERE VoucherID = '" + VoucherID + "' and InventoryID = '" + InventoryID + "'");
-            //}
-            //LoadInventory(VoucherID);
-            //txtItem.Text = "";
-            //lbeSuggestion.Visibility = Visibility.Collapsed;
-            //lbeSuggestion.EditValue = null;
-            ////////////////////////
             string sInventoryID = lbeSuggestion.EditValue.ToString();
             DataTable dt = L3SQLServer.ReturnDataTable("select * FROM D91T1040 where IsDelete = 0 and InventoryID = '" + sInventoryID + "'");
             string sInventoryName = "";
@@ -228,6 +220,9 @@ namespace Mita_Hotel.Views
                     dr["Amount"] = L3ConvertType.Number(dr["Quantity"]) * L3ConvertType.Number(dr["Price"]);
                     dtGrid.Rows.Add(dr);
                 }
+                btnSave.IsEnabled = true;
+                btnDeleteQuatity.IsEnabled = true;
+                btnAddQuatity.IsEnabled = true;
             }
             CalAmount();
             txtItem.Text = "";
@@ -315,6 +310,11 @@ namespace Mita_Hotel.Views
             if (!btnSave.IsFocused) return;
             if (!AllowSave()) return;
             btnSave.IsEnabled = false;
+            DoSaveSQL();
+        }
+
+        private void DoSaveSQL()
+        {
             if (AmountPayment > 0)
             {
                 Status = 2;
@@ -332,7 +332,8 @@ namespace Mita_Hotel.Views
                                            "SET TotalMoney = '" + L3SQLClient.SQLMoney(seTotalMoney.EditValue, seTotalMoney.NumberFormat) + "', Status = 1, People = '" + L3SQLClient.SQLMoney(sePeople.EditValue, sePeople.NumberFormat) + "'" +
                                            "WHERE TableID = '" + TableID + "'");
                 }
-                else if (Status == 2) {
+                else if (Status == 2)
+                {
                     L3SQLServer.ExecuteSQL("UPDATE D05T2010 " +
                                            "SET TotalMoney = '" + L3SQLClient.SQLMoney(seTotalMoney.EditValue, seTotalMoney.NumberFormat) + "', Status = 2, People = '" + L3SQLClient.SQLMoney(sePeople.EditValue, sePeople.NumberFormat) + "', IsPaid = 1" +
                                            "WHERE TableID = '" + TableID + "'");
@@ -345,18 +346,73 @@ namespace Mita_Hotel.Views
                 Lemon3.Messages.L3Msg.SaveNotOK();
                 btnSave.IsEnabled = true;
             }
-            Close();
         }
 
+        private bool AllowPay()
+        {
+            if (Status != 1 || sePeople.Value == 0)
+            {
+                sePeople.Focus();
+                return false;
+            }
+            return true;
+        }
         private void btnPay_Click(object sender, RoutedEventArgs e)
         {
+            if (!AllowPay()) return;
             D05F2141 frmPayment = new D05F2141();
             frmPayment.TotalMoney = Convert.ToDecimal(seTotalMoney.EditValue);
             frmPayment.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmPayment.ShowDialog();
+            if (!frmPayment.bClicked) return;
             btnPay.IsEnabled = false;
             txtItem.IsEnabled = false;
             AmountPayment = frmPayment.TotalMoney;
+            DoSaveSQL();
+            Close();
         }
+
+        private void btnDeleteQuatity_Click(object sender, RoutedEventArgs e)
+        {
+            if (dtGrid.Rows.Count > 0)
+            {
+                int n = BLVoucher.GetCurrentRowIndex(GridVoucherInventory, "InventoryID");
+                int value_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_Quantity));
+                if (value_Old > 1)
+                {
+                    GridVoucherInventory.SetCellValue(n, "Quantity", value_Old - 1);
+                    CalAmountGrid(n);
+                }
+                else if (value_Old == 1)
+                {
+                    GridVoucherInventory.DeleteRowFocusEvent();
+                }
+                CalAmount();
+                btnSave.IsEnabled = true;
+            }
+            if (GridVoucherInventory.VisibleRowCount == 0)
+            {
+                btnAddQuatity.IsEnabled = false;
+                btnDeleteQuatity.IsEnabled = false;
+            }
+        }
+
+        private void btnAddQuatity_Click(object sender, RoutedEventArgs e)
+        {
+            int n = BLVoucher.GetCurrentRowIndex(GridVoucherInventory, "InventoryID");
+            try
+            {
+                int value_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_Quantity));
+                GridVoucherInventory.SetCellValue(n, "Quantity", value_Old + 1);
+                CalAmountGrid(n);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi!");
+            }
+            CalAmount();
+            btnSave.IsEnabled = true;
+        }
+        
     }
 }

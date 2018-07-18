@@ -1,6 +1,7 @@
 ﻿using Lemon3;
 using Lemon3.Controls.DevExp;
 using Lemon3.Data;
+using Mita_Hotel.BL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Mita_Hotel.Views
 {
@@ -33,17 +35,45 @@ namespace Mita_Hotel.Views
         public override void SetContentForL3Page()
         {
         }
+        private bool bLoaded = false;
 
         private void L3PageLoaded(object sender, RoutedEventArgs e)
         {
 
             GridTable.InputNumber288("n0", false, false, COL_TotalMoney);
             GridTable.SetDefaultFilterChangeGrid();
-            if (dt.Rows.Count == 0)
-            {
-                LoadSimple();
-            }
+            
             L3Control.SetShortcutPopupMenu(MainMenuControl);
+            try
+            {
+                if (dt.Rows.Count == 0)
+                {
+                    LoadSimple();
+                    SetTimer();
+                }
+                bLoaded = true;
+            }
+            catch (SqlException)
+            {
+                System.Windows.MessageBox.Show("Lỗi!");
+                bLoaded = false;
+            }
+        }
+        private void SetTimer()
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Start();
+        }
+        protected void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (bLoaded == true)
+            {
+                int i = BLVoucher.GetCurrentRowIndex(GridTable, "TableID");
+                LoadSimple();
+                GridTable.FocusRowHandle(i);
+            }
         }
 
         private SqlDataAdapter da = new SqlDataAdapter();
@@ -167,9 +197,10 @@ namespace Mita_Hotel.Views
             DataTable dt = L3SQLServer.ReturnDataTable("select VoucherID, Amount from D91T2140 WHERE TableID = '" + GridTable.GetFocusedRowCellValue("TableID").ToString() + "' and Status = '" + GridTable.GetFocusedRowCellValue("Status").ToString() + "'");
             if (dt.Rows.Count > 0) VoucherID = dt.Rows[dt.Rows.Count - 1]["VoucherID"].ToString();
             D05F2141 frmPayment = new D05F2141();
-            frmPayment.TotalMoney = Convert.ToDecimal(dt.Rows[0]["Amount"]);
+            frmPayment.TotalMoney = Convert.ToDecimal(dt.Rows[dt.Rows.Count - 1]["Amount"]);
             frmPayment.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmPayment.ShowDialog();
+            if (!frmPayment.bClicked) return;
             decimal AmountPayment = frmPayment.TotalMoney;
             L3SQLServer.ExecuteSQL("UPDATE D05T2010 " +
                                    "SET TotalMoney = '" + L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("TotalMoney"), "n0") + "', Status = 2, People = '" + L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("People"), "n0") + "', IsPaid = 1" +
