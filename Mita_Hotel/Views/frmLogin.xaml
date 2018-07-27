@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:Mita_Hotel.Login"
         xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Name="windowApp" x:Class="Mita_Hotel.Views.frmLogin"
-        mc:Ignorable="d" Height="274.702" Width="449.488" Title="Đăng nhập" ResizeMode="NoResize" Opacity="0.95" Loaded="Window_Loaded">
+        mc:Ignorable="d" Height="210.702" Width="443.088" Title="Đăng nhập" Opacity="0.95" Loaded="Window_Loaded"
+        WindowStyle="None"
+        WindowState="Normal" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        BorderThickness="0"
+    
+    >
     <Window.Resources>
         <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -239,29 +246,19 @@
             </ImageBrush.RelativeTransform>
         </ImageBrush>
     </Window.Background>
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <DockPanel Margin="0,0,0.2,-0.2">
-            <DockPanel.Background>
-                <ImageBrush/>
-            </DockPanel.Background>
-            <Menu Height="38" Margin="0,0,0.2,0" Width="444" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF3A3A3A" Foreground="#FFFFF9F9">
+        <DockPanel >
+            <Menu Height="38" Margin="0,0,0.2,0" Width="443" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF3A3A3A" Foreground="#FFFFF9F9">
                 <MenuItem Header="_Menu" Height="38" Background="#FF3A3A3A" Foreground="#FFFFF9F9">
                     <MenuItem x:Name="miForgot" Header="_Quên mật khẩu" Background="{x:Null}" Foreground="Black" BorderBrush="#00000000"/>
                     <MenuItem x:Name="miExit" Header="_Exit" Background="{x:Null}" Foreground="Black" Click="miExit_Click"/>
                 </MenuItem>
                 <MenuItem x:Name="miHelp" Header="_Trợ giúp" Height="38" Click="miHelp_Click"/>
+                <MenuItem Name="miClose" Header="Thoát" Height="38" Click="miClose_Click" />
             </Menu>
-
-
-
         </DockPanel>
-        <L3:L3Label x:Name="lbUsername" Content="Tên đăng nhập" Margin="41,80,288.2,118.8" FontSize="14">
+        <L3:L3Label x:Name="lbUsername" Content="Tên đăng nhập" Margin="56,62,292.2,0" Height="34" VerticalAlignment="Top">
             <L3:L3Label.Resources>
                 <Color x:Key="ColorLabel">#FF3C3C3C</Color>
             </L3:L3Label.Resources>
@@ -269,8 +266,8 @@
                 <SolidColorBrush Color="{DynamicResource ColorLabel}"/>
             </L3:L3Label.Foreground>
         </L3:L3Label>
-        <L3:L3Label x:Name="lbPassword" Content="Mật khẩu" Margin="73,125,288.2,77.8" FontSize="14"/>
-        <TextBox x:Name="txtUsername" Margin="151,80,92.2,135.8" FontSize="14" GotFocus="txtUsername_GotFocus" RenderTransformOrigin="0.5,0.503" BorderThickness="1,2" Style="{DynamicResource TextBoxStyle1}" BorderBrush="#7F5C5C5C" >
+        <L3:L3Label x:Name="lbPassword" Content="Mật khẩu" Margin="85,101,292.2,0" Height="29" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUsername"  Margin="151,62,50.2,0" GotFocus="txtUsername_GotFocus" Style="{DynamicResource TextBoxStyle1}" BorderBrush="#7F5C5C5C" Height="22" VerticalAlignment="Top" >
             <TextBox.Resources>
                 <Color x:Key="ColorSelection">#FF0072C6</Color>
                 <Color x:Key="ColorBorder">#7F5C5C5C</Color>
@@ -279,14 +276,14 @@
                 <SolidColorBrush Color="{DynamicResource ColorSelection}"/>
             </TextBox.SelectionBrush>
         </TextBox>
-        <PasswordBox x:Name="txtPassword" Margin="151,126,92.2,90.8" FontSize="11" GotFocus="txtPassword_GotFocus" BorderThickness="1,2" />
-        <dx:SimpleButton x:Name="btnLogin" Content="Đăng nhập" Height="44" VerticalAlignment="Top" Margin="63,182,253.2,0" Foreground="#FF3CAE00" IsDefault="True" IsEnabled="True" FontWeight="Bold" Click="btnLogin_Click" Template="{DynamicResource ButtonBaseControlTemplate1}"/>
+        <PasswordBox x:Name="txtPassword" Margin="151,101,50.2,0" GotFocus="txtPassword_GotFocus" Width="241.6" Height="22" VerticalAlignment="Top"/>
+        <dx:SimpleButton x:Name="btnLogin" Content="Đăng nhập" Height="44" VerticalAlignment="Top" Margin="0,137,50.2,0" Foreground="#FF3CAE00" IsDefault="True" IsEnabled="True" FontWeight="Bold" Click="btnLogin_Click" Template="{DynamicResource ButtonBaseControlTemplate1}" HorizontalAlignment="Right" Width="143"/>
         <dx:SimpleButton x:Name="btnLogin2" Content="Đăng nhập" Height="44" VerticalAlignment="Top" Margin="85,182,231.2,0" Foreground="#FF3CAE00" IsDefault="True" IsEnabled="True" FontWeight="Bold" Visibility="Hidden"/>
         <L3:L3Label x:Name="lbWrong" Content="Không tìm thấy tên đăng nhập!" Margin="95,45,92.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
         <L3:L3Label x:Name="lbWrong1" Content="Sai mật khẩu!" Margin="151,45,36.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
         <L3:L3Label x:Name="lbWrong2" Content="Không thể kết nối tới CSDL!" Margin="95,45,92.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
-        <dxe:CheckEdit Name="ceRememberLogin" Content="Ghi nhớ tên đăng nhập" Height="26" VerticalAlignment="Top" Margin="212,182,89.2,0" Foreground="#FF58F406"/>
-        <dxe:CheckEdit Name="ceAutoLogin" Content="Tự động đăng nhập cho lần sau" Height="26" VerticalAlignment="Top" Margin="212,209,36.2,0" Foreground="#FF58F406"/>
+        <dxe:CheckEdit Name="ceRememberLogin" Content="Ghi nhớ tên đăng nhập" Height="26" VerticalAlignment="Top" Margin="39,137,0,0" Foreground="#FF7C5F46" HorizontalAlignment="Left" Width="187"/>
+        <dxe:CheckEdit Name="ceAutoLogin" Content="Tự động đăng nhập cho lần sau" Height="26" VerticalAlignment="Top" Margin="39,155,0,0" Foreground="#FF7C5F46" HorizontalAlignment="Left" Width="211"/>
     </Grid>
-
 </L3:L3Window>
+

@@ -26,6 +26,7 @@
             <dxg:GridColumn x:Name="COL_Notes" FieldName="Notes" Header=" Ghi chú " Width="200"/>
             <dxg:GridColumn x:Name="COL_VAT" FieldName="VAT" Header=" VAT " Width="80"/>
             <dxg:GridColumn x:Name="COL_BarCode" FieldName="BarCode" Header=" Mã vạch " Width="170"/>
+            <dxg:GridColumn x:Name="COL_InStock" FieldName="InStock" Header=" Tồn kho " Width="80"/>
             <dxg:GridControl.View>
                 <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False"  Margin="0,0,0,-2" AllowEditing="False" ShowAutoFilterRow="True"/>
             </dxg:GridControl.View>

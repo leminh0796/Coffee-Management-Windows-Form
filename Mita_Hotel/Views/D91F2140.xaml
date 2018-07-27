@@ -6,20 +6,26 @@
       xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
       xmlns:local="clr-namespace:Mita_Hotel.Views"
       xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
-      xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.D91F2140"
+      xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="Mita_Hotel.Views.D91F2140"
       mc:Ignorable="d"
       Title="Phiếu bán lẻ" Loaded="L3Page_Loaded">
     <Grid>
-        <L3:L3GridControl x:Name="GridPBL" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Margin="0,0,1,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <dxb:MainMenuControl Height="40" Margin="0,0,-0.2,0"/>
+        <L3:L3GridControl x:Name="GridPBL" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Margin="0,0,1,0" Grid.Row="2" PreviewMouseDoubleClick="GridPBL_PreviewMouseDoubleClick">
             <L3:L3GridControl.ContextMenu>
                 <ContextMenu x:Name="cmPBL">
                     <MenuItem x:Name="miDetail" Header="Chi tiết" Click="miDetail_Click"/>
                 </ContextMenu>
             </L3:L3GridControl.ContextMenu>
             <L3:L3GridControl.View>
-                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="True" ShowAutoFilterRow="False"/>
+                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" ShowGroupPanel="False" AllowEditing="False" ShowAutoFilterRow="False"/>
             </L3:L3GridControl.View>
-            <dxg:GridColumn x:Name="COL_VoucherID" FieldName="VoucherID" Header="Mã phiếu"/>
+            <dxg:GridColumn x:Name="COL_VoucherID" FieldName="VoucherID" Header="Mã phiếu" Width="180"/>
             <dxg:GridColumn x:Name="COL_VoucherDate" FieldName="VoucherDate" Header="Ngày bán"/>
             <dxg:GridColumn x:Name="COL_UserID" FieldName="UserID" Header="Nhân viên bán"/>
             <dxg:GridColumn x:Name="COL_TableID" FieldName="TableID" Header="Mã bàn"/>
@@ -28,5 +34,14 @@
             <dxg:GridColumn x:Name="COL_Status" FieldName="Status" Header="Đã thanh toán"/>
             <dxg:GridColumn x:Name="COL_AmountPayment" FieldName="AmountPayment" Header="Khách trả"/>
         </L3:L3GridControl>
+        <Label Content="Bộ lọc:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Từ ngày:" HorizontalAlignment="Left" Margin="59,10,0,0" VerticalAlignment="Top"/>
+        <dxe:DateEdit Name="deFrom" HorizontalAlignment="Left" Margin="109,10,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Đến ngày:" HorizontalAlignment="Left" Margin="278,10,0,0" VerticalAlignment="Top"/>
+        <dxe:DateEdit Name="deTo" HorizontalAlignment="Left" Margin="336,10,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Bàn:" HorizontalAlignment="Left" Margin="515,10,0,0" VerticalAlignment="Top"/>
+        <dxg:LookUpEdit Name="lkeTable" ValueMember="TableID" DisplayMember="TableName" HorizontalAlignment="Left" Margin="542,10,0,0" VerticalAlignment="Top" Width="76"/>
+        <dx:SimpleButton Name="btnApply" Content="Áp dụng" HorizontalAlignment="Left" Height="24" Margin="651,8,0,0" VerticalAlignment="Top" Width="69" Click="btnApply_Click"/>
+        <dx:SimpleButton Name="btnRefresh" Content="Đặt lại" HorizontalAlignment="Left" Height="24" Margin="736,8,0,0" VerticalAlignment="Top" Width="69" Click="btnRefresh_Click"/>
     </Grid>
 </L3:L3Page>

@@ -73,6 +73,13 @@ namespace Mita_Hotel.Views
                     Add.lbListName.Content = "Tên tỉnh";
                     D92F1240.ListTypeID = "TT";
                     break;
+                case "ObjectID":
+                    Add.Title = "Thêm nhà cung cấp";
+                    Add.lbHeader.Content = "Loại danh mục : Nhà cung cấp";
+                    Add.txtblockListID.Text = "Mã NCC";
+                    Add.lbListName.Content = "Tên NCC";
+                    D92F1240.ListTypeID = "ObjectID";
+                    break;
             }
             Add.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Add.ShowDialog();
@@ -109,6 +116,13 @@ namespace Mita_Hotel.Views
                     Edit.txtblockListID.Text = "Mã tỉnh";
                     Edit.lbListName.Content = "Tên tỉnh";
                     D92F1240.ListTypeID = "TT";
+                    break;
+                case "ObjectID":
+                    Edit.Title = "Sửa nhà cung cấp";
+                    Edit.lbHeader.Content = "Loại danh mục : Nhà cung cấp";
+                    Edit.txtblockListID.Text = "Mã NCC";
+                    Edit.lbListName.Content = "Tên NCC";
+                    D92F1240.ListTypeID = "ObjectID";
                     break;
             }
             Edit.WindowStartupLocation = WindowStartupLocation.CenterScreen;

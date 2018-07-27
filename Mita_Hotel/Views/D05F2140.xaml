@@ -8,24 +8,25 @@
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.D05F2140"
         mc:Ignorable="d"
-        Title="Cửa sổ đặt bàn" Height="546.324" Width="919.6" ResizeMode="NoResize" Loaded="L3Window_Loaded">
+        Title="Cửa sổ đặt bàn" Height="546.324" Width="985.6" ResizeMode="NoResize" Loaded="L3Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <L3:L3GridControl Name="GridVoucherInventory" EnableSmartColumnsGeneration="False" HorizontalAlignment="Left" Margin="10,128,0,69.8" Width="885">
+        <L3:L3GridControl Name="GridVoucherInventory" EnableSmartColumnsGeneration="False" HorizontalAlignment="Left" Margin="10,128,0,69.8" Width="959">
             <L3:L3GridControl.View>
                 <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" ShowGroupPanel="False" AllowEditing="False"/>
             </L3:L3GridControl.View>
             <dxg:GridColumn Name="COL_InventoryID" Header="Mã hàng" FieldName="InventoryID"/>
             <dxg:GridColumn Header="Tên hàng" FieldName="InventoryName"/>
             <dxg:GridColumn Name="COL_ListName" Header="ĐVT" FieldName="UnitID"/>
-            <dxg:GridColumn Name="COL_Quantity" Header="Số lượng" FieldName="Quantity" AllowEditing="true" />
+            <dxg:GridColumn Name="COL_InStock" Header="Còn tồn" FieldName="InStock"/>
+            <dxg:GridColumn Name="COL_Quantity" Header="Số lượng" FieldName="Quantity" AllowEditing="False" />
             <dxg:GridColumn Name="COL_Price" Header="Giá" FieldName="Price"/>
             <dxg:GridColumn Name="COL_Amount" Header="Thành tiền" FieldName="Amount"/>
             <dxg:GridColumn Name="COL_VAT" Header="VAT" FieldName="VAT"/>
         </L3:L3GridControl>
-        <GroupBox Header="Thông tin hóa đơn" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="885" Height="63">
+        <GroupBox Header="Thông tin hóa đơn" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="959" Height="63">
             <Grid Margin="0,0,-0.2,-12.6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -38,14 +39,15 @@
             </Grid>
         </GroupBox>
         <L3:L3Button Name="btnDeleteQuatity" Content="Xoá" HorizontalAlignment="Left" Height="18" Margin="116,110,0,0" VerticalAlignment="Top" Width="48" Click="btnDeleteQuatity_Click" />
-        <L3:L3Button Name="btnAddQuatity" Content="Thêm" HorizontalAlignment="Left" Height="18" Margin="164,110,0,0" VerticalAlignment="Top" Width="55" Click="btnAddQuatity_Click"/>
-        <TextBox Name="txtItem" HorizontalAlignment="Left" Margin="116,88,0,0" VerticalAlignment="Top" Width="773" PreviewKeyDown="txtItem_KeyDown"/>
+        <L3:L3Button Name="btnAddQuatity" Content="Thêm" HorizontalAlignment="Left" Height="18" Margin="164,110,0,0" VerticalAlignment="Top" Width="55" Click="btnAddQuatity_Click" />
+        <L3:L3Button Name="btnAdd10Quatity" Content="Thêm 10" HorizontalAlignment="Left" Height="18" Margin="219,110,0,0" VerticalAlignment="Top" Width="72" Click="btnAdd10Quatity_Click" />
+        <TextBox Name="txtItem" HorizontalAlignment="Left" Margin="116,88,0,0" VerticalAlignment="Top" Width="853" PreviewKeyDown="txtItem_KeyDown"/>
         <dxe:ListBoxEdit Name="lbeSuggestion" Margin="116,110,24.6,355.8" Visibility="Collapsed" EditValueChanged="lbeSuggestion_EditValueChanged"/>
         <Label Content="Nhập sản phẩm:" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="0.186,1.974"/>
-        <L3:L3Button Name="btnSave" Content="Lưu" HorizontalAlignment="Left" Height="54" Margin="790,452,0,0" VerticalAlignment="Top" Width="105" Click="btnSave_Click"/>
-        <L3:L3Button x:Name="btnPay" Content="Thanh toán" HorizontalAlignment="Left" Height="54" Margin="655,452,0,0" VerticalAlignment="Top" Width="105" Click="btnPay_Click"/>
+        <L3:L3Button Name="btnSave" Content="Lưu" HorizontalAlignment="Left" Height="54" Margin="833,452,0,0" VerticalAlignment="Top" Width="105" Click="btnSave_Click"/>
+        <L3:L3Button x:Name="btnPay" Content="Thanh toán" HorizontalAlignment="Left" Height="54" Margin="698,452,0,0" VerticalAlignment="Top" Width="105" Click="btnPay_Click"/>
         <Label x:Name="lbTotalMoney" Content="Tổng số tiền:" HorizontalAlignment="Left" Margin="326,452,0,0" VerticalAlignment="Top" Width="105" RenderTransformOrigin="1.513,0.586"/>
         <L3:L3SpinEdit Name="seTotalMoney" HorizontalAlignment="Left" Margin="413,452,0,0" VerticalAlignment="Top" Width="225" IsReadOnly="True"/>
-        
+
     </Grid>
 </L3:L3Window>

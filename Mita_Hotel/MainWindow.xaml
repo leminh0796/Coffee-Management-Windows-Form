@@ -31,23 +31,30 @@
                         <dxb:BarButtonItem Name="miTable" Content="Danh mục bàn" LargeGlyph="Images/table.png" ItemClick="miTable_ItemClick">
                             <dxb:BarButtonItem.ContentTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="113" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="96" TextAlignment="Center"/>
+                                </DataTemplate>
+                            </dxb:BarButtonItem.ContentTemplate>
+                        </dxb:BarButtonItem>
+                        <dxb:BarButtonItem Name="miPBL" Content="Phiếu bán lẻ" Glyph="{dx:DXImage Image=BOReport_16x16.png}" LargeGlyph="{dx:DXImage Image=BOReport_32x32.png}" ItemClick="miPBL_ItemClick">
+                            <dxb:BarButtonItem.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="88" TextAlignment="Center"/>
                                 </DataTemplate>
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
                     <dxr:RibbonPageGroup Caption="Kho">
-                        <dxb:BarButtonItem Name="miWarehouse" Content="Nhập kho" LargeGlyph="Images/warehouse.png" ItemClick="miWarehouse_ItemClick" >
+                        <dxb:BarButtonItem Name="miStorehouse" Content="Nhập kho" LargeGlyph="Images/warehouse.png" ItemClick="miStorehouse_ItemClick" >
                             <dxb:BarButtonItem.ContentTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="113" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="100" TextAlignment="Center"/>
                                 </DataTemplate>
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
                         <dxb:BarButtonItem Name="miBraisedFish" Content="Cá kho" LargeGlyph="Images/cakho.png">
                             <dxb:BarButtonItem.ContentTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="113" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="90" TextAlignment="Center"/>
                                 </DataTemplate>
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
@@ -72,15 +79,6 @@
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
-                    <dxr:RibbonPageGroup Name="rpgPBL" Caption="Buôn bán linh tinh">
-                        <dxb:BarButtonItem Name="miPBL" Content="Phiếu bán lẻ" Glyph="{dx:DXImage Image=BOReport_16x16.png}" LargeGlyph="{dx:DXImage Image=BOReport_32x32.png}" ItemClick="miPBL_ItemClick">
-                            <dxb:BarButtonItem.ContentTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="127" TextAlignment="Center"/>
-                                </DataTemplate>
-                            </dxb:BarButtonItem.ContentTemplate>
-                        </dxb:BarButtonItem>
-                    </dxr:RibbonPageGroup>
                     <dxr:RibbonPageGroup Caption="Danh mục chung">
                         <dxb:BarButtonItem x:Name="miUnitID" Content="Đơn vị tính" ItemClick="miUnitID_ItemClick" Glyph="{dx:DXImage Image=Accounting_16x16.png}" LargeGlyph="{dx:DXImage Image=Accounting_32x32.png}" RibbonStyle="Default">
                             <dxb:BarButtonItem.ContentTemplate>
@@ -90,6 +88,13 @@
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
                         <dxb:BarButtonItem Content="Tỉnh Thành" ItemClick="BarButtonItem_ItemClick" Glyph="{dx:DXImage Image=BOLocalization_16x16.png}" LargeGlyph="{dx:DXImage Image=BOLocalization_32x32.png}">
+                            <dxb:BarButtonItem.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="80" VerticalAlignment="Stretch" TextAlignment="Center"/>
+                                </DataTemplate>
+                            </dxb:BarButtonItem.ContentTemplate>
+                        </dxb:BarButtonItem>
+                        <dxb:BarButtonItem Content="Nhà cung cấp" ItemClick="miObject_ItemClick" LargeGlyph="{dx:DXImage Image=BOCustomer_32x32.png}">
                             <dxb:BarButtonItem.ContentTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="80" VerticalAlignment="Stretch" TextAlignment="Center"/>

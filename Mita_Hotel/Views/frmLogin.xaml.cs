@@ -188,5 +188,11 @@ namespace Mita_Hotel.Views
             lbPassword.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3C3C3C"));
             lbWrong1.Visibility = Visibility.Hidden;
         }
+
+        private void miClose_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
     }
 }

@@ -7,8 +7,8 @@
     <ControlTemplate x:Key="UnitID">
         <L3:L3GridControl Name="PART_GridControl">
             <dxg:GridControl.Columns>
-                <dxg:GridColumn FieldName="ListID" Header="Mã"  Width="100"  Visible="True"/>
-                <dxg:GridColumn FieldName="ListName" Header="Tên"  Width="240"  HorizontalHeaderContentAlignment="Center"/>
+                <dxg:GridColumn FieldName="ListID" Header="Mã"  Width="150"  Visible="True"/>
+                <dxg:GridColumn FieldName="ListName" Header="Tên"  Width="300"  HorizontalHeaderContentAlignment="Center"/>
             </dxg:GridControl.Columns>
             <dxg:GridControl.View>
                 <dxg:TableView AutoWidth="True" ShowIndicator="False"  ShowVerticalLines="True" ShowHorizontalLines="True" ShowCheckBoxSelectorColumn="True"/>

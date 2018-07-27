@@ -15,23 +15,22 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <L3:L3GridControl x:Name="GridWarehouse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Margin="0,0,1,0" Grid.Row="2" >
-
+        <L3:L3GridControl x:Name="GridStore" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" Margin="0,0,1,0" Grid.Row="2" IsHitTestVisible="True" CustomColumnDisplayText="GridStore_CustomColumnDisplayText">
             <L3:L3GridControl.View>
                 <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="False" ShowAutoFilterRow="False" ShowGroupPanel="False"/>
             </L3:L3GridControl.View>
-            <dxg:GridColumn x:Name="COL_VoucherID" FieldName="VoucherID" Header="Mã phiếu"/>
+            <dxg:GridColumn x:Name="COL_VoucherID" FieldName="VoucherID" Header="Mã phiếu" Width="180"/>
             <dxg:GridColumn x:Name="COL_VoucherDate" FieldName="VoucherDate" Header="Ngày nhập"/>
             <dxg:GridColumn x:Name="COL_ObjectID" FieldName="ObjectID" Header="Nhà cung cấp"/>
             <dxg:GridColumn x:Name="COL_Amount" FieldName="Amount" Header="Số tiền nhập"/>
             <dxg:GridColumn x:Name="COL_IsPayment" FieldName="IsPayment" Header="Đã thanh toán"/>
+
         </L3:L3GridControl>
-        <dxb:MainMenuControl Name="MainMenuControl">
-            <dxb:BarButtonItem Name="tsbAdd" Content="Thêm" ItemClick="tsbAdd_ItemClick"/>
-            <dxb:BarButtonItem Name="tsbEdit" Content="Sửa" ItemClick ="tsbEdit_ItemClick"/>
+        <dxb:MainMenuControl>
+            <dxb:BarButtonItem Name="tsbAdd" Content="Nhập mới" ItemClick="tsbAdd_ItemClick"/>
+            <dxb:BarButtonItem Name="tsbEdit" Content="Điều chỉnh" ItemClick ="tsbEdit_ItemClick"/>
+            <dxb:BarButtonItem Name="tsbView" Content="Xem" ItemClick="tsbView_ItemClick"/>
             <dxb:BarButtonItem Name="tsbDelete" Content="Xóa" ItemClick="tsbDelete_ItemClick"/>
-            <dxb:BarItemSeparator />
-            <dxb:BarButtonItem Name="tsbListAll" Content="Liệt kê tất cả" ItemClick ="tsbListAll_ItemClick"/>
         </dxb:MainMenuControl>
     </Grid>
 </L3:L3Page>

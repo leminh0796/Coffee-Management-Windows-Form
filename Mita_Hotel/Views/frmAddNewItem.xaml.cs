@@ -45,7 +45,7 @@ namespace Mita_Hotel.Views
             }
             item.Price = sePrice.Value;
             item.Notes = txtNotes.Text;
-            item.VAT = seVAT.Value;
+            item.VAT = Decimal.Divide(seVAT.Value, 100);
             item.BarCode = txtBarcode.Text;
             switch (PageListItem.IsAddItem)
             {
@@ -90,14 +90,15 @@ namespace Mita_Hotel.Views
             item.ImageLocation = "addnewimage.png";
             sePrice.InputNumber288("n0", false, false);
             seVAT.InputNumber288("n0", false, false);
+            seVAT.InputPercent(false, false, 28, 8);
             if (PageListItem.IsAddItem == false)
             {
                 DataTable dt = L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode, ImageLocation from D91T1040 WHERE InventoryID = '" + PageListItem.InventoryID + "'");
                 txtInventoryName.Text = dt.Rows[0]["InventoryName"].ToString();
                 lkeUnitID.EditValue = dt.Rows[0]["UnitID"];
-                sePrice.Value = System.Convert.ToDecimal(dt.Rows[0]["Price"]);
+                sePrice.Value = Convert.ToDecimal(dt.Rows[0]["Price"]);
                 txtNotes.Text = dt.Rows[0]["Notes"].ToString();
-                seVAT.Value = System.Convert.ToDecimal(dt.Rows[0]["VAT"]);
+                seVAT.Value = Convert.ToDecimal(dt.Rows[0]["VAT"])*100;
                 txtBarcode.Text = dt.Rows[0]["BarCode"].ToString();
                 var uriSource = new Uri(@"/Mita_Hotel;component/Images/"+ dt.Rows[0]["ImageLocation"], UriKind.Relative);
                 ieImage.Source = new BitmapImage(uriSource);
@@ -110,14 +111,14 @@ namespace Mita_Hotel.Views
             return L3SQLServer.ExecuteNoneQuery("sp_AddItem",
                CommandType.StoredProcedure,
                new string[] { "InventoryName", "UnitID", "Price", "Notes", "VAT", "BarCode", "CreateUserID", "ImageLocation" }
-               , new object[] { item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n0"), item.BarCode, L3.UserID, item.ImageLocation });
+               , new object[] { item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation });
         }
         public bool EditItem()
         {
             return L3SQLServer.ExecuteNoneQuery("sp_EditItem",
                CommandType.StoredProcedure,
                new string[] { "InventoryID", "InventoryName", "UnitID", "Price", "Notes", "VAT", "BarCode", "LastModifyUserID", "ImageLocation" }
-               , new object[] { PageListItem.InventoryID, item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n0"), item.BarCode, L3.UserID, item.ImageLocation });
+               , new object[] { PageListItem.InventoryID, item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation });
         }
 
         private void btnImage_Click(object sender, RoutedEventArgs e)

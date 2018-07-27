@@ -99,6 +99,8 @@ namespace Mita_Hotel
                         CreateDocumentPanel(pagePBL);
                         break;
                     case "D07F2010":
+                        D07F2010 pagePNK = new D07F2010();
+                        CreateDocumentPanel(pagePNK);
                         break;
                 }
             }
@@ -178,9 +180,14 @@ namespace Mita_Hotel
             CallWindow("D91F2140");
         }
 
-        private void miWarehouse_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        private void miStorehouse_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             CallWindow("D07F2010");
+        }
+
+        private void miObject_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            CallD91F1240("ObjectID", "Danh mục Nhà cung cấp");
         }
     }
 }

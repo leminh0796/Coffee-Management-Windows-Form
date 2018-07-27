@@ -37,14 +37,15 @@ namespace Mita_Hotel.Views
             LoadItemGrid();
 
             GridListItem.InputNumber288("n0", false, false, COL_Price);
-            GridListItem.InputNumber288("n0", false, false, COL_VAT);
+            GridListItem.InputNumber288("n0", false, false, COL_InStock);
+            GridListItem.InputPercent(false, false, 28, 8, COL_VAT);
             GridListItem.SetDefaultFilterChangeGrid();
 
             L3Control.SetShortcutPopupMenu(MainMenuControl1);
         }
         public void LoadItemGrid()
         {
-            SqlCommand cmd = new SqlCommand("select InventoryID, InventoryName, ListName, Price, Notes, VAT, BarCode from D91T1040 left join D91T1240 on D91T1040.UnitID = D91T1240.ListID");
+            SqlCommand cmd = new SqlCommand("select InventoryID, InventoryName, ListName, Price, Notes, VAT, BarCode, InStock from D91T1040 left join D91T1240 on D91T1040.UnitID = D91T1240.ListID");
             DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
             GridListItem.ItemsSource = dt;
         }

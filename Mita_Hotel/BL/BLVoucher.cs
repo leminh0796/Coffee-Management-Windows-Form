@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace Mita_Hotel.BL
 {
@@ -18,9 +19,17 @@ namespace Mita_Hotel.BL
         }
         public static int GetCurrentRowIndex(L3GridControl Grid, string IDColumn)
         {
-            string IDValue = Grid.GetFocusedRowCellValue(IDColumn).ToString();
-            int n = Grid.FindRowByValue(IDColumn, IDValue);
-            return n;
+            try
+            {
+                string IDValue = Grid.GetFocusedRowCellValue(IDColumn).ToString();
+                int n = Grid.FindRowByValue(IDColumn, IDValue);
+                return n;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi!");
+                return 0;
+            }
         }
     }
 }

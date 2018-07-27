@@ -22,7 +22,7 @@
             <dxg:GridColumn Name="COL_Amount" Header="Thành tiền" FieldName="Amount"/>
             <dxg:GridColumn Name="COL_VAT" Header="VAT" FieldName="VAT"/>
         </L3:L3GridControl>
-        <Label Name="lbVoucherID" Content="Mã phiếu bán lẻ: " HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="35" Width="174"/>
+        <Label Name="lbVoucherID" Content="Mã phiếu bán lẻ: " HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="35" Width="276"/>
 
 
     </Grid>

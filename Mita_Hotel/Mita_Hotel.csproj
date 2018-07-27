@@ -84,10 +84,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\LEMON3\D99D0451.dll</HintPath>
     </Reference>
-    <Reference Include="D99D0551, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\LEMON3\D99D0551.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Images.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
@@ -130,6 +126,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\BLStore.cs" />
     <Compile Include="BL\BLTable.cs" />
     <Compile Include="BL\BLVoucher.cs" />
     <Compile Include="Models\ListGeneral.cs" />
@@ -149,6 +146,9 @@
     </Compile>
     <Compile Include="Views\D07F2010.xaml.cs">
       <DependentUpon>D07F2010.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\D07F2011.xaml.cs">
+      <DependentUpon>D07F2011.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\D91F1240.xaml.cs">
       <DependentUpon>D91F1240.xaml</DependentUpon>
@@ -196,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\D07F2010.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\D07F2011.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -283,8 +287,6 @@
   <ItemGroup>
     <Resource Include="Images\cocalon330.jpg" />
     <Resource Include="MitaManager.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="texture.jpg" />
   </ItemGroup>
   <ItemGroup>

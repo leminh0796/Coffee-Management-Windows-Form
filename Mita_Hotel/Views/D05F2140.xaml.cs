@@ -122,7 +122,8 @@ namespace Mita_Hotel.Views
             GridVoucherInventory.InputNumber288("n1", false, false, COL_Quantity);
             GridVoucherInventory.InputNumber288("n0", false, false, COL_Amount);
             GridVoucherInventory.InputNumber288("n0", false, false, COL_Price);
-            GridVoucherInventory.InputNumber288("n0", false, false, COL_VAT);
+            GridVoucherInventory.InputPercent(false, false, 28, 8, COL_VAT);
+            GridVoucherInventory.InputNumber288("n0", false, false, COL_InStock);
             seTotalMoney.InputNumber288("n0", false, false);
             sePeople.InputNumber288("n0", false, false);
         }
@@ -142,22 +143,6 @@ namespace Mita_Hotel.Views
                 btnPay.IsEnabled = true;
                 btnDeleteQuatity.IsEnabled = true;
             }
-            //Dispatcher.BeginInvoke(new ThreadStart(() =>
-            //{
-            //    L3DataSource.LoadDataSource(GridVoucherInventory, dtGrid, true);
-            //    if (dtGrid.Rows.Count == 0)
-            //    {
-            //        btnPay.IsEnabled = false;
-            //        btnDeleteQuatity.IsEnabled = false;
-            //    }
-
-            //    else
-            //    {
-            //        btnPay.IsEnabled = true;
-            //        btnDeleteQuatity.IsEnabled = true;
-            //    }
-            //}
-            //));
         }
         private void LoadMaster()
         {
@@ -180,7 +165,14 @@ namespace Mita_Hotel.Views
 
         private void CalAmountGrid(int irow)
         {
-            GridVoucherInventory.SetCellValue(irow, "Amount", L3ConvertType.Number(GridVoucherInventory.GetCellValue(irow, "Quantity")) * L3ConvertType.Number(GridVoucherInventory.GetCellValue(irow, "Price")));
+            try
+            {
+                GridVoucherInventory.SetCellValue(irow, "Amount", L3ConvertType.Number(GridVoucherInventory.GetCellValue(irow, "Quantity")) * L3ConvertType.Number(GridVoucherInventory.GetCellValue(irow, "Price")) * (1 - L3ConvertType.Number(GridVoucherInventory.GetCellValue(irow, "VAT"))));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Vui lòng trỏ đúng!");
+            }
 
         }
 
@@ -197,7 +189,7 @@ namespace Mita_Hotel.Views
             string sInventoryID = lbeSuggestion.EditValue.ToString();
             DataTable dt = L3SQLServer.ReturnDataTable("select * FROM D91T1040 where IsDelete = 0 and InventoryID = '" + sInventoryID + "'");
             string sInventoryName = "";
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && Convert.ToDecimal(dt.Rows[0]["InStock"]) > 0)
             {
                 btnPay.IsEnabled = true;
                 sInventoryName = L3ConvertType.L3String(dt.Rows[0]["InventoryName"]);
@@ -205,7 +197,12 @@ namespace Mita_Hotel.Views
                 if (irow >= 0)
                 {
                     int value_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(irow, COL_Quantity));
-                    GridVoucherInventory.SetCellValue(irow, "Quantity", value_Old + 1);
+                    int stock_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(irow, COL_InStock));
+                    if (stock_Old > 0)
+                    {
+                        GridVoucherInventory.SetCellValue(irow, "Quantity", value_Old + 1);
+                        GridVoucherInventory.SetCellValue(irow, "InStock", stock_Old - 1);
+                    }
                     CalAmountGrid(irow);
                 }
                 else
@@ -214,16 +211,18 @@ namespace Mita_Hotel.Views
                     dr["InventoryID"] = sInventoryID;
                     dr["InventoryName"] = dt.Rows[0]["InventoryName"];
                     dr["UnitID"] = dt.Rows[0]["UnitID"];
+                    dr["InStock"] = Convert.ToDecimal(dt.Rows[0]["InStock"]) - 1;
                     dr["Quantity"] = 1;
                     dr["Price"] = dt.Rows[0]["Price"];
                     dr["VAT"] = dt.Rows[0]["VAT"];
-                    dr["Amount"] = L3ConvertType.Number(dr["Quantity"]) * L3ConvertType.Number(dr["Price"]);
+                    dr["Amount"] = L3ConvertType.Number(dr["Quantity"]) * L3ConvertType.Number(dr["Price"]) * (1 - L3ConvertType.Number(dr["VAT"]));
                     dtGrid.Rows.Add(dr);
                 }
                 btnSave.IsEnabled = true;
                 btnDeleteQuatity.IsEnabled = true;
                 btnAddQuatity.IsEnabled = true;
             }
+            else MessageBox.Show("Đã hết hàng!");
             CalAmount();
             txtItem.Text = "";
             lbeSuggestion.Visibility = Visibility.Collapsed;
@@ -294,11 +293,29 @@ namespace Mita_Hotel.Views
                 sSQL.AppendLine("VALUES(");
                 sSQL.AppendLine(L3SQLClient.SQLString(VoucherID) + L3.COMMA); //VoucherID'
                 sSQL.AppendLine(L3SQLClient.SQLString(dr["InventoryID"]) + L3.COMMA); //InventoryID
-                sSQL.AppendLine(L3SQLClient.SQLMoney(dr["VAT"], "n1") + L3.COMMA); //VAT
+                sSQL.AppendLine(dr["VAT"] + L3.COMMA); //VAT
                 sSQL.AppendLine(L3SQLClient.SQLMoney(dr["Price"], "n0") + L3.COMMA); //Price
                 sSQL.AppendLine(L3SQLClient.SQLString(dr["UnitID"]) + L3.COMMA); //UnitID
                 sSQL.AppendLine(L3SQLClient.SQLMoney(dr["Quantity"], "n0")); //Quantity
                 sSQL.AppendLine(")");
+                sRet.AppendLine(sSQL.ToString());
+            }
+            return sRet.ToString();
+        }
+
+        private string SQLUpdateStockD91T1040s()
+        {
+            StringBuilder sRet = new StringBuilder("--Luu them tin chi tiet");
+            StringBuilder sSQL = new StringBuilder();
+            foreach (DataRow dr in dtGrid.Rows)
+            {
+                sSQL = new StringBuilder();
+                sSQL.AppendLine(" ");
+                sSQL.AppendLine("UPDATE D91T1040 ");
+                sSQL.AppendLine("SET InStock =");
+                sSQL.AppendLine(dr["InStock"].ToString());
+                sSQL.AppendLine("WHERE InventoryID =");
+                sSQL.AppendLine(dr["InventoryID"].ToString());
                 sRet.AppendLine(sSQL.ToString());
             }
             return sRet.ToString();
@@ -324,6 +341,7 @@ namespace Mita_Hotel.Views
             sSQL.AppendLine(SQLDeleteD91T2140());
             sSQL.AppendLine(SQLInsertD91T2140());
             sSQL.AppendLine(SQLInsertD91T2141s());
+            sSQL.AppendLine(SQLUpdateStockD91T1040s());
             if (L3SQLServer.ExecuteSQL(sSQL.ToString()))
             {
                 if (Status == 1)
@@ -376,16 +394,20 @@ namespace Mita_Hotel.Views
         {
             if (dtGrid.Rows.Count > 0)
             {
+                string InventoryID = GridVoucherInventory.GetFocusedRowCellValue(COL_InventoryID).ToString();
                 int n = BLVoucher.GetCurrentRowIndex(GridVoucherInventory, "InventoryID");
                 int value_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_Quantity));
+                int stock_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_InStock));
                 if (value_Old > 1)
                 {
                     GridVoucherInventory.SetCellValue(n, "Quantity", value_Old - 1);
+                    GridVoucherInventory.SetCellValue(n, "InStock", stock_Old + 1);
                     CalAmountGrid(n);
                 }
                 else if (value_Old == 1)
                 {
                     GridVoucherInventory.DeleteRowFocusEvent();
+                    //L3SQLServer.ExecuteSQL("UPDATE D91T1040 SET InStock = " + stock_Old + 1 + " WHERE InventoryID = '" + InventoryID + "'");
                 }
                 CalAmount();
                 btnSave.IsEnabled = true;
@@ -403,7 +425,12 @@ namespace Mita_Hotel.Views
             try
             {
                 int value_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_Quantity));
-                GridVoucherInventory.SetCellValue(n, "Quantity", value_Old + 1);
+                int stock_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_InStock));
+                if (stock_Old > 0)
+                {
+                    GridVoucherInventory.SetCellValue(n, "Quantity", value_Old + 1);
+                    GridVoucherInventory.SetCellValue(n, "InStock", stock_Old - 1);
+                }
                 CalAmountGrid(n);
             }
             catch (Exception)
@@ -413,6 +440,27 @@ namespace Mita_Hotel.Views
             CalAmount();
             btnSave.IsEnabled = true;
         }
-        
+
+        private void btnAdd10Quatity_Click(object sender, RoutedEventArgs e)
+        {
+            int n = BLVoucher.GetCurrentRowIndex(GridVoucherInventory, "InventoryID");
+            try
+            {
+                int value_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_Quantity));
+                int stock_Old = L3ConvertType.L3Int(GridVoucherInventory.GetCellValue(n, COL_InStock));
+                if (stock_Old >= 10)
+                {
+                    GridVoucherInventory.SetCellValue(n, "Quantity", value_Old + 10);
+                    GridVoucherInventory.SetCellValue(n, "InStock", stock_Old - 10);
+                }
+                CalAmountGrid(n);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi!");
+            }
+            CalAmount();
+            btnSave.IsEnabled = true;
+        }
     }
 }
