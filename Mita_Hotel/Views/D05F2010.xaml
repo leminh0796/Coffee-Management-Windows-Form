@@ -7,7 +7,8 @@
       xmlns:local="clr-namespace:Mita_Hotel.Views"
       xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
       xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-      xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.D05F2010"
+      xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="Mita_Hotel.Views.D05F2010"
       mc:Ignorable="d"
       Title="Danh mục bàn" Loaded="L3PageLoaded">
     <Grid>
@@ -15,7 +16,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <L3:L3GridControl x:Name="GridTable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Margin="0,0,1,0" Grid.Row="2" >
+        <L3:L3GridControl x:Name="GridTable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1348" Height="654" AutoGenerateColumns="None" EnableSmartColumnsGeneration="True" Margin="0,0,1,0" Grid.Row="2" SelectionMode="None" OpacityMask="Black" >
             <L3:L3GridControl.ContextMenu>
                 <ContextMenu x:Name="cmTable" Loaded="cmTable_Loaded">
                     <MenuItem x:Name="mnsAdd" Header="Gọi món" Click="mnsAdd_Click">
@@ -39,16 +40,31 @@
             </L3:L3GridControl.ContextMenu>
 
             <L3:L3GridControl.View>
-                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="False" ShowAutoFilterRow="False" ShowGroupPanel="False">
+                <dxg:CardView Name="cvTable" AllowEditing="False" ShowGroupPanel="False" ShowGroupedColumns="True" FixedSize="200" MinFixedSize="150"
+                              PrintAutoCardWidth="False" NavigationStyle="{Binding Path=SelectedItem.Content, ElementName=NavigationStyleComboBox}"
+                              AllowCardResizing="False"
+                              SeparatorThickness="1"
+                              MaxCardCountInRow="3"
+                              CardLayout="Rows" CardAlignment="Center">
+                    <dxg:CardView.CardHeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="Đây là cái bàn"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </dxg:CardView.CardHeaderTemplate>
+                    
+                </dxg:CardView>
+                <!--<dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="False" ShowAutoFilterRow="False" ShowGroupPanel="False">
                     <dxg:TableView.FormatConditions>
                         <dxg:FormatCondition ValueRule="Equal" Value1="1" FieldName="Status" PredefinedFormatName="LightRedFillWithDarkRedText" ApplyToRow="True" />
                         <dxg:FormatCondition ValueRule="Equal" Value1="2" FieldName="Status" PredefinedFormatName="YellowFillWithDarkYellowText" ApplyToRow="True" />
                         <dxg:FormatCondition ValueRule="Equal" Value1="0" FieldName="Status" PredefinedFormatName="GreenFillWithDarkGreenText" ApplyToRow="True" />
                     </dxg:TableView.FormatConditions>
-                </dxg:TableView>
+                </dxg:TableView>-->
             </L3:L3GridControl.View>
             <dxg:GridColumn x:Name="COL_TableID" FieldName="TableID" Header="Mã bàn"/>
-            <dxg:GridColumn x:Name="COL_TableName" FieldName="TableName" Header="Tên bàn"/>
+            <dxg:GridColumn x:Name="COL_TableName" FieldName="TableName" Header="Tên bàn" Visible="False"/>
             <dxg:GridColumn x:Name="COL_Position" FieldName="Position" Header="Vị trí"/>
             <dxg:GridColumn x:Name="COL_TotalMoney" FieldName="TotalMoney" Header="Tổng số tiền hiện tại"/>
             <dxg:GridColumn x:Name="COL_Status" FieldName="Status" Header="Trạng thái">

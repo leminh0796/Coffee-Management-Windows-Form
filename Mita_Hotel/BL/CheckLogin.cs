@@ -36,5 +36,6 @@ namespace Mita_Hotel.Setup
             SqlCommand cmd2 = new SqlCommand("select Username from D00T0040 Where Username = '" + username + "'");
             return L3SQLServer.ExecuteSQL(cmd2.CommandText); ;
         }
+        
     }
 }

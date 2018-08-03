@@ -42,7 +42,6 @@ namespace Mita_Hotel.Views
 
             GridTable.InputNumber288("n0", false, false, COL_TotalMoney);
             GridTable.SetDefaultFilterChangeGrid();
-            
             L3Control.SetShortcutPopupMenu(MainMenuControl);
             try
             {
@@ -78,12 +77,18 @@ namespace Mita_Hotel.Views
 
         private SqlDataAdapter da = new SqlDataAdapter();
         private DataTable dt = new DataTable();
+        
 
         public void LoadSimple()
         {
             DataTable dt = L3SQLServer.ReturnDataTable("select TableID, TableName, Position, TotalMoney, Status, People, IsPaid from D05T2010");
             GridTable.ItemsSource = dt;
             lkesStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
+        }
+
+        ImageSource GetImage(string path)
+        {
+            return new BitmapImage(new Uri(path, UriKind.Relative));
         }
 
         private void mnsAdd_Click(object sender, RoutedEventArgs e)

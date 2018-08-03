@@ -125,7 +125,5 @@ namespace Mita_Hotel.Views
                 CheckMenuOthers();
             }
         }
-
-        
     }
 }

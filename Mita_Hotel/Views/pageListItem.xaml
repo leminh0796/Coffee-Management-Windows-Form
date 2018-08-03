@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <L3:L3GridControl x:Name="GridListItem" HorizontalAlignment="Left" PropertyChanged="GridListItem_PropertyChanged" VerticalAlignment="Top" Width="1348" Height="654" Grid.Row="1"  >
-
+           
             <dxg:GridColumn x:Name="COL_ItemID" FieldName="InventoryID" Header=" Mã hàng " Width="80" ReadOnly="True"/>
             <dxg:GridColumn x:Name="COL_ItemName" FieldName="InventoryName" Header=" Hàng hóa " Width="180"/>
             <dxg:GridColumn x:Name="COL_UnitID" FieldName="ListName" Header=" Đơn vị " Width="70"/>

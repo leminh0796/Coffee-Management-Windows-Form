@@ -87,14 +87,14 @@
                                 </DataTemplate>
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
-                        <dxb:BarButtonItem Content="Tỉnh Thành" ItemClick="BarButtonItem_ItemClick" Glyph="{dx:DXImage Image=BOLocalization_16x16.png}" LargeGlyph="{dx:DXImage Image=BOLocalization_32x32.png}">
+                        <dxb:BarButtonItem Name="miLocation"  Content="Tỉnh Thành" ItemClick="BarButtonItem_ItemClick" Glyph="{dx:DXImage Image=BOLocalization_16x16.png}" LargeGlyph="{dx:DXImage Image=BOLocalization_32x32.png}">
                             <dxb:BarButtonItem.ContentTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="80" VerticalAlignment="Stretch" TextAlignment="Center"/>
                                 </DataTemplate>
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
-                        <dxb:BarButtonItem Content="Nhà cung cấp" ItemClick="miObject_ItemClick" LargeGlyph="{dx:DXImage Image=BOCustomer_32x32.png}">
+                        <dxb:BarButtonItem Name="miObject" Content="Nhà cung cấp" ItemClick="miObject_ItemClick" LargeGlyph="{dx:DXImage Image=BOCustomer_32x32.png}">
                             <dxb:BarButtonItem.ContentTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="80" VerticalAlignment="Stretch" TextAlignment="Center"/>

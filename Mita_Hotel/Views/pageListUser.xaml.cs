@@ -1,6 +1,7 @@
 ﻿using Lemon3;
 using Lemon3.Controls.DevExp;
 using Lemon3.Data;
+using Mita_Hotel.Setup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -111,6 +112,20 @@ namespace Mita_Hotel.Views
             tsbEdit.IsEnabled = GridListUser.VisibleRowCount > 0;
             tsbDelete.IsEnabled = GridListUser.VisibleRowCount > 0;
             tsbExportToExcel.IsEnabled = GridListUser.VisibleRowCount > 0;
+        }
+
+        private void mnsUserRight_Click(object sender, RoutedEventArgs e)
+        {
+            D00F2040 frmPermission = new D00F2040();
+            string Username = GridListUser.GetFocusedRowCellValue(COL_Username).ToString();
+            string Fullname = GridListUser.GetFocusedRowCellValue(COL_Fullname).ToString();
+            int i = GridListUser.View.FocusedRowData.RowHandle.Value;
+            frmPermission.txtUsername.Text = Username;
+            frmPermission.txtFullname.Text = Fullname;            frmPermission.lbLastLogin.Content = "Đăng nhập lần cuối: " + GridListUser.GetFocusedRowCellValue(COL_LastLogin).ToString();
+            frmPermission.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            frmPermission.ShowDialog();
+            LoadGrid();
+            GridListUser.FocusRowHandle(i);
         }
     }
 }

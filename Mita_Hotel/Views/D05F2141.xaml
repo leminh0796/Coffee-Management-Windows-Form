@@ -10,10 +10,7 @@
         Title="Thanh toán" Height="74.61" Width="438.029" Name="frmPayment" Loaded="frmPayment_Loaded">
     <Grid>
         <Label Content="Nhập số tiền khách trả:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-
         <L3:L3SpinEdit Name="seAmountPayment" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top" Width="186"/>
-
         <L3:L3Button Name="btnOK" Content="OK" HorizontalAlignment="Left" Height="26" Margin="342,9,0,0" VerticalAlignment="Top" Width="69" Click="btnOK_Click"/>
-
     </Grid>
 </L3:L3Window>

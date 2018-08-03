@@ -61,15 +61,15 @@ namespace Mita_Hotel.BL
             {
                 sSQL = new StringBuilder();
                 sSQL.AppendLine(" ");
-                sSQL.AppendLine("INSERT D07T2011 (VoucherID, InventoryID, VAT, Price, UnitID, Quantity, Discount, Amount) ");
+                sSQL.AppendLine("INSERT D07T2011 (VoucherID, InventoryID, VAT, Price, UnitID, Quantity, Discount, Amount)");
                 sSQL.AppendLine("VALUES(");
                 sSQL.AppendLine(L3SQLClient.SQLString(VoucherID) + L3.COMMA); //VoucherID
                 sSQL.AppendLine(L3SQLClient.SQLString(dr["InventoryID"]) + L3.COMMA); //InventoryID
-                sSQL.AppendLine( dr["VAT"] + L3.COMMA);
+                sSQL.AppendLine(dr["VAT"] + L3.COMMA); //VAT
                 sSQL.AppendLine(L3SQLClient.SQLMoney(dr["Price"], "n0") + L3.COMMA); //Price
                 sSQL.AppendLine(L3SQLClient.SQLString(dr["UnitID"]) + L3.COMMA); //UnitID
                 sSQL.AppendLine(L3SQLClient.SQLMoney(dr["Quantity"], "n0") + L3.COMMA); //Quantity
-                sSQL.AppendLine( dr["Discount"] + L3.COMMA); //Discount
+                sSQL.AppendLine(dr["Discount"] + L3.COMMA); //Discount
                 sSQL.AppendLine(L3SQLClient.SQLMoney(dr["Amount"], "n0")); //Amount
                 sSQL.AppendLine(")");
                 sRet.AppendLine(sSQL.ToString());

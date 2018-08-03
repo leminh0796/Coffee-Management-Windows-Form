@@ -126,12 +126,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\BLPermission.cs" />
     <Compile Include="BL\BLStore.cs" />
     <Compile Include="BL\BLTable.cs" />
     <Compile Include="BL\BLVoucher.cs" />
     <Compile Include="Models\ListGeneral.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Views\D00F2040.xaml.cs">
+      <DependentUpon>D00F2040.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\D05F2010.xaml.cs">
       <DependentUpon>D05F2010.xaml</DependentUpon>
     </Compile>
@@ -179,6 +183,10 @@
     <Compile Include="Views\PageListUser.xaml.cs">
       <DependentUpon>PageListUser.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\D00F2040.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\D05F2010.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -324,6 +332,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\cakho.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\table-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
