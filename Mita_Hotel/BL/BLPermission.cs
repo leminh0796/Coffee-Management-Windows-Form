@@ -24,15 +24,15 @@ namespace Mita_Hotel.BL
             sSQL.AppendLine("VALUES(");
             sSQL.AppendLine(L3SQLClient.SQLString(Username) + L3.COMMA); //Username
             sSQL.AppendLine(L3SQLClient.SQLString(FormID) + L3.COMMA); //FormID
-            sSQL.AppendLine(L3SQLClient.SQLMoney(Permission, "n0") + L3.COMMA); //Permission
+            sSQL.AppendLine(L3SQLClient.SQLMoney(Permission, "n0")); //Permission
             sSQL.AppendLine(")");
             return sSQL.ToString();
         }
 
-        public static int[] GetPermission(string Username)
+        public static int[] GetPermissionFromDB(string Username)
         {
             int[] CheckListNumber = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-            DataTable dt = L3SQLServer.ReturnDataTable("select * from D00T2040 WHERE UserID = " + L3SQLClient.SQLString(Username));
+            DataTable dt = L3SQLServer.ReturnDataTable("select FormID, UserID, Permission from D00T2040 WHERE UserID = " + L3SQLClient.SQLString(Username));
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)

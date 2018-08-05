@@ -22,9 +22,9 @@ namespace Mita_Hotel.Views
     /// <summary>
     /// Interaction logic for pageListUser.xaml
     /// </summary>
-    public partial class PageListUser : L3Page
+    public partial class D00F0040 : L3Page
     {
-        public PageListUser()
+        public D00F0040()
         {
             InitializeComponent();
         }
@@ -121,7 +121,30 @@ namespace Mita_Hotel.Views
             string Fullname = GridListUser.GetFocusedRowCellValue(COL_Fullname).ToString();
             int i = GridListUser.View.FocusedRowData.RowHandle.Value;
             frmPermission.txtUsername.Text = Username;
-            frmPermission.txtFullname.Text = Fullname;            frmPermission.lbLastLogin.Content = "Đăng nhập lần cuối: " + GridListUser.GetFocusedRowCellValue(COL_LastLogin).ToString();
+            frmPermission.txtFullname.Text = Fullname;
+            frmPermission.lbLastLogin.Content = "Đăng nhập lần cuối: " + GridListUser.GetFocusedRowCellValue(COL_LastLogin).ToString();
+            frmPermission.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            frmPermission.ShowDialog();
+            LoadGrid();
+            GridListUser.FocusRowHandle(i);
+        }
+
+        private void tsbListAll_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            LoadGrid();
+        }
+
+        private void mnsUserRightReadOnly_Click(object sender, RoutedEventArgs e)
+        {
+            D00F2040 frmPermission = new D00F2040();
+            string Username = GridListUser.GetFocusedRowCellValue(COL_Username).ToString();
+            string Fullname = GridListUser.GetFocusedRowCellValue(COL_Fullname).ToString();
+            int i = GridListUser.View.FocusedRowData.RowHandle.Value;
+            frmPermission.txtUsername.Text = Username;
+            frmPermission.txtFullname.Text = Fullname;
+            frmPermission.lbLastLogin.Content = "Đăng nhập lần cuối: " + GridListUser.GetFocusedRowCellValue(COL_LastLogin).ToString();
+            frmPermission.btnSave.IsEnabled = false;
+            frmPermission.gbPermission.IsEnabled = false;
             frmPermission.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmPermission.ShowDialog();
             LoadGrid();

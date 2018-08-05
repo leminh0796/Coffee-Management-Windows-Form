@@ -47,7 +47,7 @@ namespace Mita_Hotel.Views
             item.Notes = txtNotes.Text;
             item.VAT = Decimal.Divide(seVAT.Value, 100);
             item.BarCode = txtBarcode.Text;
-            switch (PageListItem.IsAddItem)
+            switch (D00F1040.IsAddItem)
             {
                 case true:
                     if (txtInventoryName.Text != "")
@@ -91,9 +91,9 @@ namespace Mita_Hotel.Views
             sePrice.InputNumber288("n0", false, false);
             seVAT.InputNumber288("n0", false, false);
             seVAT.InputPercent(false, false, 28, 8);
-            if (PageListItem.IsAddItem == false)
+            if (D00F1040.IsAddItem == false)
             {
-                DataTable dt = L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode, ImageLocation from D91T1040 WHERE InventoryID = '" + PageListItem.InventoryID + "'");
+                DataTable dt = L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode, ImageLocation from D91T1040 WHERE InventoryID = '" + D00F1040.InventoryID + "'");
                 txtInventoryName.Text = dt.Rows[0]["InventoryName"].ToString();
                 lkeUnitID.EditValue = dt.Rows[0]["UnitID"];
                 sePrice.Value = Convert.ToDecimal(dt.Rows[0]["Price"]);
@@ -118,7 +118,7 @@ namespace Mita_Hotel.Views
             return L3SQLServer.ExecuteNoneQuery("sp_EditItem",
                CommandType.StoredProcedure,
                new string[] { "InventoryID", "InventoryName", "UnitID", "Price", "Notes", "VAT", "BarCode", "LastModifyUserID", "ImageLocation" }
-               , new object[] { PageListItem.InventoryID, item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation });
+               , new object[] { D00F1040.InventoryID, item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation });
         }
 
         private void btnImage_Click(object sender, RoutedEventArgs e)

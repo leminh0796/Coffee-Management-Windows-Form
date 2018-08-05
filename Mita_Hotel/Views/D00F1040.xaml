@@ -9,7 +9,7 @@
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        x:Class="Mita_Hotel.Views.PageListItem"
+        x:Class="Mita_Hotel.Views.D00F1040"
         mc:Ignorable="d"
         Title="Danh mục hàng hóa" Loaded="L3Window_Loaded">
     <Grid>

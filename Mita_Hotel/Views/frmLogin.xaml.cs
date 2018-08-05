@@ -50,8 +50,8 @@ namespace Mita_Hotel.Views
                 user.MD5Password = Properties.Settings.Default.rePassword;
                 user.Username = Properties.Settings.Default.reUsername;
             }
-            bool valid = CheckLogin.IfLogin(user.Username, user.MD5Password);
-            bool Uvalid = CheckLogin.IfUsernameValid(user.Username);
+            bool valid = BLLogin.IfLogin(user.Username, user.MD5Password);
+            bool Uvalid = BLLogin.IfUsernameValid(user.Username);
             if (LoginCount < 4)
             {
                 if (valid)

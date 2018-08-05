@@ -19,83 +19,87 @@
 
             </Grid>
         </GroupBox>
-        <GroupBox Header="Phân quyền cho vui" Margin="10,0,0,58.6" HorizontalAlignment="Left" Width="797" Height="477" VerticalAlignment="Bottom">
+        <GroupBox Name="gbPermission" Header="Phân quyền cho vui" Margin="10,0,0,58.6" HorizontalAlignment="Left" Width="797" Height="477" VerticalAlignment="Bottom">
             <Grid>
                 <GroupBox Header="Danh sách nhân viên - D00F0040 " Height="60" VerticalAlignment="Top" HorizontalAlignment="Left" Width="776">
                     <Grid>
-                        <RadioButton Name="D00F0040_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F0040_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F0040_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F0040_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F0040_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Name="D00F0040_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top" Checked="D00F0040_0_Checked"/>
+                        <RadioButton Name="D00F0040_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top" Checked="D00F0040_1_Checked"/>
+                        <RadioButton Name="D00F0040_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top" Checked="D00F0040_2_Checked"/>
+                        <RadioButton Name="D00F0040_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top" Checked="D00F0040_3_Checked"/>
+                        <RadioButton Name="D00F0040_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top" Checked="D00F0040_4_Checked"/>
                     </Grid>
 
                 </GroupBox>
                 <GroupBox Header="Danh mục hàng hoá - D00F1040 " Height="60" VerticalAlignment="Top" HorizontalAlignment="Left" Width="776" Margin="0,65,0,0">
                     <Grid>
-                        <RadioButton Name="D00F1040_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F1040_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F1040_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F1040_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D00F1040_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Name="D00F1040_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top" Checked="D00F1040_0_Checked"/>
+                        <RadioButton Name="D00F1040_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top" Checked="D00F1040_1_Checked"/>
+                        <RadioButton Name="D00F1040_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top" Checked="D00F1040_2_Checked"/>
+                        <RadioButton Name="D00F1040_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top" Checked="D00F1040_3_Checked"/>
+                        <RadioButton Name="D00F1040_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top" Checked="D00F1040_4_Checked"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="Danh mục chung - D91F1240 " Height="104" VerticalAlignment="Top" HorizontalAlignment="Left" Width="776" Margin="0,328,0,0">
                     <dx:DXTabControl Margin="0,0,1,-0.4">
                         <dx:DXTabItem Header="Đơn vị tính">
                             <Grid>
-                                <RadioButton Name="D91F1240_UnitID_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_UnitID_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="190,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_UnitID_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="333,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_UnitID_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="474,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_UnitID_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="640,0,0,0" VerticalAlignment="Top"/>
+                                <RadioButton Name="D91F1240_UnitID_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Checked="D91F1240_UnitID_0_Checked"/>
+                                <RadioButton Name="D91F1240_UnitID_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="190,0,0,0" VerticalAlignment="Top" Checked="D91F1240_UnitID_1_Checked"/>
+                                <RadioButton Name="D91F1240_UnitID_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="333,0,0,0" VerticalAlignment="Top" Checked="D91F1240_UnitID_2_Checked"/>
+                                <RadioButton Name="D91F1240_UnitID_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="474,0,0,0" VerticalAlignment="Top" Checked="D91F1240_UnitID_3_Checked"/>
+                                <RadioButton Name="D91F1240_UnitID_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="640,0,0,0" VerticalAlignment="Top" Checked="D91F1240_UnitID_4_Checked"/>
                             </Grid>
                         </dx:DXTabItem>
                         <dx:DXTabItem Header="Tỉnh thành">
                             <Grid>
-                                <RadioButton Name="D91F1240_Location_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Location_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="190,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Location_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="333,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Location_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="474,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Location_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="640,0,0,0" VerticalAlignment="Top"/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="89*"/>
+                                    <ColumnDefinition Width="274*"/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton Name="D91F1240_Location_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Checked="D91F1240_Location_0_Checked" Margin="0,0,0,-2.8"/>
+                                <RadioButton Name="D91F1240_Location_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="11.9,0,0,-2.8" VerticalAlignment="Top" Checked="D91F1240_Location_1_Checked" Grid.Column="1"/>
+                                <RadioButton Name="D91F1240_Location_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="154.9,0,0,-2.8" VerticalAlignment="Top" Checked="D91F1240_Location_2_Checked" Grid.Column="1"/>
+                                <RadioButton Name="D91F1240_Location_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="295.9,0,0,-2.8" VerticalAlignment="Top" Checked="D91F1240_Location_3_Checked" Grid.Column="1"/>
+                                <RadioButton Name="D91F1240_Location_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="461.9,0,0,-2.8" VerticalAlignment="Top" Checked="D91F1240_Location_4_Checked" Grid.Column="1"/>
                             </Grid>
                         </dx:DXTabItem>
                         <dx:DXTabItem Header="Nhà cung cấp">
                             <Grid>
-                                <RadioButton Name="D91F1240_Object_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Object_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="190,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Object_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="333,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Object_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="474,0,0,0" VerticalAlignment="Top"/>
-                                <RadioButton Name="D91F1240_Object_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="640,0,0,0" VerticalAlignment="Top"/>
+                                <RadioButton Name="D91F1240_Object_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Checked="D91F1240_Object_0_Checked"/>
+                                <RadioButton Name="D91F1240_Object_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="190,0,0,0" VerticalAlignment="Top" Checked="D91F1240_Object_1_Checked"/>
+                                <RadioButton Name="D91F1240_Object_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="333,0,0,0" VerticalAlignment="Top" Checked="D91F1240_Object_2_Checked"/>
+                                <RadioButton Name="D91F1240_Object_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="474,0,0,0" VerticalAlignment="Top" Checked="D91F1240_Object_3_Checked"/>
+                                <RadioButton Name="D91F1240_Object_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="640,0,0,0" VerticalAlignment="Top" Checked="D91F1240_Object_4_Checked"/>
                             </Grid>
                         </dx:DXTabItem>
                     </dx:DXTabControl>
                 </GroupBox>
                 <GroupBox Header="Danh mục bàn - D05F2010 " Height="61" VerticalAlignment="Top" HorizontalAlignment="Left" Width="776" Margin="0,130,0,0">
                     <Grid>
-                        <RadioButton Name="D05F2010_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D05F2010_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D05F2010_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D05F2010_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D05F2010_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Name="D05F2010_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top" Checked="D05F2010_0_Checked"/>
+                        <RadioButton Name="D05F2010_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top" Checked="D05F2010_1_Checked"/>
+                        <RadioButton Name="D05F2010_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top" Checked="D05F2010_2_Checked"/>
+                        <RadioButton Name="D05F2010_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top" Checked="D05F2010_3_Checked"/>
+                        <RadioButton Name="D05F2010_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top" Checked="D05F2010_4_Checked"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="Phiếu bán lẻ - D91F2140 " Height="61" VerticalAlignment="Top" HorizontalAlignment="Left" Width="776" Margin="0,196,0,0">
                     <Grid>
-                        <RadioButton Name="D91F2140_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D91F2140_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D91F2140_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D91F2140_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D91F2140_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Name="D91F2140_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top" Checked="D91F2140_0_Checked"/>
+                        <RadioButton Name="D91F2140_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top" Checked="D91F2140_1_Checked"/>
+                        <RadioButton Name="D91F2140_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top" Checked="D91F2140_2_Checked"/>
+                        <RadioButton Name="D91F2140_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top" Checked="D91F2140_3_Checked"/>
+                        <RadioButton Name="D91F2140_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top" Checked="D91F2140_4_Checked"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="Nhập kho - D07F2010 " Height="61" VerticalAlignment="Top" HorizontalAlignment="Left" Width="776" Margin="0,262,0,0">
                     <Grid>
-                        <RadioButton Name="D07F2010_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D07F2010_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D07F2010_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D07F2010_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Name="D07F2010_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Name="D07F2010_0" Content="Không có quyền" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" VerticalAlignment="Top" Checked="D07F2010_0_Checked"/>
+                        <RadioButton Name="D07F2010_1" Content="Xem" HorizontalAlignment="Left" Height="22" Margin="198,0,0,0" VerticalAlignment="Top" Checked="D07F2010_1_Checked"/>
+                        <RadioButton Name="D07F2010_2" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="347,0,0,0" VerticalAlignment="Top" Checked="D07F2010_2_Checked"/>
+                        <RadioButton Name="D07F2010_3" Content="Thêm xoá sửa" HorizontalAlignment="Left" Height="22" Margin="485,0,0,0" VerticalAlignment="Top" Checked="D07F2010_3_Checked"/>
+                        <RadioButton Name="D07F2010_4" Content="FULL" HorizontalAlignment="Left" Height="22" Margin="651,0,0,0" VerticalAlignment="Top" Checked="D07F2010_4_Checked"/>
                     </Grid>
                 </GroupBox>
             </Grid>

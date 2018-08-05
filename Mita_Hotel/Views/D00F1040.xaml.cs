@@ -20,9 +20,9 @@ namespace Mita_Hotel.Views
     /// <summary>
     /// Interaction logic for pageListItem.xaml
     /// </summary>
-    public partial class PageListItem : L3Page
+    public partial class D00F1040 : L3Page
     {
-        public PageListItem()
+        public D00F1040()
         {
             InitializeComponent();
         }

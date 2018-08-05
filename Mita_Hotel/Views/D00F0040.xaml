@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Mita_Hotel.Views"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
            xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.PageListUser"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.D00F0040"
         mc:Ignorable="d"
         Title="Danh sách nhân viên" Loaded="L3Window_Loaded">
     <Grid>
@@ -23,7 +23,12 @@
                 <ContextMenu x:Name="cmUser">
                     <MenuItem x:Name="mnsUserRight" Header="Phân quyền" Click="mnsUserRight_Click" >
                         <MenuItem.Icon>
-                            <Image Source="/Mita_Hotel;component/Images/add_coffee.ico"/>
+                            <Image Source="/Mita_Hotel;component/Images/permission.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="mnsUserRightReadOnly" Header="Xem phân quyền" Click="mnsUserRightReadOnly_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="/Mita_Hotel;component/Images/permission_read.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -49,9 +54,8 @@
             <dxb:BarButtonItem Name ="tsbExportToExcel" Content="Xuất Excel"  />
             <dxb:BarButtonItem Name ="tsbPrint" Content="In" ItemClick="tsbPrint_ItemClick"/>
             <dxb:BarItemSeparator />
-            <dxb:BarButtonItem Name="tsbListAll" Content="Liệt kê tất cả" />
-            <dxb:BarItemSeparator />
-            <dxb:BarButtonItem Name="tsbSysInfo" Content="Thông tin hệ thống" />
+            <dxb:BarButtonItem Name="tsbListAll" Content="Liệt kê tất cả" ItemClick="tsbListAll_ItemClick" />
         </dxb:MainMenuControl>
+        <Label Content="Bảng phân quyền: nhấn chuột phải vào nhân viên muốn phân quyền" HorizontalAlignment="Left" Margin="410,2,0,0" VerticalAlignment="Top" Foreground="#FF858585"/>
     </Grid>
 </L3:L3Page>

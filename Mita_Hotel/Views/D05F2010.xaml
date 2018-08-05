@@ -36,6 +36,12 @@
                             <Image Source="/Mita_Hotel;component/Images/exit.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
+
+                    <MenuItem x:Name="mnsRead" Header="Xem" Click="mnsRead_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Mita_Hotel;component/Images/permission_read.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </L3:L3GridControl.ContextMenu>
 

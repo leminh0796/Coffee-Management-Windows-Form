@@ -126,6 +126,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\BLMainWindow.cs" />
     <Compile Include="BL\BLPermission.cs" />
     <Compile Include="BL\BLStore.cs" />
     <Compile Include="BL\BLTable.cs" />
@@ -169,19 +170,19 @@
     <Compile Include="Views\frmRegister.xaml.cs">
       <DependentUpon>frmRegister.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BL\CheckLogin.cs" />
+    <Compile Include="BL\BLLogin.cs" />
     <Compile Include="Models\InventoryItem.cs" />
     <Compile Include="Mita_setup.cs" />
-    <Compile Include="BL\RegAcc.cs" />
+    <Compile Include="BL\BLRegistration.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Views\frmAddNewItem.xaml.cs">
       <DependentUpon>frmAddNewItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageListItem.xaml.cs">
-      <DependentUpon>PageListItem.xaml</DependentUpon>
+    <Compile Include="Views\D00F1040.xaml.cs">
+      <DependentUpon>D00F1040.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageListUser.xaml.cs">
-      <DependentUpon>PageListUser.xaml</DependentUpon>
+    <Compile Include="Views\D00F0040.xaml.cs">
+      <DependentUpon>D00F0040.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\D00F2040.xaml">
       <SubType>Designer</SubType>
@@ -258,11 +259,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageListItem.xaml">
+    <Page Include="Views\D00F1040.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageListUser.xaml">
+    <Page Include="Views\D00F0040.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -335,6 +336,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\table-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\permission.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\permission_read.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

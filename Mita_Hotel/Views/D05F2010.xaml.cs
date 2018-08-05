@@ -90,13 +90,12 @@ namespace Mita_Hotel.Views
         {
             return new BitmapImage(new Uri(path, UriKind.Relative));
         }
-
-        private void mnsAdd_Click(object sender, RoutedEventArgs e)
+        
+        private D05F2140 LoadD05F2140()
         {
             D05F2140 frmTable = new D05F2140();
             string TableID = GridTable.GetFocusedRowCellValue("TableID").ToString();
             frmTable.Status = Convert.ToInt32(GridTable.GetFocusedRowCellValue("Status"));
-            int i = GridTable.View.FocusedRowData.RowHandle.Value;
             frmTable.TableID = TableID;
             frmTable.AmountPayment = 0;
             frmTable.lbTableName.Content = "Tên bàn: " + GridTable.GetFocusedRowCellValue("TableName").ToString();
@@ -110,6 +109,29 @@ namespace Mita_Hotel.Views
                 if (dt.Rows.Count > 0) frmTable.VoucherID = dt.Rows[dt.Rows.Count - 1]["VoucherID"].ToString();
                 else frmTable.VoucherID = "";
             }
+            return frmTable;
+        }
+
+        private void mnsAdd_Click(object sender, RoutedEventArgs e)
+        {
+            D05F2140 frmTable = LoadD05F2140();
+            int i = GridTable.View.FocusedRowData.RowHandle.Value;
+            frmTable.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            frmTable.ShowDialog();
+            LoadSimple();
+            GridTable.FocusRowHandle(i);
+        }
+
+        private void mnsRead_Click(object sender, RoutedEventArgs e)
+        {
+            D05F2140 frmTable = LoadD05F2140();
+            int i = GridTable.View.FocusedRowData.RowHandle.Value;
+            frmTable.btnSave.Visibility = Visibility.Hidden;
+            frmTable.btnPay.Visibility = Visibility.Hidden;
+            frmTable.btnAdd10Quatity.Visibility = Visibility.Hidden;
+            frmTable.btnAddQuatity.Visibility = Visibility.Hidden;
+            frmTable.btnDeleteQuatity.Visibility = Visibility.Hidden;
+            frmTable.txtItem.IsEnabled = false;
             frmTable.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frmTable.ShowDialog();
             LoadSimple();

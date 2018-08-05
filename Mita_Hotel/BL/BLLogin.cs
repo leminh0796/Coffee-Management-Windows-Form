@@ -14,7 +14,7 @@ namespace Mita_Hotel.Login
 
 namespace Mita_Hotel.Setup
 {
-    class CheckLogin
+    class BLLogin
     {
 
         public static bool IfLogin(string username, string MD5password)

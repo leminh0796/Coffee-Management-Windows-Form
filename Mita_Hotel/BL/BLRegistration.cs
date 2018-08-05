@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Mita_Hotel.BL
 {
-    class RegAcc
+    class BLRegistration
     {
         public static bool IfReg(string Username, string MD5Password, string Fullname, string RoleID, string Email, int Phone)
         {
