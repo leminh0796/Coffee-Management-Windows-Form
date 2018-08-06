@@ -19,6 +19,7 @@ using System.Timers;
 using System.Threading;
 using Mita_Hotel.BL;
 using Mita_Hotel.Models;
+using System.Data;
 
 namespace Mita_Hotel.Views
 {
@@ -32,10 +33,12 @@ namespace Mita_Hotel.Views
             InitializeComponent();
             LoginSuccess = false;
         }
+
         public bool LoginSuccess { get; private set; }
         UserLogin user = new UserLogin();
         public int LoginCount = 0;
         public static string UserLogged = "";
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             MD5 md5Hash = MD5.Create();
@@ -137,6 +140,7 @@ namespace Mita_Hotel.Views
                 {
                     connection.Open();
                     isConnected = true;
+                    connection.Close();
                 }
                 catch (SqlException)
                 {
@@ -145,7 +149,7 @@ namespace Mita_Hotel.Views
             }
             if (isConnected == false)
             {
-                btnLogin.Content = "Not connected!";
+                btnLogin.Content = "Không thể kết nối!";
                 btnLogin.Foreground = new SolidColorBrush(Colors.Red);
                 btnLogin.IsEnabled = false;
                 lbWrong2.Visibility = Visibility.Visible;
@@ -159,7 +163,7 @@ namespace Mita_Hotel.Views
             {
                 LoginSuccess = true;
                 L3.UserID = Properties.Settings.Default.reUsername;
-                this.Close();
+                Close();
             }
         }
 
@@ -170,7 +174,7 @@ namespace Mita_Hotel.Views
 
         private void miHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Vui lòng liên hệ bộ phận kỹ thuật: technical@mitahotel.com");
+            MessageBox.Show("Vui lòng liên hệ bộ phận kỹ thuật: leminh0796@gmail.com");
         }
 
         private void txtUsername_GotFocus(object sender, RoutedEventArgs e)
@@ -194,5 +198,52 @@ namespace Mita_Hotel.Views
             Environment.Exit(0);
         }
 
+        private void miDBChange_Click(object sender, RoutedEventArgs e)
+        {
+            D00F0001 FormDB = new D00F0001();
+            FormDB.txtServer.Text = L3.Server;
+            FormDB.txtLogin.Text = L3.ConnectionUser;
+            FormDB.txtPassword.Password = L3.Password;
+            FormDB.txtDB.Text = L3.CompanyID;
+            FormDB.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            FormDB.ShowDialog();
+            bool isConnected = false;
+            L3.ConnectionString = "Data Source=" + L3.Server + ";Initial Catalog=" + L3.CompanyID + ";User ID=" + L3.ConnectionUser + ";Password=" + L3.Password + ";Connect Timeout = 5";
+            using (SqlConnection connection = new SqlConnection(L3.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        isConnected = true;
+                    }
+                    else
+                    {
+                        isConnected = false;
+                    }
+                    connection.Close();
+                }
+                catch (SqlException)
+                {
+                    isConnected = false;
+                }
+                
+            }
+            if (isConnected == false)
+            {
+                btnLogin.Content = "Không thể kết nối!";
+                btnLogin.Foreground = new SolidColorBrush(Colors.Red);
+                btnLogin.IsEnabled = false;
+                lbWrong2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnLogin.Content = "Đăng nhập";
+                btnLogin.Foreground = new SolidColorBrush(Colors.Green);
+                btnLogin.IsEnabled = true;
+                lbWrong2.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

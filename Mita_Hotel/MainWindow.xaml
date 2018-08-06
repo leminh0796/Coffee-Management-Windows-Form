@@ -51,13 +51,6 @@
                                 </DataTemplate>
                             </dxb:BarButtonItem.ContentTemplate>
                         </dxb:BarButtonItem>
-                        <dxb:BarButtonItem Name="miBraisedFish" Content="Cá kho" LargeGlyph="Images/cakho.png">
-                            <dxb:BarButtonItem.ContentTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}" TextWrapping="NoWrap" Width="90" TextAlignment="Center"/>
-                                </DataTemplate>
-                            </dxb:BarButtonItem.ContentTemplate>
-                        </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
                 <dxr:RibbonPage Caption="Danh mục">

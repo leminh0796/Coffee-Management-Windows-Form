@@ -134,6 +134,9 @@
     <Compile Include="Models\ListGeneral.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Views\D00F0001.xaml.cs">
+      <DependentUpon>D00F0001.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\D00F2040.xaml.cs">
       <DependentUpon>D00F2040.xaml</DependentUpon>
     </Compile>
@@ -167,8 +170,8 @@
     <Compile Include="Views\D92F1240.xaml.cs">
       <DependentUpon>D92F1240.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmRegister.xaml.cs">
-      <DependentUpon>frmRegister.xaml</DependentUpon>
+    <Compile Include="Views\D00F0041.xaml.cs">
+      <DependentUpon>D00F0041.xaml</DependentUpon>
     </Compile>
     <Compile Include="BL\BLLogin.cs" />
     <Compile Include="Models\InventoryItem.cs" />
@@ -184,6 +187,10 @@
     <Compile Include="Views\D00F0040.xaml.cs">
       <DependentUpon>D00F0040.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\D00F0001.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\D00F2040.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -228,11 +235,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\frmLogin.xaml">
+    <Page Include="Views\D00F0000.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\frmRegister.xaml">
+    <Page Include="Views\D00F0041.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,8 +251,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\frmLogin.xaml.cs">
-      <DependentUpon>frmLogin.xaml</DependentUpon>
+    <Compile Include="Views\D00F0000.xaml.cs">
+      <DependentUpon>D00F0000.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -81,5 +81,53 @@ namespace Mita_Hotel.Properties {
                 return ((string)(this["MitaEmployeesConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DESKTOP-U8A8UHB\\SQL2012")]
+        public string MitaServer {
+            get {
+                return ((string)(this["MitaServer"]));
+            }
+            set {
+                this["MitaServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sa")]
+        public string MitaLogin {
+            get {
+                return ((string)(this["MitaLogin"]));
+            }
+            set {
+                this["MitaLogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("123")]
+        public string MitaPassword {
+            get {
+                return ((string)(this["MitaPassword"]));
+            }
+            set {
+                this["MitaPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MitaEmployees")]
+        public string MitaDB {
+            get {
+                return ((string)(this["MitaDB"]));
+            }
+            set {
+                this["MitaDB"] = value;
+            }
+        }
     }
 }

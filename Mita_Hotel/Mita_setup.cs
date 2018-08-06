@@ -31,12 +31,13 @@ namespace Mita_Hotel
             L3.STRLanguage = "84";
             L3.ApplicationPath = Environment.CurrentDirectory;
             L3.ApplicationSetup = L3.ApplicationPath;
-            L3.Server = @"DESKTOP-U8A8UHB\SQL2012";
-            L3.ConnectionUser = "sa";
-            L3.Password = "123";
-            L3.CompanyID = "MitaEmployees";
+            L3.Server = Properties.Settings.Default.MitaServer;
+            //L3.Server = @"DESKTOP-U8A8UHB\SQL2012"; //Default Server
+            L3.ConnectionUser = Properties.Settings.Default.MitaLogin;
+            L3.Password = Properties.Settings.Default.MitaPassword;
+            L3.CompanyID = Properties.Settings.Default.MitaDB;
             L3.UserID = "LEMONADMIN";
-            L3.ConnectionString = "Data Source=" + L3.Server + ";Initial Catalog=" + L3.CompanyID + ";User ID=" + L3.ConnectionUser + ";Password=" + L3.Password + ";Connect Timeout = 0";
+            L3.ConnectionString = "Data Source=" + L3.Server + ";Initial Catalog=" + L3.CompanyID + ";User ID=" + L3.ConnectionUser + ";Password=" + L3.Password + ";Connect Timeout = 5";
         }
     }
 }
