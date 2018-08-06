@@ -1,13 +1,13 @@
 ﻿using Lemon3.Controls.DevExp;
 using Lemon3.Data;
-using Mita_Hotel.Models;
+using Mita_Coffee.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace Mita_Hotel.BL
+namespace Mita_Coffee.BL
 {
     class BLVoucher
     {

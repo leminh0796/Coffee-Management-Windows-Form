@@ -13,9 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Mita_Hotel.Models;
+using Mita_Coffee.Models;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D92F1240.xaml

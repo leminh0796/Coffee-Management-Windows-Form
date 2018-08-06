@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D05F2141.xaml

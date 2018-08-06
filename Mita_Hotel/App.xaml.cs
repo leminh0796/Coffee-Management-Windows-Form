@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace Mita_Hotel
+namespace Mita_Coffee
 {
     /// <summary>
     /// Interaction logic for App.xaml

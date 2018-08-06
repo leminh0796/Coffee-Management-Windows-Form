@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
         xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
-        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Name="windowApp" x:Class="Mita_Hotel.Views.frmLogin"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Name="windowApp" x:Class="Mita_Coffee.Views.D00F0000"
         mc:Ignorable="d" Height="210.702" Width="443.088" Title="Đăng nhập" Opacity="0.95" Loaded="Window_Loaded"
         WindowStyle="None"
         WindowState="Normal" 
@@ -235,7 +235,7 @@
         </ControlTemplate>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="/Mita_Hotel;component/texture.JPG" Stretch="UniformToFill" TileMode="FlipXY">
+        <ImageBrush ImageSource="/Mita_Coffee;component/texture.JPG" Stretch="UniformToFill" TileMode="FlipXY">
             <ImageBrush.RelativeTransform>
                 <TransformGroup>
                     <ScaleTransform CenterY="0.5" CenterX="0.5"/>
@@ -279,8 +279,8 @@
         <PasswordBox x:Name="txtPassword" Margin="151,101,50.2,0" GotFocus="txtPassword_GotFocus" Width="241.6" Height="22" VerticalAlignment="Top"/>
         <dx:SimpleButton x:Name="btnLogin" Content="Đăng nhập" Height="44" VerticalAlignment="Top" Margin="0,137,50.2,0" Foreground="#FF3CAE00" IsDefault="True" IsEnabled="True" FontWeight="Bold" Click="btnLogin_Click" Template="{DynamicResource ButtonBaseControlTemplate1}" HorizontalAlignment="Right" Width="143"/>
         <dx:SimpleButton x:Name="btnLogin2" Content="Đăng nhập" Height="44" VerticalAlignment="Top" Margin="85,182,231.2,0" Foreground="#FF3CAE00" IsDefault="True" IsEnabled="True" FontWeight="Bold" Visibility="Hidden"/>
-        <L3:L3Label x:Name="lbWrong" Content="Không tìm thấy tên đăng nhập!" Margin="95,45,92.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
-        <L3:L3Label x:Name="lbWrong1" Content="Sai mật khẩu!" Margin="151,45,36.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
+        <L3:L3Label x:Name="lbWrongUsernamePassword" Content="Không tìm thấy tên đăng nhập!" Margin="95,45,92.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
+        <L3:L3Label x:Name="lbWrongPassword" Content="Sai mật khẩu!" Margin="151,45,36.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
         <L3:L3Label x:Name="lbWrong2" Content="Không thể kết nối tới CSDL!" Margin="95,45,92.2,165.8" FontSize="14" Foreground="#FFEA0303" IsEnabled="False" Visibility="Hidden"/>
         <dxe:CheckEdit Name="ceRememberLogin" Content="Ghi nhớ tên đăng nhập" Height="26" VerticalAlignment="Top" Margin="39,137,0,0" Foreground="#FF7C5F46" HorizontalAlignment="Left" Width="187"/>
         <dxe:CheckEdit Name="ceAutoLogin" Content="Tự động đăng nhập cho lần sau" Height="26" VerticalAlignment="Top" Margin="39,155,0,0" Foreground="#FF7C5F46" HorizontalAlignment="Left" Width="211"/>

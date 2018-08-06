@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mita_Hotel.Properties {
+namespace Mita_Coffee.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

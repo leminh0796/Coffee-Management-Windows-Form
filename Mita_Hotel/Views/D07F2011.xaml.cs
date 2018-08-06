@@ -14,10 +14,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Mita_Hotel.BL;
+using Mita_Coffee.BL;
 using Lemon3.Functions;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D07F2011.xaml

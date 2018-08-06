@@ -1,7 +1,7 @@
-﻿<Application x:Class="Mita_Hotel.App"
+﻿<Application x:Class="Mita_Coffee.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Mita_Hotel"
+             xmlns:local="clr-namespace:Mita_Coffee"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

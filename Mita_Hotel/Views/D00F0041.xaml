@@ -2,12 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
         xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
-        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="Mita_Hotel.Views.frmRegister"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="Mita_Coffee.Views.frmRegister"
         mc:Ignorable="d" Height="421.102" Width="499.088" Title="Đăng ký" ResizeMode="NoResize" Opacity="0.95" Loaded="Window_Loaded">
     <Window.Background>
-        <ImageBrush ImageSource="/Mita_Hotel;component/texture.JPG" TileMode="FlipXY" Stretch="UniformToFill">
+        <ImageBrush ImageSource="/Mita_Coffee;component/texture.JPG" TileMode="FlipXY" Stretch="UniformToFill">
             <ImageBrush.RelativeTransform>
                 <TransformGroup>
                     <ScaleTransform CenterY="0.5" CenterX="0.5"/>

@@ -4,8 +4,8 @@
         xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
-        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.D05F2141"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Coffee.Views.D05F2141"
         mc:Ignorable="d"
         Title="Thanh toán" Height="74.61" Width="438.029" Name="frmPayment" Loaded="frmPayment_Loaded">
     <Grid>

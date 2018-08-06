@@ -4,10 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
            xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Hotel.Views.D00F0040"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="Mita_Coffee.Views.D00F0040"
         mc:Ignorable="d"
         Title="Danh sách nhân viên" Loaded="L3Window_Loaded">
     <Grid>
@@ -23,12 +23,12 @@
                 <ContextMenu x:Name="cmUser">
                     <MenuItem x:Name="mnsUserRight" Header="Phân quyền" Click="mnsUserRight_Click" >
                         <MenuItem.Icon>
-                            <Image Source="/Mita_Hotel;component/Images/permission.ico"/>
+                            <Image Source="/Mita_Coffee;component/Images/permission.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="mnsUserRightReadOnly" Header="Xem phân quyền" Click="mnsUserRightReadOnly_Click" >
                         <MenuItem.Icon>
-                            <Image Source="/Mita_Hotel;component/Images/permission_read.ico"/>
+                            <Image Source="/Mita_Coffee;component/Images/permission_read.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -51,8 +51,7 @@
             <dxb:BarButtonItem Name="tsbEdit" Content="Sửa" ItemClick ="tsbEdit_ItemClick"/>
             <dxb:BarButtonItem Name="tsbDelete" Content="Xóa" ItemClick="tsbDelete_ItemClick"/>
             <dxb:BarItemSeparator />
-            <dxb:BarButtonItem Name ="tsbExportToExcel" Content="Xuất Excel"  />
-            <dxb:BarButtonItem Name ="tsbPrint" Content="In" ItemClick="tsbPrint_ItemClick"/>
+            <dxb:BarButtonItem Name ="tsbExportToExcel" Content="Xuất Excel" ItemClick="tsbExportToExcel_ItemClick" />
             <dxb:BarItemSeparator />
             <dxb:BarButtonItem Name="tsbListAll" Content="Liệt kê tất cả" ItemClick="tsbListAll_ItemClick" />
         </dxb:MainMenuControl>

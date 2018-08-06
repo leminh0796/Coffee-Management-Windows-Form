@@ -4,12 +4,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        x:Class="Mita_Hotel.Views.D00F1040"
+        x:Class="Mita_Coffee.Views.D00F1040"
         mc:Ignorable="d"
         Title="Danh mục hàng hóa" Loaded="L3Window_Loaded">
     <Grid>
@@ -37,11 +37,8 @@
             <dxb:BarButtonItem Name="tsbDelete" Content="Xóa" ItemClick="tsbDelete_ItemClick"/>
             <dxb:BarItemSeparator />
             <dxb:BarButtonItem Name ="tsbExportToExcel" Content="Xuất Excel" ItemClick="tsbExportToExcel_ItemClick" />
-            <dxb:BarButtonItem Name ="tsbPrint" Content="In"/>
             <dxb:BarItemSeparator />
             <dxb:BarButtonItem Name="tsbListAll" Content="Liệt kê tất cả" ItemClick ="tsbListAll_ItemClick"/>
-            <dxb:BarItemSeparator />
-            <dxb:BarButtonItem Name="tsbSysInfo" Content="Thông tin hệ thống" ItemClick="tsbSysInfo_ItemClick"/>
         </dxb:MainMenuControl>
     </Grid>
 </L3:L3Page>

@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
-        xmlns:local="clr-namespace:Mita_Hotel"
+        xmlns:local="clr-namespace:Mita_Coffee"
         xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
         xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" 
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-        x:Class="Mita_Hotel.MainWindow"
+        x:Class="Mita_Coffee.MainWindow"
         mc:Ignorable="d"
         Title="Mita Coffee - Pre Alpha version" Activated="Window_Activated" Loaded="Window_Loaded" MinWidth="1024" Height="680" MinHeight="680" Width="1024" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>

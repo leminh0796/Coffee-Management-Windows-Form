@@ -1,7 +1,7 @@
 ﻿using Lemon3.Controls.DevExp;
 using Lemon3.Data;
 using Lemon3.Functions;
-using Mita_Hotel.BL;
+using Mita_Coffee.BL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D07F2010.xaml

@@ -15,11 +15,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Lemon3;
 using Lemon3.Data;
-using Mita_Hotel.Setup;
-using Mita_Hotel.BL;
-using Mita_Hotel.Models;
+using Mita_Coffee.Setup;
+using Mita_Coffee.BL;
+using Mita_Coffee.Models;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for frmRegister.xaml

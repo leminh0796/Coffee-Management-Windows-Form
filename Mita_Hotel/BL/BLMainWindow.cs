@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace Mita_Hotel.BL
+namespace Mita_Coffee.BL
 {
     class BLMainWindow
     {

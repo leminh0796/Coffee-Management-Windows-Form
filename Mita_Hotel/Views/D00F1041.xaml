@@ -4,14 +4,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
-        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.frmAddNewItem"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Coffee.Views.D00F1041"
         mc:Ignorable="d"
         Title="Thêm mới hàng hóa" Height="297.732" Width="551.457" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Mita_Hotel;component/Templates/ControlTemplates.xaml" />
+                <ResourceDictionary Source="/Mita_Coffee;component/Templates/ControlTemplates.xaml" />
                 <ResourceDictionary Source="/D99D0451;component/Styles/Lemon3Style.xaml" />
                 <ResourceDictionary Source="/D99D0451;component/Templates/Lemon3Templates.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -36,7 +36,7 @@
         <L3:L3SpinEdit x:Name="seVAT" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,164,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
         <Label Content="Barcode" HorizontalAlignment="Left" Margin="19.2,191,0,0" VerticalAlignment="Top" Height="23" Width="43" Grid.Column="1"/>
         <L3:L3TextEdit x:Name="txtBarcode" Grid.Column="1" HorizontalAlignment="Left" Margin="119.2,191,0,0" VerticalAlignment="Top" Width="229" Height="23"/>
-        <Image Name="ieImage" HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Width="160" Height="155" Source="/Mita_Hotel;component/Images/addnewimage.png" Grid.ColumnSpan="2"/>
+        <Image Name="ieImage" HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Width="160" Height="155" Source="/Mita_Coffee;component/Images/addnewimage.png" Grid.ColumnSpan="2"/>
         <dx:SimpleButton Name="btnSave" Content="Lưu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="257.2,228,0,0" VerticalAlignment="Top" Width="91" Click="btnSave_Click"/>
         <dx:SimpleButton Name="btnImage" Content="Đổi ảnh hàng hóa" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="119.2,228,0,0" VerticalAlignment="Top" Width="121" Click="btnImage_Click"/>
 

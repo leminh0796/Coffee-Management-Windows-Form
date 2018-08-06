@@ -12,20 +12,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Mita_Hotel.Setup;
+using Mita_Coffee.Setup;
 using System.Data.SqlClient;
 using Lemon3;
 using Lemon3.Controls.DevExp;
-using Mita_Hotel.Models;
+using Mita_Coffee.Models;
+using Mita_Coffee.BL;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for frmAddNewItem.xaml
     /// </summary>
-    public partial class frmAddNewItem : L3Window
+    public partial class D00F1041 : L3Window
     {
-        public frmAddNewItem()
+        public D00F1041()
         {
             InitializeComponent();
         }
@@ -52,7 +53,7 @@ namespace Mita_Hotel.Views
                 case true:
                     if (txtInventoryName.Text != "")
                     {
-                        bool add = AddNewItem2();
+                        bool add = BLInventory.AddNewItem(item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation);
                         if (add)
                         {
                             MessageBox.Show("Thêm mới thành công!", "Yeah!");
@@ -67,7 +68,7 @@ namespace Mita_Hotel.Views
                 case false:
                     if (txtInventoryName.Text != "")
                     {
-                        bool edit = EditItem();
+                        bool edit = BLInventory.EditItem(D00F1040.InventoryID, item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation);
                         if (edit)
                         {
                             MessageBox.Show("Sửa thành công!", "Yeah!");
@@ -85,7 +86,7 @@ namespace Mita_Hotel.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataTable dt1 = L3SQLServer.ReturnDataTable("select * FROM D91T1240 WHERE ListTypeID = 'UnitID'");
+            DataTable dt1 = BLInventory.LoadUnitID();
             lkeUnitID.ItemsSource = dt1;
             item.ImageLocation = "addnewimage.png";
             sePrice.InputNumber288("n0", false, false);
@@ -93,32 +94,17 @@ namespace Mita_Hotel.Views
             seVAT.InputPercent(false, false, 28, 8);
             if (D00F1040.IsAddItem == false)
             {
-                DataTable dt = L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode, ImageLocation from D91T1040 WHERE InventoryID = '" + D00F1040.InventoryID + "'");
+                DataTable dt = BLInventory.LoadInventory(D00F1040.InventoryID);
                 txtInventoryName.Text = dt.Rows[0]["InventoryName"].ToString();
                 lkeUnitID.EditValue = dt.Rows[0]["UnitID"];
                 sePrice.Value = Convert.ToDecimal(dt.Rows[0]["Price"]);
                 txtNotes.Text = dt.Rows[0]["Notes"].ToString();
                 seVAT.Value = Convert.ToDecimal(dt.Rows[0]["VAT"])*100;
                 txtBarcode.Text = dt.Rows[0]["BarCode"].ToString();
-                var uriSource = new Uri(@"/Mita_Hotel;component/Images/"+ dt.Rows[0]["ImageLocation"], UriKind.Relative);
+                var uriSource = new Uri(@"/Mita_Coffee;component/Images/"+ dt.Rows[0]["ImageLocation"], UriKind.Relative);
                 ieImage.Source = new BitmapImage(uriSource);
                 item.ImageLocation = dt.Rows[0]["ImageLocation"].ToString();
             }
-        }
-
-        public bool AddNewItem2()
-        {
-            return L3SQLServer.ExecuteNoneQuery("sp_AddItem",
-               CommandType.StoredProcedure,
-               new string[] { "InventoryName", "UnitID", "Price", "Notes", "VAT", "BarCode", "CreateUserID", "ImageLocation" }
-               , new object[] { item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation });
-        }
-        public bool EditItem()
-        {
-            return L3SQLServer.ExecuteNoneQuery("sp_EditItem",
-               CommandType.StoredProcedure,
-               new string[] { "InventoryID", "InventoryName", "UnitID", "Price", "Notes", "VAT", "BarCode", "LastModifyUserID", "ImageLocation" }
-               , new object[] { D00F1040.InventoryID, item.InventoryName, item.UnitID, L3SQLClient.SQLMoney(item.Price, "n0"), item.Notes, L3SQLClient.SQLMoney(item.VAT, "n4"), item.BarCode, L3.UserID, item.ImageLocation });
         }
 
         private void btnImage_Click(object sender, RoutedEventArgs e)
@@ -130,7 +116,7 @@ namespace Mita_Hotel.Views
             if (show == true)
             {
                 item.ImageLocation = img.SafeFileName;
-                var uriSource = new Uri(@"/Mita_Hotel;component/Images/" + item.ImageLocation, UriKind.Relative);
+                var uriSource = new Uri(@"/Mita_Coffee;component/Images/" + item.ImageLocation, UriKind.Relative);
                 ieImage.Source = new BitmapImage(uriSource);
             }
         }

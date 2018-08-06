@@ -4,11 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
-      xmlns:local="clr-namespace:Mita_Hotel.Views"
+      xmlns:local="clr-namespace:Mita_Coffee.Views"
       xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
       xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
       xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="Mita_Hotel.Views.D05F2010"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="Mita_Coffee.Views.D05F2010"
       mc:Ignorable="d"
       Title="Danh mục bàn" Loaded="L3PageLoaded">
     <Grid>
@@ -21,25 +21,25 @@
                 <ContextMenu x:Name="cmTable" Loaded="cmTable_Loaded">
                     <MenuItem x:Name="mnsAdd" Header="Gọi món" Click="mnsAdd_Click">
                         <MenuItem.Icon>
-                            <Image Source="/Mita_Hotel;component/Images/add_coffee.ico"/>
+                            <Image Source="/Mita_Coffee;component/Images/add_coffee.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
                     <MenuItem x:Name="mnsPay" Header="Thanh toán" Click="mnsPay_Click">
                         <MenuItem.Icon>
-                            <Image Source="/Mita_Hotel;component/Images/pigpay.ico"/>
+                            <Image Source="/Mita_Coffee;component/Images/pigpay.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
                     <MenuItem x:Name="mnsNew" Header="Khách về" Click="mnsNew_Click">
                         <MenuItem.Icon>
-                            <Image Source="/Mita_Hotel;component/Images/exit.png"/>
+                            <Image Source="/Mita_Coffee;component/Images/exit.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
                     <MenuItem x:Name="mnsRead" Header="Xem" Click="mnsRead_Click">
                         <MenuItem.Icon>
-                            <Image Source="/Mita_Hotel;component/Images/permission_read.ico"/>
+                            <Image Source="/Mita_Coffee;component/Images/permission_read.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>

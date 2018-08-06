@@ -7,17 +7,17 @@ using System.Text;
 using Lemon3;
 using Lemon3.Data;
 
-namespace Mita_Hotel.Login
+namespace Mita_Coffee.Login
 {
 
 }
 
-namespace Mita_Hotel.Setup
+namespace Mita_Coffee.Setup
 {
     class BLLogin
     {
 
-        public static bool IfLogin(string username, string MD5password)
+        public static bool TryToLogin(string username, string MD5password)
         {
             bool valid = false;
             SqlConnection conn = new SqlConnection(L3.ConnectionString);

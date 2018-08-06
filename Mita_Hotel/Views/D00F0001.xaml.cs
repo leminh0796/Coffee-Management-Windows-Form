@@ -13,14 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D00F0001.xaml
     /// </summary>
     public partial class D00F0001 : L3Window
     {
-        public D00F0001()
+        public D00F0001()   //The Database Changer Form
         {
             InitializeComponent();
         }

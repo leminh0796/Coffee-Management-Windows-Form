@@ -4,15 +4,15 @@
         xmlns:L3="clr-namespace:Lemon3.Controls.DevExp;assembly=D99D0451"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
-        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.D07F2011"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Coffee.Views.D07F2011"
         mc:Ignorable="d"
         Title="Cửa sổ nhập kho" Height="531.124" Width="1027.6" ResizeMode="NoResize" Loaded="L3Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Mita_Hotel;component/Templates/ControlTemplates.xaml" />
+                <ResourceDictionary Source="/Mita_Coffee;component/Templates/ControlTemplates.xaml" />
                 <ResourceDictionary Source="/D99D0451;component/Styles/Lemon3Style.xaml" />
                 <ResourceDictionary Source="/D99D0451;component/Templates/Lemon3Templates.xaml" />
             </ResourceDictionary.MergedDictionaries>

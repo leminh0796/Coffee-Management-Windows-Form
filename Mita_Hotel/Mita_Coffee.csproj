@@ -6,12 +6,28 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2A6DCA33-2A94-4AC5-926F-24204D761E99}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Mita_Hotel</RootNamespace>
-    <AssemblyName>Mita_Hotel</AssemblyName>
+    <RootNamespace>Mita_Coffee</RootNamespace>
+    <AssemblyName>Mita_Coffee</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <PublishUrl>C:\Users\lemin\Desktop\Mita_Coffee\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Mita_Hotel.Mita_setup</StartupObject>
+    <StartupObject>Mita_Coffee.Mita_setup</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>MitaManager.ico</ApplicationIcon>
@@ -58,6 +74,18 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3C7B77D4654CE5FE60817FA10FB2CD93D473BE05</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Mita_Coffee_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="D00D0041, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -126,6 +154,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\BLEmployees.cs" />
+    <Compile Include="BL\BLInventory.cs" />
     <Compile Include="BL\BLMainWindow.cs" />
     <Compile Include="BL\BLPermission.cs" />
     <Compile Include="BL\BLStore.cs" />
@@ -178,8 +208,8 @@
     <Compile Include="Mita_setup.cs" />
     <Compile Include="BL\BLRegistration.cs" />
     <Compile Include="Models\UserLogin.cs" />
-    <Compile Include="Views\frmAddNewItem.xaml.cs">
-      <DependentUpon>frmAddNewItem.xaml</DependentUpon>
+    <Compile Include="Views\D00F1041.xaml.cs">
+      <DependentUpon>D00F1041.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\D00F1040.xaml.cs">
       <DependentUpon>D00F1040.xaml</DependentUpon>
@@ -262,7 +292,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\frmAddNewItem.xaml">
+    <Page Include="Views\D00F1041.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -294,7 +324,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Mita_Coffee_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -349,6 +382,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\permission_read.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

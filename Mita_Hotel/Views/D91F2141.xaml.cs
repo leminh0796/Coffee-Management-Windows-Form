@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using System.Data;
 using Lemon3;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D91F2141.xaml

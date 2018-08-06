@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mita_Hotel", "Mita_Hotel\Mita_Hotel.csproj", "{2A6DCA33-2A94-4AC5-926F-24204D761E99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mita_Coffee", "Mita_Hotel\Mita_Coffee.csproj", "{2A6DCA33-2A94-4AC5-926F-24204D761E99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

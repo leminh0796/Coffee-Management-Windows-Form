@@ -12,11 +12,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Mita_Hotel.Models;
-using Mita_Hotel.BL;
+using Mita_Coffee.Models;
+using Mita_Coffee.BL;
 using System.Data;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D05F2011.xaml

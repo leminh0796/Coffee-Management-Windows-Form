@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Mita_Hotel.Models
+namespace Mita_Coffee.Models
 {
     class ListGeneral
     {

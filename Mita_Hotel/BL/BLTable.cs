@@ -4,9 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using Lemon3.Data;
-using Mita_Hotel.Models;
+using Mita_Coffee.Models;
 
-namespace Mita_Hotel.BL
+namespace Mita_Coffee.BL
 {
     class BLTable
     {
@@ -24,5 +24,6 @@ namespace Mita_Hotel.BL
         {
             return L3SQLServer.ExecuteSQL("UPDATE D05T2010 SET TableName = N" + L3SQLClient.SQLString(table.TableName) + ", Position = N" + L3SQLClient.SQLString(table.Position) + " WHERE TableID = " + L3SQLClient.SQLString(table.TableID) + "");
         }
+
     }
 }

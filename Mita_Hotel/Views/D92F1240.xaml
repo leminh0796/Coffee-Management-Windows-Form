@@ -4,14 +4,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mita_Hotel.Views"
-        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Hotel.Views.D92F1240"
+        xmlns:local="clr-namespace:Mita_Coffee.Views"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Mita_Coffee.Views.D92F1240"
         mc:Ignorable="d"
         Title="D92F1240" Height="288.132" Width="369.087" Loaded="L3Window_Loaded" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid>
         <L3:L3Label x:Name="lbListID" HorizontalAlignment="Left" Margin="28,51,0,0" VerticalAlignment="Top" Width="98">
             <StackPanel Orientation="Horizontal" Width="98">
-                <Image Source="/Mita_Hotel;component/Images/if_bullet_red_35785.png" Margin="0,0,5,0" Height="17" Width="18" />
+                <Image Source="/Mita_Coffee;component/Images/if_bullet_red_35785.png" Margin="0,0,5,0" Height="17" Width="18" />
                 <TextBlock Name="txtblockListID" Width="80">Mã</TextBlock>
             </StackPanel>
         </L3:L3Label>

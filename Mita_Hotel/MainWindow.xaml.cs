@@ -12,18 +12,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Lemon3;
-using Mita_Hotel;
-using Mita_Hotel.Views;
+using Mita_Coffee;
+using Mita_Coffee.Views;
 using System.Data.SqlClient;
 using System.Data;
 using System.Diagnostics;
 using Lemon3.Data;
 using Lemon3.Controls.DevExp;
 using DevExpress.Xpf.Docking;
-using Mita_Hotel.BL;
-using Mita_Hotel.Models;
+using Mita_Coffee.BL;
+using Mita_Coffee.Models;
 
-namespace Mita_Hotel
+namespace Mita_Coffee
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

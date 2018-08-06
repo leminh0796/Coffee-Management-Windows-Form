@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace Mita_Hotel.BL
+namespace Mita_Coffee.BL
 {
     class BLRegistration
     {

@@ -1,32 +1,25 @@
-﻿using Lemon3;
-using Lemon3.Controls.DevExp;
+﻿using Lemon3.Controls.DevExp;
 using Lemon3.Data;
-using Mita_Hotel.Setup;
+using Mita_Coffee.BL;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for pageListUser.xaml
     /// </summary>
     public partial class D00F0040 : L3Page
     {
-        public D00F0040()
+        public D00F0040() //The Employees List Form.
         {
             InitializeComponent();
+        }
+
+        public override void SetContentForL3Page()
+        {
         }
 
         private void L3Window_Loaded(object sender, RoutedEventArgs e)
@@ -35,18 +28,15 @@ namespace Mita_Hotel.Views
             GridListUser.SetDefaultFilterChangeGrid();
             L3Control.SetShortcutPopupMenu(MainMenuControl1);
         }
-        public void LoadGrid()
+        public void LoadGrid() //Get the employees list.
         {
-            SqlCommand cmd = new SqlCommand("select ID, Fullname, Username, Role, Email, Phone, LastLogin, FirstDate from D00T0040 left join tblRole on D00T0040.RoleID = tblRole.RoleID");
-            DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
+            DataTable dt = BLEmployees.LoadEmployees();
             GridListUser.ItemsSource = dt;
         }
-        public override void SetContentForL3Page()
-        {
-        }
-
+        
         public static bool IsEdit = false;
         public static string Username = "";
+
         private void tsbEdit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             frmRegister frmRegister = new frmRegister();
@@ -75,8 +65,7 @@ namespace Mita_Hotel.Views
             try
             {
                 string Username = GridListUser.GetFocusedRowCellValue("Username").ToString();
-                SqlCommand cmd = new SqlCommand("DELETE D00T0040 where Username = '" + Username + "'");
-                L3SQLServer.ExecuteSQL(cmd.CommandText);
+                BLEmployees.DeleteEmployee(Username);
             }
             catch (Exception)
             {
@@ -84,11 +73,6 @@ namespace Mita_Hotel.Views
             }
             LoadGrid();
             GridListUser.FocusRowHandle(GridListUser.ReturnVisibleRowCount - 1);
-        }
-
-        private void tsbPrint_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
-        {
-
         }
 
         private void tsbAdd_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -134,6 +118,10 @@ namespace Mita_Hotel.Views
             LoadGrid();
         }
 
+        private void tsbExportToExcel_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            GridListUser.ExportToXLS("DataEmployees.xls");
+        }
         private void mnsUserRightReadOnly_Click(object sender, RoutedEventArgs e)
         {
             D00F2040 frmPermission = new D00F2040();

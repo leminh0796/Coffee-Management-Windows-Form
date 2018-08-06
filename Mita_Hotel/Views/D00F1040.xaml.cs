@@ -1,5 +1,6 @@
 ﻿using Lemon3.Controls.DevExp;
 using Lemon3.Data;
+using Mita_Coffee.BL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for pageListItem.xaml
@@ -45,15 +46,14 @@ namespace Mita_Hotel.Views
         }
         public void LoadItemGrid()
         {
-            SqlCommand cmd = new SqlCommand("select InventoryID, InventoryName, ListName, Price, Notes, VAT, BarCode, InStock from D91T1040 left join D91T1240 on D91T1040.UnitID = D91T1240.ListID");
-            DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
+            DataTable dt = BLInventory.LoadItem();
             GridListItem.ItemsSource = dt;
         }
 
 
         private void tsbAdd_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            frmAddNewItem frm = new frmAddNewItem();
+            D00F1041 frm = new D00F1041();
             IsAddItem = true;
             frm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             frm.ShowDialog();
@@ -63,7 +63,7 @@ namespace Mita_Hotel.Views
 
         private void tsbEdit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            frmAddNewItem frm = new frmAddNewItem();
+            D00F1041 frm = new D00F1041();
             frm.Title = "Chỉnh sửa thông tin hàng hóa";
             int i = 0;
             try
@@ -87,8 +87,7 @@ namespace Mita_Hotel.Views
             try
             {
                 InventoryID = GridListItem.GetFocusedRowCellValue("InventoryID").ToString();
-                SqlCommand cmd = new SqlCommand("DELETE D91T1040 where InventoryID = '" + InventoryID + "'");
-                L3SQLServer.ExecuteSQL(cmd.CommandText);
+                BLInventory.DeleteInventory(InventoryID);
                 LoadItemGrid();
                 GridListItem.FocusRowHandle(GridListItem.ReturnVisibleRowCount - 1);
             }

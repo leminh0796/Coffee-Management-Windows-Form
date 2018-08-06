@@ -13,9 +13,9 @@ using Lemon3.Functions;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Windows.Threading;
-using Mita_Hotel.BL;
+using Mita_Coffee.BL;
 
-namespace Mita_Hotel.Views
+namespace Mita_Coffee.Views
 {
     /// <summary>
     /// Interaction logic for D05F2140.xaml
