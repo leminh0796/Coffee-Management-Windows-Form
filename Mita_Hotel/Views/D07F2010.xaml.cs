@@ -40,9 +40,8 @@ namespace Mita_Coffee.Views
         }
 
         private void LoadTDBGrid()
-        {
-            DataTable dt = L3SQLServer.ReturnDataTable("select VoucherID, VoucherDate, ObjectID, Amount, IsPayment from D07T2010");
-            GridStore.ItemsSource = dt;
+        { 
+            GridStore.ItemsSource = BLStore.LoadGridVoucher();
         }
 
 

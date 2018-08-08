@@ -70,9 +70,8 @@ namespace Mita_Coffee.Views
 
         public void LoadSimple()
         {
-            DataTable dt = L3SQLServer.ReturnDataTable("select TableID, TableName, Position, TotalMoney, Status, People, IsPaid from D05T2010");
-            GridTable.ItemsSource = dt;
-            lkesStatus.ItemsSource = L3SQLServer.ReturnDataTable("select Status, StatusName from D05T2011");
+            GridTable.ItemsSource = BLTable.LoadTable();
+            lkesStatus.ItemsSource = BLTable.LoadStatusName();
         }
 
         ImageSource GetImage(string path)
@@ -94,7 +93,7 @@ namespace Mita_Coffee.Views
             }
             else
             {
-                DataTable dt = L3SQLServer.ReturnDataTable("select VoucherID from D91T2140 WHERE TableID = '" + TableID + "' and Status = '" + frmTable.Status + "'");
+                DataTable dt = BLTable.LoadD05F2140(TableID, frmTable.Status);
                 if (dt.Rows.Count > 0) frmTable.VoucherID = dt.Rows[dt.Rows.Count - 1]["VoucherID"].ToString();
                 else frmTable.VoucherID = "";
             }
@@ -161,8 +160,7 @@ namespace Mita_Coffee.Views
             try
             {
                 string TableID = GridTable.GetFocusedRowCellValue("TableID").ToString();
-                SqlCommand cmd = new SqlCommand("DELETE D05T2010 where TableID = '" + TableID + "'");
-                L3SQLServer.ExecuteSQL(cmd.CommandText);
+                BLTable.DeleteTable(TableID);
                 LoadSimple();
                 GridTable.FocusRowHandle(GridTable.ReturnVisibleRowCount - 1);
             }
@@ -200,7 +198,7 @@ namespace Mita_Coffee.Views
 
         private void mnsNew_Click(object sender, RoutedEventArgs e)
         {
-            L3SQLServer.ExecuteSQL("UPDATE D05T2010 SET TotalMoney = 0, Status = 0, People = 0, IsPaid = 0 WHERE TableID = '"+ GridTable.GetFocusedRowCellValue("TableID").ToString() + "'");
+            BLTable.InitialTable(GridTable.GetFocusedRowCellValue("TableID").ToString());
             LoadSimple();
             mnsNew.IsEnabled = false;
             mnsPay.IsEnabled = true;
@@ -210,7 +208,7 @@ namespace Mita_Coffee.Views
         private void mnsPay_Click(object sender, RoutedEventArgs e)
         {
             string VoucherID = "";
-            DataTable dt = L3SQLServer.ReturnDataTable("select VoucherID, Amount from D91T2140 WHERE TableID = '" + GridTable.GetFocusedRowCellValue("TableID").ToString() + "' and Status = '" + GridTable.GetFocusedRowCellValue("Status").ToString() + "'");
+            DataTable dt = BLTable.SelectPayment(GridTable.GetFocusedRowCellValue("TableID").ToString(), GridTable.GetFocusedRowCellValue("Status").ToString());
             if (dt.Rows.Count > 0) VoucherID = dt.Rows[dt.Rows.Count - 1]["VoucherID"].ToString();
             D05F2141 frmPayment = new D05F2141();
             frmPayment.TotalMoney = Convert.ToDecimal(dt.Rows[dt.Rows.Count - 1]["Amount"]);
@@ -218,12 +216,8 @@ namespace Mita_Coffee.Views
             frmPayment.ShowDialog();
             if (!frmPayment.bClicked) return;
             decimal AmountPayment = frmPayment.TotalMoney;
-            L3SQLServer.ExecuteSQL("UPDATE D05T2010 " +
-                                   "SET TotalMoney = '" + L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("TotalMoney"), "n0") + "', Status = 2, People = '" + L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("People"), "n0") + "', IsPaid = 1" +
-                                   "WHERE TableID = '" + GridTable.GetFocusedRowCellValue("TableID") + "'");
-            L3SQLServer.ExecuteSQL("UPDATE D91T2140 " +
-                                   "SET Status = 2, AmountPayment = '" + L3SQLClient.SQLMoney(AmountPayment, "n0") + "'" + 
-                                   "WHERE VoucherID = '" + VoucherID + "'");
+            BLTable.UpdateMoney(L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("TotalMoney"), "n0"), L3SQLClient.SQLMoney(GridTable.GetFocusedRowCellValue("People"), "n0"), GridTable.GetFocusedRowCellValue("TableID"));
+            BLTable.UpdateVoucherD91T2140(L3SQLClient.SQLMoney(AmountPayment, "n0"), VoucherID);
             LoadSimple();
         }
     }

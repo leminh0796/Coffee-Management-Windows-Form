@@ -1,5 +1,6 @@
 ﻿using Lemon3.Controls.DevExp;
 using Lemon3.Data;
+using Mita_Coffee.BL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,9 +49,7 @@ namespace Mita_Coffee.Views
 
         private void LoadGrid()
         {
-            SqlCommand cmd = new SqlCommand("select * from D91T1240 WHERE ListTypeID = '"+ ListTypeID +"'");
-            DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
-            GridListGeneral.ItemsSource = dt;
+            GridListGeneral.ItemsSource = BLListType.LoadListType(ListTypeID);
         }
         
         private void tsbAdd_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -136,8 +135,7 @@ namespace Mita_Coffee.Views
             try
             {
                 ListID = GridListGeneral.GetFocusedRowCellValue("ListID").ToString();
-                SqlCommand cmd = new SqlCommand("DELETE D91T1240 where ListTypeID = '" + ListTypeID + "' and ListID = '"+ ListID +"'");
-                L3SQLServer.ExecuteSQL(cmd.CommandText);
+                BLListType.DeleteListTypeID(ListTypeID, ListID);
                 LoadGrid();
                 GridListGeneral.FocusRowHandle(GridListGeneral.ReturnVisibleRowCount - 1);
             }

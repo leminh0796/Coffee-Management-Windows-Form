@@ -77,7 +77,7 @@ namespace Mita_Coffee.BL
             return sRet.ToString();
         }
 
-        static public string UpdateStockD91T1040(DataTable dtGrid)
+        public static string UpdateStockD91T1040(DataTable dtGrid)
         {
             StringBuilder sRet = new StringBuilder("--Luu them tin chi tiet");
             StringBuilder sSQL = new StringBuilder();
@@ -94,6 +94,9 @@ namespace Mita_Coffee.BL
             }
             return sRet.ToString();
         }
-
+        public static DataTable LoadGridVoucher()
+        {
+            return L3SQLServer.ReturnDataTable("select VoucherID, VoucherDate, ObjectID, Amount, IsPayment from D07T2010");
+        }
     }
 }

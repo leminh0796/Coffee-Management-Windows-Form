@@ -13,24 +13,19 @@ namespace Mita_Coffee.BL
     {
         public static DataTable LoadItem()
         {
-            SqlCommand cmd = new SqlCommand("select InventoryID, InventoryName, ListName, Price, Notes, VAT, BarCode, InStock from D91T1040 left join D91T1240 on D91T1040.UnitID = D91T1240.ListID");
-            DataTable dt = L3SQLServer.ReturnDataTable(cmd.CommandText);
-            return dt;
+            return L3SQLServer.ReturnDataTable("select InventoryID, InventoryName, ListName, Price, Notes, VAT, BarCode, InStock from D91T1040 left join D91T1240 on D91T1040.UnitID = D91T1240.ListID");
         }
         public static void DeleteInventory(string InventoryID)
         {
-            SqlCommand cmd = new SqlCommand("DELETE D91T1040 where InventoryID = '" + InventoryID + "'");
-            L3SQLServer.ExecuteSQL(cmd.CommandText);
+            L3SQLServer.ExecuteSQL("DELETE D91T1040 where InventoryID = '" + InventoryID + "'");
         }
         public static DataTable LoadUnitID()
         {
-            DataTable dt1 = L3SQLServer.ReturnDataTable("select ListTypeID, ListID, ListName, Description FROM D91T1240 WHERE ListTypeID = 'UnitID'");
-            return dt1;
+            return L3SQLServer.ReturnDataTable("select ListTypeID, ListID, ListName, Description FROM D91T1240 WHERE ListTypeID = 'UnitID'"); ;
         }
         public static DataTable LoadInventory(string InventoryID)
         {
-            DataTable dt = L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode, ImageLocation from D91T1040 WHERE InventoryID = '" + InventoryID + "'");
-            return dt;
+            return L3SQLServer.ReturnDataTable("select InventoryName, UnitID, Price, Notes, VAT, BarCode, ImageLocation from D91T1040 WHERE InventoryID = '" + InventoryID + "'");
         }
         public static bool AddNewItem(object InventoryName, object UnitID, object Price, object Notes, object VAT, object BarCode, object CreateUserID, object ImageLocation)
         {

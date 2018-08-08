@@ -26,10 +26,6 @@ namespace Mita_Coffee.Views
         {
             InitializeComponent();
             txtItem.TextChanged += txtItem_TextChanged;
-            //System.Timers.Timer timer = new System.Timers.Timer();
-            //timer.Interval = 10000;
-            //timer.Elapsed += timer_Elapsed;
-            //timer.Start();
         }
         public string TableID { get; set; }
         public string VoucherID { get; set; }
@@ -38,14 +34,9 @@ namespace Mita_Coffee.Views
         public int Status { get; set; }
         public decimal AmountPayment { private get; set; }
 
-        //private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        //{
-        //    LoadTDBGrid();
-        //}
-
         void txtItem_TextChanged(object sender, TextChangedEventArgs e)
         {
-            DataTable DtSuggest = L3SQLServer.ReturnDataTable("select InventoryID, InventoryName, BarCode from D91T1040");
+            DataTable DtSuggest = BLTable.LoadSuggest();
             string typedString = txtItem.Text;
             DataTable AutoTable = DtSuggest.Clone();
             AutoTable.Clear();
@@ -91,31 +82,9 @@ namespace Mita_Coffee.Views
             {
                 btnAddQuatity.IsEnabled = false;
                 btnDeleteQuatity.IsEnabled = false;
+                btnAdd10Quatity.IsEnabled = false;
             }
-
-            //try
-            //{
-            //    LoadTDBGrid();
-            //    SetTimer();
-            //}
-            //catch (SqlException)
-            //{
-            //    MessageBox.Show("Lỗi!");
-            //}
         }
-
-        //protected void dispatcherTimer_Tick(object sender, EventArgs e)
-        //{
-        //    LoadTDBGrid();
-        //}
-
-        //private void SetTimer()
-        //{
-        //    DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        //    dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-        //    dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
-        //    dispatcherTimer.Start();
-        //}
 
         private void SetInputNumber()
         {
@@ -130,7 +99,7 @@ namespace Mita_Coffee.Views
 
         private void LoadTDBGrid()
         {
-            dtGrid = L3SQLServer.ReturnDataTable("exec D91P2140 " + L3SQLClient.SQLString(VoucherID));
+            dtGrid = BLTable.LoadVoucherDataGrid(L3SQLClient.SQLString(VoucherID));
             L3DataSource.LoadDataSource(GridVoucherInventory, dtGrid, true);
             if (dtGrid.Rows.Count == 0)
             {
@@ -147,7 +116,7 @@ namespace Mita_Coffee.Views
         private void LoadMaster()
         {
             lbVoucherID.Content = "Phiếu đặt: " + VoucherID;
-            DataTable dtMaster = L3SQLServer.ReturnDataTable("SELECT * FROM D91T2140 WHERE VoucherID = " + L3SQLClient.SQLString(VoucherID));
+            DataTable dtMaster = BLTable.LoadMaster(L3SQLClient.SQLString(VoucherID));
             if (dtMaster.Rows.Count > 0)
             {
                 lbUserID.Content = "Thu ngân: " + dtMaster.Rows[0]["UserID"];
@@ -187,7 +156,7 @@ namespace Mita_Coffee.Views
         private void lbeSuggestion_EditValueChanged(object sender, DevExpress.Xpf.Editors.EditValueChangedEventArgs e)
         {
             string sInventoryID = lbeSuggestion.EditValue.ToString();
-            DataTable dt = L3SQLServer.ReturnDataTable("select * FROM D91T1040 where IsDelete = 0 and InventoryID = '" + sInventoryID + "'");
+            DataTable dt = BLTable.SelectInventoryID(sInventoryID);
             string sInventoryName = "";
             if (dt.Rows.Count > 0 && Convert.ToDecimal(dt.Rows[0]["InStock"]) > 0)
             {
@@ -221,6 +190,7 @@ namespace Mita_Coffee.Views
                 btnSave.IsEnabled = true;
                 btnDeleteQuatity.IsEnabled = true;
                 btnAddQuatity.IsEnabled = true;
+                btnAdd10Quatity.IsEnabled = true;
             }
             else MessageBox.Show("Đã hết hàng!");
             CalAmount();
@@ -250,76 +220,6 @@ namespace Mita_Coffee.Views
             }
             return true;
         }
-        private string SQLInsertD91T2140()
-        {
-            StringBuilder sSQL = new StringBuilder();
-            sSQL.AppendLine("INSERT D91T2140 (VoucherID,VoucherDate,UserID,TableID,CountPerson,Amount,[Status],AmountPayment) ");
-            sSQL.AppendLine("VALUES(");
-            sSQL.AppendLine(L3SQLClient.SQLString(VoucherID) + L3.COMMA); //VoucherID'
-            sSQL.AppendLine("getDate()" + L3.COMMA); //VoucherDate
-            sSQL.AppendLine(L3SQLClient.SQLString(L3.UserID) + L3.COMMA); //UserID
-            sSQL.AppendLine(L3SQLClient.SQLString(TableID) + L3.COMMA); // TableID
-            sSQL.AppendLine(L3SQLClient.SQLMoney(sePeople.EditValue, sePeople.NumberFormat) + L3.COMMA); //CountPerson
-            sSQL.AppendLine(L3SQLClient.SQLMoney(seTotalMoney.EditValue, seTotalMoney.NumberFormat) + L3.COMMA); //Amount
-            sSQL.AppendLine(L3SQLClient.SQLString(Status) + L3.COMMA); //[Status]
-            sSQL.AppendLine(L3SQLClient.SQLString(AmountPayment)); //AmountPayment
-            sSQL.AppendLine(")");
-            return sSQL.ToString();
-        }
-
-        private string SQLDeleteD91T2140()
-        {
-            StringBuilder sSQL = new StringBuilder();
-            sSQL.AppendLine("DELETE D91T2140 WHERE VoucherID = " + L3SQLClient.SQLString(VoucherID));
-            return sSQL.ToString();
-        }
-
-        private string SQLDeleteD91T2141()
-        {
-            StringBuilder sSQL = new StringBuilder();
-            sSQL.AppendLine("DELETE D91T2141 WHERE VoucherID = " + L3SQLClient.SQLString(VoucherID));
-            return sSQL.ToString();
-        }
-
-        private string SQLInsertD91T2141s()
-        {
-            StringBuilder sRet = new StringBuilder("--Luu them tin chi tiet");
-            StringBuilder sSQL = new StringBuilder();
-            foreach (DataRow dr in dtGrid.Rows)
-            {
-                sSQL = new StringBuilder();
-                sSQL.AppendLine(" ");
-                sSQL.AppendLine("INSERT D91T2141 (VoucherID, InventoryID, VAT,Price,UnitID,Quantity) ");
-                sSQL.AppendLine("VALUES(");
-                sSQL.AppendLine(L3SQLClient.SQLString(VoucherID) + L3.COMMA); //VoucherID'
-                sSQL.AppendLine(L3SQLClient.SQLString(dr["InventoryID"]) + L3.COMMA); //InventoryID
-                sSQL.AppendLine(dr["VAT"] + L3.COMMA); //VAT
-                sSQL.AppendLine(L3SQLClient.SQLMoney(dr["Price"], "n0") + L3.COMMA); //Price
-                sSQL.AppendLine(L3SQLClient.SQLString(dr["UnitID"]) + L3.COMMA); //UnitID
-                sSQL.AppendLine(L3SQLClient.SQLMoney(dr["Quantity"], "n0")); //Quantity
-                sSQL.AppendLine(")");
-                sRet.AppendLine(sSQL.ToString());
-            }
-            return sRet.ToString();
-        }
-
-        private string SQLUpdateStockD91T1040s()
-        {
-            StringBuilder sRet = new StringBuilder("--Luu them tin chi tiet");
-            StringBuilder sSQL = new StringBuilder();
-            foreach (DataRow dr in dtGrid.Rows)
-            {
-                sSQL = new StringBuilder();
-                sSQL.AppendLine(" ");
-                sSQL.AppendLine("UPDATE D91T1040 ");
-                sSQL.AppendLine("SET InStock =");
-                sSQL.AppendLine(dr["InStock"].ToString());
-                sSQL.AppendLine("WHERE InventoryID =");
-                sSQL.AppendLine(dr["InventoryID"].ToString());
-                sRet.AppendLine(sSQL.ToString());
-            }
-            return sRet.ToString();
-        }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -337,24 +237,20 @@ namespace Mita_Coffee.Views
                 Status = 2;
             }
             StringBuilder sSQL = new StringBuilder();
-            sSQL.AppendLine(SQLDeleteD91T2141());
-            sSQL.AppendLine(SQLDeleteD91T2140());
-            sSQL.AppendLine(SQLInsertD91T2140());
-            sSQL.AppendLine(SQLInsertD91T2141s());
-            sSQL.AppendLine(SQLUpdateStockD91T1040s());
+            sSQL.AppendLine(BLTable.SQLDeleteD91T2141(VoucherID));
+            sSQL.AppendLine(BLTable.SQLDeleteD91T2140(VoucherID));
+            sSQL.AppendLine(BLTable.SQLInsertD91T2140(VoucherID, TableID, sePeople.EditValue, sePeople.NumberFormat, seTotalMoney.EditValue, seTotalMoney.NumberFormat, Status, AmountPayment));
+            sSQL.AppendLine(BLTable.SQLInsertD91T2141s(dtGrid, VoucherID));
+            sSQL.AppendLine(BLTable.SQLUpdateStockD91T1040s(dtGrid));
             if (L3SQLServer.ExecuteSQL(sSQL.ToString()))
             {
                 if (Status == 1)
                 {
-                    L3SQLServer.ExecuteSQL("UPDATE D05T2010 " +
-                                           "SET TotalMoney = '" + L3SQLClient.SQLMoney(seTotalMoney.EditValue, seTotalMoney.NumberFormat) + "', Status = 1, People = '" + L3SQLClient.SQLMoney(sePeople.EditValue, sePeople.NumberFormat) + "'" +
-                                           "WHERE TableID = '" + TableID + "'");
+                    BLTable.UpdateStatus1(L3SQLClient.SQLMoney(seTotalMoney.EditValue, seTotalMoney.NumberFormat), L3SQLClient.SQLMoney(sePeople.EditValue, sePeople.NumberFormat), TableID);
                 }
                 else if (Status == 2)
                 {
-                    L3SQLServer.ExecuteSQL("UPDATE D05T2010 " +
-                                           "SET TotalMoney = '" + L3SQLClient.SQLMoney(seTotalMoney.EditValue, seTotalMoney.NumberFormat) + "', Status = 2, People = '" + L3SQLClient.SQLMoney(sePeople.EditValue, sePeople.NumberFormat) + "', IsPaid = 1" +
-                                           "WHERE TableID = '" + TableID + "'");
+                    BLTable.UpdateStatus2(L3SQLClient.SQLMoney(seTotalMoney.EditValue, seTotalMoney.NumberFormat), L3SQLClient.SQLMoney(sePeople.EditValue, sePeople.NumberFormat), TableID);
                 }
                 Lemon3.Messages.L3Msg.SaveOK();
                 Saved = true;
@@ -407,7 +303,6 @@ namespace Mita_Coffee.Views
                 else if (value_Old == 1)
                 {
                     GridVoucherInventory.DeleteRowFocusEvent();
-                    //L3SQLServer.ExecuteSQL("UPDATE D91T1040 SET InStock = " + stock_Old + 1 + " WHERE InventoryID = '" + InventoryID + "'");
                 }
                 CalAmount();
                 btnSave.IsEnabled = true;
@@ -416,6 +311,7 @@ namespace Mita_Coffee.Views
             {
                 btnAddQuatity.IsEnabled = false;
                 btnDeleteQuatity.IsEnabled = false;
+                btnAdd10Quatity.IsEnabled = false;
             }
         }
 
